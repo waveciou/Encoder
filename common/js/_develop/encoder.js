@@ -32,21 +32,21 @@
         `,
         data() {
             return {
-                textInput: "",
-                textOutput: "",
+                textInput: '',
+                textOutput: '',
                 encode_selected: true,
                 process: {
-                    digits: 6
+                    digits: 7
                 }
             }
         },
         methods: {
             clearHandler() {
-                this.textInput = "";
-                this.textOutput = "";
+                this.textInput = '';
+                this.textOutput = '';
             },
             submitHandler() {
-                if (typeof this.textInput !== "string") {
+                if (typeof this.textInput !== 'string') {
                     return false;
                 } else {
                     this.textOutput = this.computedCode();
@@ -60,72 +60,79 @@
                 }
             },
             encodeHandler(payload) {
-                const strArray = payload.split("");
+                const strArray = payload.split('');
                 const resultArray = strArray.map((item) => {
-                    let unicode = `${item.charCodeAt(0)}`;
-                    let codeArray = unicode.split("");
+                    let unicode = item.charCodeAt(0);
+                    let randomCode = this.getRandomArbitrary(1, 4) * 2;
+                    let cipherCode = (unicode * randomCode) / 2;
+                    let codeArray = `${cipherCode}`.split('');
                     let sup = 0 - (codeArray.length - this.process.digits);
 
                     for (let i = 0; i < sup; i++) {
                         if (i === sup - 1) {
-                            let randomKey = this.getRandomArbitrary(1, 9);
-                            codeArray.unshift(`${randomKey}`);
+                            codeArray.unshift(`${randomCode}`);
                         } else {
-                            codeArray.unshift("0");
+                            codeArray.unshift('0');
                         }
                     }
 
-                    return codeArray.join("");
+                    return codeArray.join('');
                 });
 
-                return resultArray.join("");
+                return resultArray.join('');
             },
             decodeHandler(payload) {
                 let isError = parseInt(payload) ? false : true;
 
                 if (isError === true) {
-                    return "error"
+                    return 'error'
                 }
 
-                const strArray = payload.split("");
+                const strArray = payload.split('');
                 const codeArray = [];
 
                 for (let i = 0; i < strArray.length; i += this.process.digits) {
-                    codeArray.push(strArray.slice(i, i + this.process.digits).join(""));
+                    codeArray.push(strArray.slice(i, i + this.process.digits).join(''));
                 }
 
                 const resultArray = codeArray.map((item) => {
                     const cipherNumber = parseInt(item.slice(1, this.process.digits));
                     const keyNumber = parseInt(item.slice(0, 1));
 
+                    const plainNumber = (cipherNumber * 2) / keyNumber;
+
                     if (isError === false) {
-                        isError = cipherNumber <= 65535 || cipherNumber >= 32 || cipherNumber === 10 ? false : true;
+                        isError = !this.validateNumberValue(plainNumber);
                     }
 
-                    const plainText = String.fromCharCode(`${cipherNumber}`);
+                    const plainText = String.fromCharCode(`${plainNumber}`);
+
                     return plainText;
                 });
 
-                const result = resultArray.join("").trim();
+                const result = resultArray.join('').trim();
 
-                if (result === "") {
+                if (result === '') {
                     isError = true;
                 }
 
-                return isError === true ? "error" : result;
+                return isError === true ? 'error' : result;
             },
             getRandomArbitrary(min, max) {
                 return Math.floor(Math.random() * (max - min) + min);
+            },
+            validateNumberValue(payload) {
+                return payload <= 65535 || payload >= 32 || payload === 10 ? true : false;
             }
         },
         computed: {
             inputAreaPlaceholder() {
                 const textContent = {
-                    encode: "Please enter the text for Encode.",
-                    decode: "Please enter the text for Decode."
+                    encode: 'Please enter the text for Encode.',
+                    decode: 'Please enter the text for Decode.'
                 };
 
-                return this.encode_selected === true ? textContent["encode"] : textContent["decode"];
+                return this.encode_selected === true ? textContent['encode'] : textContent['decode'];
             }
         }
     }
