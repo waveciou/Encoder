@@ -36,7 +36,8 @@
                 textOutput: '',
                 encode_selected: true,
                 process: {
-                    digits: 7
+                    digits: 7,
+                    prime: [53, 97, 59, 89, 61, 83, 67, 79, 71, 73]
                 }
             }
         },
@@ -61,20 +62,22 @@
             },
             encodeHandler(payload) {
                 const strArray = payload.split('');
-                const resultArray = strArray.map((item) => {
-                    let unicode = item.charCodeAt(0);
-                    let randomCode = this.getRandomArbitrary(1, 4) * 2;
-                    let cipherCode = (unicode * randomCode) / 2;
-                    let codeArray = `${cipherCode}`.split('');
-                    let sup = 0 - (codeArray.length - this.process.digits);
+                const resultArray = strArray.map(item => {
+                    let unicode = `${item.charCodeAt(0)}`;
+                    let unicodeArray = unicode.split('');
+                    let sup = 0 - (unicodeArray.length - (this.process.digits - 2));
 
                     for (let i = 0; i < sup; i++) {
-                        if (i === sup - 1) {
-                            codeArray.unshift(`${randomCode}`);
-                        } else {
-                            codeArray.unshift('0');
-                        }
+                        unicodeArray.unshift('0');
                     }
+
+                    const keyData = this.getRandomPrimeNumber();
+                    const cipherCode = this.encodeCaesarCipher(unicodeArray, keyData.key);
+
+                    let codeArray = cipherCode.split('');
+
+                    codeArray.unshift(keyData.prime[0]);
+                    codeArray.push(keyData.prime[1]);
 
                     return codeArray.join('');
                 });
@@ -95,17 +98,18 @@
                     codeArray.push(strArray.slice(i, i + this.process.digits).join(''));
                 }
 
-                const resultArray = codeArray.map((item) => {
-                    const cipherNumber = parseInt(item.slice(1, this.process.digits));
-                    const keyNumber = parseInt(item.slice(0, 1));
+                const resultArray = codeArray.map(item => {
+                    const keyIndex = [parseInt(item[0]), parseInt(item[this.process.digits - 1])];
+                    const cipherCode = item.slice(1, this.process.digits - 1);
 
-                    const plainNumber = (cipherNumber * 2) / keyNumber;
+                    const key = this.process.prime[keyIndex[0]] * this.process.prime[keyIndex[1]];
+                    const plainCode = this.decodeCaesarCipher(cipherCode, key);
 
                     if (isError === false) {
-                        isError = !this.validateNumberValue(plainNumber);
+                        isError = !this.validateNumberValue(plainCode);
                     }
 
-                    const plainText = String.fromCharCode(`${plainNumber}`);
+                    const plainText = String.fromCharCode(`${plainCode}`);
 
                     return plainText;
                 });
@@ -123,6 +127,47 @@
             },
             validateNumberValue(payload) {
                 return payload <= 65535 || payload >= 32 || payload === 10 ? true : false;
+            },
+            getRandomPrimeNumber() {
+                let rendomValue = [this.getRandomArbitrary(0, 9), this.getRandomArbitrary(0, 9)];
+
+                let primes = [
+                    this.process.prime[rendomValue[0]],
+                    this.process.prime[rendomValue[1]]
+                ];
+
+                const result = {
+                    key: primes[0] * primes[1],
+                    prime: rendomValue
+                };
+
+                return result;
+            },
+            encodeCaesarCipher(payload, offset) {
+                let resultArray = payload.map(item => {
+                    let result = (parseInt(item) + offset) % 10;
+                    return result;
+                });
+
+                return resultArray.join('');
+            },
+            decodeCaesarCipher(payload, offset) {
+                let stringArray = payload.split('');
+
+                let resultArray = stringArray.map(item => {
+                    let result = null;
+
+                    for (let i = 0; i < 10; i++) {
+                        if (((i + offset) % 10) === parseInt(item)) {
+                            result = i;
+                            break;
+                        }
+                    }
+
+                    return result;
+                });
+
+                return resultArray.join('');
             }
         },
         computed: {
