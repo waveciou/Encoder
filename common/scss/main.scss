@@ -227,3 +227,16 @@ p {
         }
     }
 }
+
+.copyright {
+    font-size: 1rem;
+    text-align: center;
+
+    a {
+        @include min-width(1024px) {
+            &:hover {
+                color: $color-yellow;
+            }
+        }
+    }
+}
