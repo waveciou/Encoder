@@ -87,17 +87,16 @@ audio,
 video {
   margin: 0;
   padding: 0;
+  color: #fff;
   border: 0;
   font: inherit;
+  vertical-align: baseline;
 
   font: {
     size: 100%;
     weight: normal;
-    family: 'Noto Sans TC', sans-serif, Arial;
+    family: 'Noto Sans TC', sans-serif, arial;
   }
-
-  vertical-align: baseline;
-  color: #FFFFFF;
 }
 
 article,
@@ -154,8 +153,8 @@ a {
 }
 
 button {
-  padding: 0;
   margin: 0;
+  padding: 0;
   line-height: 1;
   font: inherit;
   cursor: pointer;
