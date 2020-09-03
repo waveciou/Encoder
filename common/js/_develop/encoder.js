@@ -1,4 +1,4 @@
-; (function (Vue) {
+(function (Vue) {
 
   const app = {
     template: `
@@ -39,7 +39,7 @@
           digits: 7,
           prime: [53, 97, 59, 89, 61, 83, 67, 79, 71, 73]
         }
-      }
+      };
     },
     methods: {
       clearHandler() {
@@ -88,7 +88,7 @@
         let isError = parseInt(payload) ? false : true;
 
         if (isError === true) {
-          return 'error'
+          return 'error';
         }
 
         const strArray = payload.split('');
@@ -180,7 +180,7 @@
         return this.encode_selected === true ? textContent['encode'] : textContent['decode'];
       }
     }
-  }
+  };
 
   const vm = new Vue({
     render: h => h(app)
