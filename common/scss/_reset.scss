@@ -85,8 +85,8 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #fff;
   border: 0;
   font: inherit;
@@ -153,8 +153,9 @@ a {
 }
 
 button {
-  margin: 0;
   padding: 0;
+  margin: 0;
+  border: none;
   line-height: 1;
   font: inherit;
   cursor: pointer;
