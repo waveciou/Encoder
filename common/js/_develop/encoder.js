@@ -3,32 +3,32 @@
   const app = {
     template: `
       <div class="main">
-          <div class="select__control">
-              <div class="select__fieldset">
-                  <input type="radio" name="select-control" id="encode" v-model="encode_selected" @change="clearHandler" :value="true">
-                  <label for="encode" title="Encode">Encode<span></span></label>
-              </div>
-              <div class="select__fieldset">
-                  <input type="radio" name="select-control" id="decode" v-model="encode_selected" @change="clearHandler" :value="false">
-                  <label for="decode" title="Decode">Decode<span></span></label>
-              </div>
+        <div class="select__control">
+          <div class="select__fieldset">
+            <input type="radio" name="select-control" id="encode" v-model="encode_selected" @change="clearHandler" :value="true">
+            <label for="encode" title="Encode">Encode<span></span></label>
           </div>
-
-          <div class="article">
-              <label class="caption" for="input-area">Input :</label>
-              <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput"></textarea>
-          </div>
-
-          <div class="row">
-              <button class="btn" @click.stop="submitHandler" title="Submit">Submit</button>
-              <button class="btn" @click.stop="clearHandler" title="Clear">Clear</button>
-          </div>
-
-          <div class="article">
-              <label class="caption" for="output-area">Output :</label>
-              <div id="output-area" class="textarea" v-cloak>{{ textOutput }}</div>
+          <div class="select__fieldset">
+            <input type="radio" name="select-control" id="decode" v-model="encode_selected" @change="clearHandler" :value="false">
+            <label for="decode" title="Decode">Decode<span></span></label>
           </div>
         </div>
+
+        <div class="article">
+          <label class="caption" for="input-area">Input :</label>
+          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput"></textarea>
+        </div>
+
+        <div class="row">
+          <button class="btn" @click.stop="submitHandler" title="Submit">Submit</button>
+          <button class="btn" @click.stop="clearHandler" title="Clear">Clear</button>
+        </div>
+
+        <div class="article">
+          <label class="caption" for="output-area">Output :</label>
+          <div id="output-area" class="textarea" v-cloak>{{ textOutput }}</div>
+        </div>
+      </div>
       `,
     data() {
       return {
@@ -37,7 +37,7 @@
         encode_selected: true,
         process: {
           digits: 7,
-          prime: [53, 97, 59, 89, 61, 83, 67, 79, 71, 73]
+          prime: [ 53, 97, 59, 89, 61, 83, 67, 79, 71, 73 ]
         }
       };
     },
