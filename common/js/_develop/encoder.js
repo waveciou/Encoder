@@ -16,7 +16,7 @@
 
         <div class="article">
           <label class="caption" for="input-area">Input :</label>
-          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput"></textarea>
+          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput" @keypress.enter="submitHandler"></textarea>
         </div>
 
         <div class="row">
@@ -36,7 +36,7 @@
         textOutput: '',
         encode_selected: true,
         process: {
-          digits: 7,
+          digits: 5,
           prime: [ 53, 97, 59, 89, 61, 83, 67, 79, 71, 73 ]
         }
       };
@@ -67,32 +67,33 @@
       encodeHandler(payload) {
         // 把字串轉成陣列
         const strArray = payload.split('');
-        const resultArray = strArray.map(item => {
 
+        // 公用常數
+        const publicConst = this.getRandomNumber(0, 9);
+
+        let resultArray = strArray.map((itemText, index) => {
           // 把明文轉成 unicode
-          let unicode = `${item.charCodeAt(0)}`;
+          let unicode = `${itemText.charCodeAt(0)}`;
           let unicodeArray = unicode.split('');
 
           // 將 unicode 代碼補 0（5位數）
-          let sup = 0 - (unicodeArray.length - (this.process.digits - 2));
+          const supValue = 0 - (unicodeArray.length - this.process.digits);
 
-          for (let i = 0; i < sup; i++) {
+          for (let i = 0; i < supValue; i++) {
             unicodeArray.unshift('0');
           }
 
-          // 隨機取得兩個質數相乘，使用凱薩密碼編碼
-          const keyData = this.getRandomPrimeNumber();
-          const cipherCode = this.encodeCaesarCipher(unicodeArray, keyData.key);
+          // 取得「公用常數」與「私用常數」的乘積，並做凱薩密碼處理
+          const privateConst = index % 10;
+          const privatePrime = this.process.prime[privateConst];
+          const publicPrime = this.process.prime[publicConst];
+          const result = this.encodeCaesarCipher(unicodeArray, privatePrime * publicPrime);
 
-          let codeArray = cipherCode.split('');
-
-          // 把兩個質數的 index 放在密文的第一個與最後一個
-          codeArray.unshift(keyData.prime[0]);
-          codeArray.push(keyData.prime[1]);
-
-          return codeArray.join('');
+          return result;
         });
 
+        // 將公用常數添加至密文裡面
+        resultArray.push(publicConst);
         return resultArray.join('');
       },
       // * 解碼
@@ -104,24 +105,35 @@
           return 'error';
         }
 
-        // 把所有密文以每 7 個字串組成陣列
-        const strArray = payload.split('');
-        const codeArray = [];
+        // 取得密文裡的公用常數，並將密文轉成陣列
+        let strArray = payload.split('');
+        const publicConst = parseInt(strArray[strArray.length - 1]);
+        strArray.splice(strArray.length - 1, 1);
+
+        // 把密文陣列以每 5 個字串組成新陣列
+        let codeArray = [];
 
         for (let i = 0; i < strArray.length; i += this.process.digits) {
           codeArray.push(strArray.slice(i, i + this.process.digits).join(''));
         }
 
-        // 處理密文
-        const resultArray = codeArray.map(item => {
-          // 取得兩個質數的 index
-          const keyIndex = [parseInt(item[0]), parseInt(item[this.process.digits - 1])];
-          // 取得密文內容
-          const cipherCode = item.slice(1, this.process.digits - 1);
-          // 取得兩個質數相乘
-          const key = this.process.prime[keyIndex[0]] * this.process.prime[keyIndex[1]];
-          // 凱薩密碼解碼成 unicode
-          const plainCode = this.decodeCaesarCipher(cipherCode, key);
+        // 取得公用常數值與私用常數值乘積列表
+        const publicPrime = this.process.prime[publicConst];
+        const keysArray = this.process.prime.map(prime => prime * publicPrime);
+
+        // 處理並轉換密文
+        const resultArray = codeArray.map((cipherCode, index) => {
+          let cipherCodeArray = cipherCode.split('');
+          let plainCode = '';
+
+          // 將乘積列表全部帶進凱薩密碼驗證
+          for (let i = 0; i < keysArray.length; i++) {
+            let _plainCode = this.decodeCaesarCipher(cipherCodeArray, keysArray[i]);
+            if (index % 10 === i) {
+              plainCode = _plainCode;
+              break;
+            }
+          }
 
           // 驗證是否為 unicode
           if (isError === false) {
@@ -130,7 +142,6 @@
 
           // unicode 轉回明文
           const plainText = String.fromCharCode(`${plainCode}`);
-
           return plainText;
         });
 
@@ -143,51 +154,37 @@
         return isError === true ? 'error' : result;
       },
       // 回傳亂數
-      getRandomArbitrary(min, max) {
+      getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
       },
       // 驗證是否為 Unicode 值
       validateNumberValue(payload) {
         return payload <= 65535 || payload >= 32 || payload === 10 ? true : false;
       },
-      // 隨機取得2個質數
-      getRandomPrimeNumber() {
-        let rendomValue = [this.getRandomArbitrary(0, 9), this.getRandomArbitrary(0, 9)];
-
-        let primes = [
-          this.process.prime[rendomValue[0]],
-          this.process.prime[rendomValue[1]]
-        ];
-
-        const result = {
-          key: primes[0] * primes[1],
-          prime: rendomValue
-        };
-
-        return result;
-      },
       // 凱薩密碼轉換（編碼）
+      // (型別：payload: Array、offset: Number、output: String)
       encodeCaesarCipher(payload, offset) {
-        let resultArray = payload.map(item => (parseInt(item) + offset) % 10 );
+        let resultArray = payload.map((item, index) => {
+          let vector = index + 1 === 5 ? (index + 2) : (index + 1);
+          return (parseInt(item) + (offset * vector)) % 10;
+        });
         return resultArray.join('');
       },
       // 凱薩密碼轉換（解碼）
+      // (型別：payload: Array、offset: Number、output: String)
       decodeCaesarCipher(payload, offset) {
-        let stringArray = payload.split('');
-
-        let resultArray = stringArray.map(item => {
+        let resultArray = payload.map((item, index) => {
           let result = null;
+          let vector = index + 1 === 5 ? (index + 2) : (index + 1);
 
           for (let i = 0; i < 10; i++) {
-            if (((i + offset) % 10) === parseInt(item)) {
+            if (((i + (offset * vector)) % 10) === parseInt(item)) {
               result = i;
               break;
             }
           }
-
           return result;
         });
-
         return resultArray.join('');
       }
     },

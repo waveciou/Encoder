@@ -24,7 +24,7 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-uglify": "^3.0.2",
     "pre-commit": "^1.2.2",
-    "stylelint": "^13.7.0",
+    "stylelint": "^13.7.2",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "stylelint-config-standard": "^20.0.0",

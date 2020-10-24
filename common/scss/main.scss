@@ -38,7 +38,7 @@ body {
 }
 
 p {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
 [v-cloak] {
@@ -46,7 +46,7 @@ p {
 }
 
 .wrapper {
-  padding: 15px 0;
+  padding: 1rem 0 2rem;
 }
 
 .wrap {
@@ -105,15 +105,15 @@ p {
     opacity: 0;
     z-index: -1;
 
-    &#encode+label {
+    &#encode + label {
       background-color: $color-green;
     }
 
-    &#decode+label {
+    &#decode + label {
       background-color: $color-blue;
     }
 
-    &:checked+label::before {
+    &:checked + label::before {
       opacity: 1;
     }
   }
@@ -165,12 +165,12 @@ p {
 }
 
 .article {
-  margin: 15px 0;
+  margin: 1rem 0;
   color: $color-white;
 }
 
 .title {
-  margin: 15px 0;
+  margin: 1rem 0;
   font-size: 35px;
   text-align: center;
   color: $color-white;
@@ -183,7 +183,7 @@ p {
 }
 
 .row {
-  margin: 15px 0;
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -233,6 +233,7 @@ p {
 
 .copyright {
   font-size: 1rem;
+  line-height: 1.4em;
   text-align: center;
 
   a {
