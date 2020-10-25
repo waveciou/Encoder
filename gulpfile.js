@@ -12,7 +12,7 @@ gulp.task('htmlmin', function () {
 
 gulp.task('babel', () => {
   return gulp.src([
-    './common/js/plugins/vue.min.js',
+    './common/js/plugins/vue.js',
     './common/js/plugins/axios.min.js',
     './common/js/_develop/*.js'
   ]).pipe(babel({

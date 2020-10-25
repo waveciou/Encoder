@@ -1,4 +1,4 @@
-(function (Vue) {
+(function (Vue, axios) {
 
   const app = {
     template: `
@@ -16,7 +16,7 @@
 
         <div class="article">
           <label class="caption" for="input-area">Input :</label>
-          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput" @keypress.enter="submitHandler"></textarea>
+          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput" @keypress.enter="submitHandler" :disabled="loading.control === true"></textarea>
         </div>
 
         <div class="row">
@@ -28,6 +28,23 @@
           <label class="caption" for="output-area">Output :</label>
           <div id="output-area" class="textarea" v-cloak>{{ textOutput }}</div>
         </div>
+
+        <transition name="fade" mode="out-in">
+          <div 
+            class="loading" 
+            v-if="loading.control === true" 
+            :class="{ 'is-encode': loading.type === 'encode', 'is-decode': loading.type === 'decode' }"
+          >
+            <div>
+              <div class="bouncing-loader">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="loading-text">{{ loadingTextHandler }}</div>
+            </div>
+          </div>
+        </transition>
       </div>
       `,
     data() {
@@ -45,6 +62,10 @@
         test: {
           startTime: 0,
           endTime: 0
+        },
+        loading: {
+          control: true,
+          type: ''
         }
       };
     },
@@ -58,9 +79,11 @@
 
         this.process.tableKeyword = [...this.process.alphabet];
 
-        for(let i = 0; i < 10; i++) {
+        for (let i = 0; i < 10; i++) {
           this.process.tableKeyword.push(`${i}`);
         }
+
+        this.loading.control = false;
       }).catch(err => {
         console.log(err);
       });
@@ -79,15 +102,24 @@
           this.testExecutionTime(true);
           this.textOutput = this.computedCode();
           this.testExecutionTime(false);
+
+          this.loading.control = false;
+          this.loading.type = '';
         }
       },
       // 判斷目前是編碼或解碼，並回傳對應的編解碼值
       computedCode() {
         if (this.encode_selected === true) {
+          this.loading.type = 'encode';
+          this.loading.control = true;
+
           const code = this.encodeHandler(this.textInput);
           const tableKey = this.getRandomNumber(0, this.process.tableKeyword.length);
           return this.replaceHandler(code, tableKey);
         } else {
+          this.loading.type = 'decode';
+          this.loading.control = true;
+
           const code = this.reductionHandler(this.textInput);
           return this.decodeHandler(code);
         }
@@ -300,6 +332,24 @@
       // 取得程式執行時間
       getExecutionTime() {
         return this.test.endTime - this.test.startTime;
+      },
+      // Loading 顯示文字
+      loadingTextHandler() {
+        let result = '';
+
+        switch (this.loading.type) {
+        case 'encode':
+          result = 'Encoding...';
+          break;
+        case 'decode':
+          result = 'Decoding...';
+          break;
+        default:
+          result = 'Loading...';
+          break;
+        }
+
+        return result;
       }
     }
   };
@@ -308,4 +358,4 @@
     render: h => h(app)
   }).$mount('#app');
 
-})(Vue);
+})(Vue, axios);
