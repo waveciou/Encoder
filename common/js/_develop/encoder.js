@@ -99,27 +99,35 @@
         if (typeof this.textInput !== 'string') {
           return false;
         } else {
-          this.testExecutionTime(true);
-          this.textOutput = this.computedCode();
-          this.testExecutionTime(false);
+          if (this.textInput) {
+            // 計算程式執行時間
+            this.testExecutionTime(true);
+            this.textOutput = this.computedCode();
+            this.testExecutionTime(false);
 
-          this.loading.control = false;
-          this.loading.type = '';
+            // 關閉 loading 視窗
+            this.loading.control = false;
+            this.loading.type = '';
+          }
         }
       },
       // 判斷目前是編碼或解碼，並回傳對應的編解碼值
       computedCode() {
         if (this.encode_selected === true) {
+          // 開啟 loading 視窗
           this.loading.type = 'encode';
           this.loading.control = true;
 
+          // 編碼
           const code = this.encodeHandler(this.textInput);
           const tableKey = this.getRandomNumber(0, this.process.tableKeyword.length);
           return this.replaceHandler(code, tableKey);
         } else {
+          // 開啟 loading 視窗
           this.loading.type = 'decode';
           this.loading.control = true;
 
+          // 解碼
           const code = this.reductionHandler(this.textInput);
           return this.decodeHandler(code);
         }
