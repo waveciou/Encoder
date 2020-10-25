@@ -37,9 +37,29 @@
         encode_selected: true,
         process: {
           digits: 5,
-          prime: [ 53, 97, 59, 89, 61, 83, 67, 79, 71, 73 ]
+          prime: [],
+          table: [],
+          alphabet: [],
+          indexKeyword: []
         }
       };
+    },
+    mounted() {
+      axios.get('common/data/process.json').then(res => {
+        const keys = ['prime', 'table', 'alphabet'];
+
+        keys.forEach(key => {
+          this.process[key] = res.data.process[key];
+        });
+
+        this.process.indexKeyword = [...this.process.alphabet];
+
+        for(let i = 0; i < 10; i++) {
+          this.process.indexKeyword.push(`${i}`);
+        }
+      }).catch(err => {
+        console.log(err);
+      });
     },
     methods: {
       // 清除 Input 和 Output 的內容
@@ -58,9 +78,12 @@
       // 判斷目前是編碼或解碼，並回傳對應的編解碼值
       computedCode() {
         if (this.encode_selected === true) {
-          return this.encodeHandler(this.textInput);
+          const code = this.encodeHandler(this.textInput);
+          const tableKey = this.getRandomNumber(0, 62);
+          return this.replaceHandler(code, tableKey);
         } else {
-          return this.decodeHandler(this.textInput);
+          const code = this.reductionHandler(this.textInput);
+          return this.decodeHandler(code);
         }
       },
       // * 編碼
@@ -153,17 +176,10 @@
 
         return isError === true ? 'error' : result;
       },
-      // 回傳亂數
-      getRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
-      },
-      // 驗證是否為 Unicode 值
-      validateNumberValue(payload) {
-        return payload <= 65535 || payload >= 32 || payload === 10 ? true : false;
-      },
       // 凱薩密碼轉換（編碼）
-      // (型別：payload: Array、offset: Number、output: String)
       encodeCaesarCipher(payload, offset) {
+        // * payload: Array、offset: Number、output: String
+
         let resultArray = payload.map((item, index) => {
           let vector = index + 1 === 5 ? (index + 2) : (index + 1);
           return (parseInt(item) + (offset * vector)) % 10;
@@ -171,8 +187,9 @@
         return resultArray.join('');
       },
       // 凱薩密碼轉換（解碼）
-      // (型別：payload: Array、offset: Number、output: String)
       decodeCaesarCipher(payload, offset) {
+        // * payload: Array、offset: Number、output: String
+
         let resultArray = payload.map((item, index) => {
           let result = null;
           let vector = index + 1 === 5 ? (index + 2) : (index + 1);
@@ -186,6 +203,68 @@
           return result;
         });
         return resultArray.join('');
+      },
+      // * 替換式密碼轉換（編碼）
+      replaceHandler(payload, tableIndex) {
+        // 取得對應的對照表
+        const table = this.process.table[tableIndex];
+        let result = '';
+
+        // 將對應的字母替換上去
+        for (let i = 0; i < payload.length; i += 2) {
+          let text = `${payload[i]}${payload[i + 1]}`;
+          let index = table.indexOf(text);
+          let replaceText = index >= 0 ? this.process.alphabet[index] : text;
+          result = result + replaceText;
+        }
+
+        // 將對照表索引數添加至密文最後面
+        let indexKey = this.getTableIndexKeyword(tableIndex, true);
+        result = result + `${indexKey}`;
+        return result;
+      },
+      // * 替換式密碼轉換（解碼）
+      reductionHandler(payload) {
+        // 取得對照表索引數
+        let strArray = payload.split('');
+        let indexKey = strArray.splice(strArray.length - 1, 1)[0];
+        let tableIndex = this.getTableIndexKeyword(indexKey, false);
+
+        // 取得對應的對照表
+        const table = this.process.table[tableIndex];
+        let result = '';
+
+        // 將對應的字母替換上去
+        for (let i = 0; i < strArray.length; i++) {
+          let text = strArray[i];
+          let index = this.process.alphabet.indexOf(text);
+          let replaceText = index >= 0 ? table[index] : text;
+          result = result + replaceText;
+        }
+
+        return result;
+      },
+      // 回傳亂數
+      getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      },
+      // 驗證是否為 Unicode 值
+      validateNumberValue(payload) {
+        return payload <= 65535 || payload >= 32 || payload === 10 ? true : false;
+      },
+      // 轉換圖表索引數關鍵字
+      getTableIndexKeyword(payload, isEncode) {
+        // * Encode： input: Number、output: String
+        // * Decode： input: String、output: Number
+
+        let result = null;
+
+        if (isEncode === true) {
+          result = this.process.indexKeyword[payload];
+        } else {
+          result = this.process.indexKeyword.indexOf(payload);
+        }
+        return result;
       }
     },
     computed: {
@@ -194,7 +273,6 @@
           encode: 'Please enter the text for Encode.',
           decode: 'Please enter the text for Decode.'
         };
-
         return this.encode_selected === true ? textContent['encode'] : textContent['decode'];
       }
     }
