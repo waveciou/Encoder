@@ -40,7 +40,11 @@
           prime: [],
           table: [],
           alphabet: [],
-          indexKeyword: []
+          tableKeyword: []
+        },
+        test: {
+          startTime: 0,
+          endTime: 0
         }
       };
     },
@@ -52,10 +56,10 @@
           this.process[key] = res.data.process[key];
         });
 
-        this.process.indexKeyword = [...this.process.alphabet];
+        this.process.tableKeyword = [...this.process.alphabet];
 
         for(let i = 0; i < 10; i++) {
-          this.process.indexKeyword.push(`${i}`);
+          this.process.tableKeyword.push(`${i}`);
         }
       }).catch(err => {
         console.log(err);
@@ -72,14 +76,16 @@
         if (typeof this.textInput !== 'string') {
           return false;
         } else {
+          this.testExecutionTime(true);
           this.textOutput = this.computedCode();
+          this.testExecutionTime(false);
         }
       },
       // 判斷目前是編碼或解碼，並回傳對應的編解碼值
       computedCode() {
         if (this.encode_selected === true) {
           const code = this.encodeHandler(this.textInput);
-          const tableKey = this.getRandomNumber(0, 62);
+          const tableKey = this.getRandomNumber(0, this.process.tableKeyword.length);
           return this.replaceHandler(code, tableKey);
         } else {
           const code = this.reductionHandler(this.textInput);
@@ -176,7 +182,7 @@
 
         return isError === true ? 'error' : result;
       },
-      // 凱薩密碼轉換（編碼）
+      // * 凱薩密碼轉換（編碼）
       encodeCaesarCipher(payload, offset) {
         // * payload: Array、offset: Number、output: String
 
@@ -184,9 +190,10 @@
           let vector = index + 1 === 5 ? (index + 2) : (index + 1);
           return (parseInt(item) + (offset * vector)) % 10;
         });
+
         return resultArray.join('');
       },
-      // 凱薩密碼轉換（解碼）
+      // * 凱薩密碼轉換（解碼）
       decodeCaesarCipher(payload, offset) {
         // * payload: Array、offset: Number、output: String
 
@@ -202,6 +209,7 @@
           }
           return result;
         });
+
         return resultArray.join('');
       },
       // * 替換式密碼轉換（編碼）
@@ -212,23 +220,29 @@
 
         // 將對應的字母替換上去
         for (let i = 0; i < payload.length; i += 2) {
-          let text = `${payload[i]}${payload[i + 1]}`;
+          let text = `${payload[i]}`;
+          let nextText = payload[i + 1];
+
+          if (nextText) {
+            text = `${text}${nextText}`;
+          }
+
           let index = table.indexOf(text);
           let replaceText = index >= 0 ? this.process.alphabet[index] : text;
           result = result + replaceText;
         }
 
         // 將對照表索引數添加至密文最後面
-        let indexKey = this.getTableIndexKeyword(tableIndex, true);
-        result = result + `${indexKey}`;
+        let tableKey = this.getTableIndexKeyword(tableIndex, true);
+        result = result + `${tableKey}`;
         return result;
       },
       // * 替換式密碼轉換（解碼）
       reductionHandler(payload) {
         // 取得對照表索引數
         let strArray = payload.split('');
-        let indexKey = strArray.splice(strArray.length - 1, 1)[0];
-        let tableIndex = this.getTableIndexKeyword(indexKey, false);
+        let tableKey = strArray.splice(strArray.length - 1, 1)[0];
+        let tableIndex = this.getTableIndexKeyword(tableKey, false);
 
         // 取得對應的對照表
         const table = this.process.table[tableIndex];
@@ -257,23 +271,35 @@
         // * Encode： input: Number、output: String
         // * Decode： input: String、output: Number
 
-        let result = null;
+        let keyWords = this.process.tableKeyword;
+        let result = isEncode === true ? keyWords[payload] : keyWords.indexOf(payload);
 
-        if (isEncode === true) {
-          result = this.process.indexKeyword[payload];
-        } else {
-          result = this.process.indexKeyword.indexOf(payload);
-        }
         return result;
+      },
+      // 測試程式執行時間
+      testExecutionTime(isStart) {
+        const date = new Date();
+
+        if (isStart === true) {
+          this.test.startTime = date.getTime();
+        } else {
+          this.test.endTime = date.getTime();
+          console.log('執行時間：' + this.getExecutionTime + '毫秒');
+        }
       }
     },
     computed: {
+      // 輸入欄的 Placeholder
       inputAreaPlaceholder() {
         const textContent = {
           encode: 'Please enter the text for Encode.',
           decode: 'Please enter the text for Decode.'
         };
         return this.encode_selected === true ? textContent['encode'] : textContent['decode'];
+      },
+      // 取得程式執行時間
+      getExecutionTime() {
+        return this.test.endTime - this.test.startTime;
       }
     }
   };
