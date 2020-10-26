@@ -167,7 +167,7 @@
       },
       // * 解碼
       decodeHandler(payload) {
-        // 判斷傳入值是否為數字
+        // 判斷傳入值是否可以轉為數字
         let isError = parseInt(payload) ? false : true;
 
         if (isError === true) {
@@ -224,7 +224,13 @@
       },
       // * 凱薩密碼轉換（編碼）
       encodeCaesarCipher(payload, offset) {
-        // * payload: Array、offset: Number、output: String
+
+        /**
+         * 
+         * @param { Array } payload
+         * @param { Number } offset
+         * @returns { String }
+         */
 
         let resultArray = payload.map((item, index) => {
           let vector = index + 1 === 5 ? (index + 2) : (index + 1);
@@ -235,7 +241,13 @@
       },
       // * 凱薩密碼轉換（解碼）
       decodeCaesarCipher(payload, offset) {
-        // * payload: Array、offset: Number、output: String
+
+        /**
+         * 
+         * @param { Array } payload
+         * @param { Number } offset
+         * @returns { String }
+         */
 
         let resultArray = payload.map((item, index) => {
           let result = null;
@@ -254,6 +266,14 @@
       },
       // * 替換式密碼轉換（編碼）
       replaceHandler(payload, tableIndex) {
+
+        /**
+         * 
+         * @param { String } payload
+         * @param { Number } tableIndex
+         * @returns { String } 
+         */
+
         // 取得對應的對照表
         const table = this.process.table[tableIndex];
         let result = '';
@@ -279,6 +299,13 @@
       },
       // * 替換式密碼轉換（解碼）
       reductionHandler(payload) {
+
+        /**
+         * 
+         * @param { String } payload 
+         * @returns { String } 
+         */
+
         // 取得對照表索引數
         let strArray = payload.split('');
         let tableKey = strArray.splice(strArray.length - 1, 1)[0];
