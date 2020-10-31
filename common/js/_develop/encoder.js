@@ -16,7 +16,7 @@
 
         <div class="article">
           <label class="caption" for="input-area">Input :</label>
-          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput" @keypress.enter="submitHandler" :disabled="loading.control === true"></textarea>
+          <textarea id="input-area" class="textarea" :placeholder="inputAreaPlaceholder" v-model.trim="textInput" :disabled="loading.control === true"></textarea>
         </div>
 
         <div class="row">
@@ -351,7 +351,7 @@
           this.test.startTime = date.getTime();
         } else {
           this.test.endTime = date.getTime();
-          console.log('執行時間：' + this.getExecutionTime + '毫秒');
+          // console.log('執行時間：' + this.getExecutionTime + '毫秒');
         }
       }
     },

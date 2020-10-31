@@ -23,7 +23,7 @@ $normal-font-size: (desktop: 20px, mobile: 16px);
   letter-spacing: 1px;
   color: $color-white;
 
-  @include min-width(1024px) {
+  @include min-width(1025px) {
     font-size: map-get($normal-font-size, desktop);
   }
 }
@@ -140,7 +140,7 @@ p {
       text-transform: none;
       text-rendering: optimizeLegibility;
 
-      @include min-width(1024px) {
+      @include min-width(1025px) {
         margin-left: -#{map-get($normal-font-size, desktop)};
         font-size: map-get($normal-font-size, desktop);
       }
@@ -220,11 +220,12 @@ p {
     margin-left: 5px;
   }
 
-  @include min-width(1024px) {
+  @include min-width(1025px) {
     padding-top: 7px;
     padding-bottom: 7px;
 
-    &:hover {
+    &:hover,
+    &:active {
       color: $color-black;
       background-color: $color-white;
     }
@@ -237,8 +238,9 @@ p {
   text-align: center;
 
   a {
-    @include min-width(1024px) {
-      &:hover {
+    @include min-width(1025px) {
+      &:hover,
+      &:active {
         color: $color-yellow;
       }
     }
