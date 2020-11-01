@@ -1,8 +1,8 @@
-# 文字編碼器 Text Encoder
+# 📌 文字編碼器 Text Encoder
 
 [Demo](https://waveciou.github.io/text-encoder/)
 
-📌 自製的文字編解碼器 Side Project，運用一些基本的密碼學原理將輸入的文字加密編碼，同時也可以將密文解碼還原。
+自製的文字編解碼器 Side Project，運用一些基本的密碼學原理，將輸入的文字加密編碼成不容易破解的密文亂碼，同時也可以將密文解碼還原。
 
 以下為這個 Side Project 的演算法說明：
 
