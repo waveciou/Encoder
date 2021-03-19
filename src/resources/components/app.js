@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
 import LoadingComponent from './loading';
+import SelectControlComponent from './selectControl';
+import InputArticleComponent from './inputArticle';
+import OutputArticleComponent from './outputArticle';
 
 class App extends Component {
 
   state = {
+    textInput: '',
+    textOutput: '',
+    encode_selected: true,
     process: {
       digits: 5,
       prime: [],
@@ -23,36 +29,44 @@ class App extends Component {
     console.log(process);
   }
 
+  // * 更新輸入明文
+  updateTextInput = (payload) => {
+    this.setState({
+      textInput: payload
+    });
+  };
+
+  // * 編解碼選擇（Radio Button）
+  setEncodeSelected = (payload) => {
+    this.setState({
+      encode_selected: payload
+    });
+  };
+
+  // * 清除 Input 和 Output 的內容
+  clearHandler = (e) => {
+    this.setState({
+      textInput: '',
+      textOutput: ''
+    });
+    e.stopPropagation();
+  };
+
   render() {
-    const { loading } = this.state;
+    const { textInput, textOutput, encode_selected, loading } = this.state;
 
     return (
       <div className="main">
-        <div className="select__control">
-          <div className="select__fieldset">
-            <input type="radio" name="select-control" id="encode" />
-            <label htmlFor="encode" title="Encode">Encode<span></span></label>
-          </div>
-          <div className="select__fieldset">
-            <input type="radio" name="select-control" id="decode" />
-            <label htmlFor="decode" title="Decode">Decode<span></span></label>
-          </div>
-        </div>
+        <SelectControlComponent setEncodeSelected={ this.setEncodeSelected } encode_selected={ encode_selected } />
 
-        <div className="article">
-          <label className="caption" htmlFor="input-area">Input :</label>
-          <textarea id="input-area" className="textarea"></textarea>
-        </div>
+        <InputArticleComponent textInput={ textInput } updateTextInput={ this.updateTextInput } />
 
         <div className="row">
           <button className="btn" title="Submit">Submit</button>
-          <button className="btn" title="Clear">Clear</button>
+          <button className="btn" title="Clear" onClick={ this.clearHandler }>Clear</button>
         </div>
 
-        <div className="article">
-          <label className="caption" htmlFor="output-area">Output :</label>
-          <div id="output-area" className="textarea"></div>
-        </div>
+        <OutputArticleComponent textOutput={ textOutput } />
 
         { loading.control === true ? <LoadingComponent /> : null }
       </div>
