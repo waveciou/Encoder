@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
+// * Component
 import LoadingComponent from './loading';
 import SelectControlComponent from './selectControl';
 import InputArticleComponent from './inputArticle';
 import OutputArticleComponent from './outputArticle';
+
+// * Function
+import setDefaultParameter from '../js/function/setDefaultParameter';
 
 class App extends Component {
 
@@ -11,7 +15,7 @@ class App extends Component {
     textInput: '',
     textOutput: '',
     encode_selected: true,
-    process: {
+    parameter: {
       digits: 5,
       prime: [],
       table: [],
@@ -19,14 +23,22 @@ class App extends Component {
       tableKeyword: []
     },
     loading: {
-      control: false,
+      control: true,
       type: ''
     }
   };
 
   componentDidMount() {
-    const process = require('../data/process.json');
-    console.log(process);
+    const { parameter } = this.state;
+    const data = require('../data/parameter.json');
+    const _param = setDefaultParameter(data, parameter);
+
+    this.setState(() => ({
+      parameter: _param,
+      loading: {
+        control: false
+      }
+    }));
   }
 
   // * 更新輸入明文
