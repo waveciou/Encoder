@@ -79,13 +79,17 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html',
       minify: true,
-      inject: true
+      inject: false
     }),
     new CopyPlugin({
       patterns: [
         {
           from: './src/resources/img/favicon',
           to: './resources/img/favicon'
+        },
+        {
+          from: './src/resources/img/demo.gif',
+          to: './resources/img/demo.gif'
         }
       ]
     }),
