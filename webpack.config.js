@@ -78,8 +78,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
-      minify: false,
-      inject: false
+      minify: true,
+      inject: true
     }),
     new CopyPlugin({
       patterns: [
