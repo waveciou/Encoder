@@ -1,6 +1,7 @@
 import React from 'react';
+import LoadingTextHandler from '../js/function/loadingTextHandler';
 
-const loading = () => {
+const loading = (props) => {
   return (
     <div className="loading">
       <div>
@@ -9,7 +10,7 @@ const loading = () => {
           <div></div>
           <div></div>
         </div>
-        <div className="loading-text"></div>
+        <div className="loading-text">{ LoadingTextHandler(props.type) }</div>
       </div>
     </div>
   );

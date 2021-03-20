@@ -38,12 +38,13 @@ class App extends Component {
     const data = require('../data/parameter.json');
     const _param = setDefaultParam(data, parameter);
 
-    this.setState({
+    this.setState(() => ({
       parameter: _param,
       loading: {
-        control: false
+        control: false,
+        type: ''
       }
-    });
+    }));
   }
 
   // * 更新輸入明文
@@ -77,13 +78,13 @@ class App extends Component {
     if (textInput && typeof textInput === 'string') {
       const result = this.computedCode(encode_selected);
 
-      this.setState({
+      this.setState(() => ({
         textOutput: result,
         loading: {
           control: false,
           type: ''
         }
-      });
+      }));
     }
 
     return false;
@@ -128,7 +129,7 @@ class App extends Component {
 
         <OutputArticleComponent textOutput={ textOutput } />
 
-        { loading.control === true ? <LoadingComponent /> : null }
+        { loading.control === true ? <LoadingComponent type={ loading.type } /> : null }
       </div>
     );
   }
