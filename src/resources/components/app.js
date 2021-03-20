@@ -7,7 +7,10 @@ import InputArticleComponent from './inputArticle';
 import OutputArticleComponent from './outputArticle';
 
 // * Function
-import setDefaultParameter from '../js/function/setDefaultParameter';
+import setDefaultParam from '../js/function/setDefaultParam';
+import getRandomNumber from '../js/function/getRandomNumber';
+import encodeHandler from '../js/function/encodeHandler';
+import replaceHandler from '../js/function/replaceHandler';
 
 class App extends Component {
 
@@ -31,14 +34,14 @@ class App extends Component {
   componentDidMount() {
     const { parameter } = this.state;
     const data = require('../data/parameter.json');
-    const _param = setDefaultParameter(data, parameter);
+    const _param = setDefaultParam(data, parameter);
 
-    this.setState(() => ({
+    this.setState({
       parameter: _param,
       loading: {
         control: false
       }
-    }));
+    });
   }
 
   // * 更新輸入明文
@@ -57,11 +60,51 @@ class App extends Component {
 
   // * 清除 Input 和 Output 的內容
   clearHandler = (e) => {
+    e.stopPropagation();
+
     this.setState({
       textInput: '',
       textOutput: ''
     });
+  };
+
+  // * 送出內容（編碼或解碼）
+  submitHandler = (e) => {
     e.stopPropagation();
+    const { textInput, encode_selected } = this.state;
+
+    if (textInput && typeof textInput === 'string') {
+      const result = this.computedCode(encode_selected);
+
+      this.setState({
+        textOutput: result,
+        loading: {
+          control: false,
+          type: ''
+        }
+      });
+    }
+
+    return false;
+  };
+
+  // * 判斷目前是編碼或解碼，並回傳對應的編解碼值
+  computedCode = (encodeSelected) => {
+    const { textInput, parameter } = this.state;
+
+    this.setState(() => ({
+      loading: {
+        control: true,
+        type: encodeSelected === true ? 'encode' : 'decode'
+      }
+    }));
+
+    if (encodeSelected === true) {
+      // 編碼
+      const code = encodeHandler(textInput, parameter);
+      const tableKey = getRandomNumber(0, parameter.tableKeyword.length);
+      return replaceHandler(code, tableKey, parameter);
+    }
   };
 
   render() {
@@ -74,7 +117,7 @@ class App extends Component {
         <InputArticleComponent textInput={ textInput } updateTextInput={ this.updateTextInput } />
 
         <div className="row">
-          <button className="btn" title="Submit">Submit</button>
+          <button className="btn" title="Submit" onClick={ this.submitHandler }>Submit</button>
           <button className="btn" title="Clear" onClick={ this.clearHandler }>Clear</button>
         </div>
 
