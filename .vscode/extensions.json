@@ -1,8 +1,6 @@
 {
   "recommendations": [
     "stylelint.vscode-stylelint",
-    "ritwickdey.live-sass",
-    "ritwickdey.liveserver",
     "dbaeumer.vscode-eslint"
   ]
 }
