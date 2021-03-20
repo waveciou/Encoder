@@ -11,6 +11,8 @@ import setDefaultParam from '../js/function/setDefaultParam';
 import getRandomNumber from '../js/function/getRandomNumber';
 import encodeHandler from '../js/function/encodeHandler';
 import replaceHandler from '../js/function/replaceHandler';
+import decodeHandler from '../js/function/decodeHandler';
+import reductionHandler from '../js/function/reductionHandler';
 
 class App extends Component {
 
@@ -53,15 +55,15 @@ class App extends Component {
 
   // * 編解碼選擇（Radio Button）
   setEncodeSelected = (payload) => {
+    this.clearHandler();
+
     this.setState({
       encode_selected: payload
     });
   };
 
   // * 清除 Input 和 Output 的內容
-  clearHandler = (e) => {
-    e.stopPropagation();
-
+  clearHandler = () => {
     this.setState({
       textInput: '',
       textOutput: ''
@@ -69,8 +71,7 @@ class App extends Component {
   };
 
   // * 送出內容（編碼或解碼）
-  submitHandler = (e) => {
-    e.stopPropagation();
+  submitHandler = () => {
     const { textInput, encode_selected } = this.state;
 
     if (textInput && typeof textInput === 'string') {
@@ -104,6 +105,10 @@ class App extends Component {
       const code = encodeHandler(textInput, parameter);
       const tableKey = getRandomNumber(0, parameter.tableKeyword.length);
       return replaceHandler(code, tableKey, parameter);
+    } else {
+      // 解碼
+      const code = reductionHandler(textInput, parameter);
+      return decodeHandler(code, parameter);
     }
   };
 
