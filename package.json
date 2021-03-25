@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/waveciou/text-encoder.git"
   },
-  "author": "waveciou",
+  "author": "waveciou <waveciou@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/waveciou/text-encoder/issues"
