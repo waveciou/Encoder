@@ -113,14 +113,20 @@ class App extends Component {
     }
   };
 
+  // * 輸入欄的 Placeholder
+  placeholderHandler = () => {
+    return this.state.encode_selected === true ? 'Please enter the some text for Encode.' : 'Please enter the some text for Decode.';
+  };
+
   render() {
     const { textInput, textOutput, encode_selected, loading } = this.state;
+    const placeholderText = this.placeholderHandler();
 
     return (
       <div className="main">
         <SelectControlComponent setEncodeSelected={ this.setEncodeSelected } encode_selected={ encode_selected } />
 
-        <InputArticleComponent textInput={ textInput } updateTextInput={ this.updateTextInput } />
+        <InputArticleComponent textInput={ textInput } updateTextInput={ this.updateTextInput } placeholder={ placeholderText } />
 
         <div className="row">
           <button className="btn" title="Submit" onClick={ this.submitHandler }>Submit</button>

@@ -13,7 +13,7 @@ class inputArticle extends Component {
     return (
       <div className="article">
         <label className="caption" htmlFor="input-area">Input :</label>
-        <textarea id="input-area" className="textarea" value={ this.props.textInput } onChange={ this.changeHandler } />
+        <textarea id="input-area" className="textarea" value={ this.props.textInput } onChange={ this.changeHandler } placeholder={ this.props.placeholder } />
       </div>
     );
   }
