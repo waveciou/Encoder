@@ -6,7 +6,8 @@ class inputArticle extends Component {
   };
 
   changeHandler = (e) => {
-    this.props.updateTextInput(e.target.value);
+    const result = e.target.value.trim();
+    this.props.updateTextInput(result);
   };
 
   render() {

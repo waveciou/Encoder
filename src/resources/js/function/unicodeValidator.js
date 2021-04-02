@@ -5,5 +5,7 @@
   */
 
 module.exports = function (payload) {
-  return payload <= 65535 || payload >= 32 || payload === 10 ? true : false;
+  if (typeof payload !== 'number') return false;
+  if (payload === 10) return true;
+  return payload < 65536 && payload > 31 ? true : false;
 };
