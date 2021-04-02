@@ -1,5 +1,5 @@
 const decodeCaesarCipher = require('./decodeCaesarCipher');
-const validateNumberValue = require('./validateNumberValue');
+const unicodeValidator = require('./unicodeValidator');
 
 /**
   * 解碼演算法
@@ -45,7 +45,7 @@ module.exports = function (ciphertext, $param) {
 
     // 驗證是否為 unicode
     if (isError === false) {
-      isError = !validateNumberValue(plainCode);
+      isError = !unicodeValidator(plainCode);
     }
 
     // unicode 轉回明文

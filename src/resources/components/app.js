@@ -124,13 +124,28 @@ class App extends Component {
 
     return (
       <div className="main">
-        <SelectControlComponent setEncodeSelected={ this.setEncodeSelected } encode_selected={ encode_selected } />
+        <SelectControlComponent
+          setEncodeSelected={ this.setEncodeSelected }
+          encode_selected={ encode_selected }
+        />
 
-        <InputArticleComponent textInput={ textInput } updateTextInput={ this.updateTextInput } placeholder={ placeholderText } />
+        <InputArticleComponent
+          textInput={ textInput }
+          updateTextInput={ this.updateTextInput }
+          placeholder={ placeholderText }
+        />
 
         <div className="row">
-          <button className="btn" title="Submit" onClick={ this.submitHandler }>Submit</button>
-          <button className="btn" title="Clear" onClick={ this.clearHandler }>Clear</button>
+          <button
+            className="btn"
+            title="Submit"
+            onClick={ this.submitHandler }
+          >Submit</button>
+          <button
+            className="btn"
+            title="Clear"
+            onClick={ this.clearHandler }
+          >Clear</button>
         </div>
 
         <OutputArticleComponent textOutput={ textOutput } />

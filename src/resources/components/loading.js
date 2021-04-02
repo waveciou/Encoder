@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingTextHandler from '../js/function/loadingTextHandler';
+import LoadingTextProvider from '../js/function/loadingTextProvider';
 
 const loading = (props) => {
   return (
@@ -10,7 +10,7 @@ const loading = (props) => {
           <div></div>
           <div></div>
         </div>
-        <div className="loading-text">{ LoadingTextHandler(props.type) }</div>
+        <div className="loading-text">{ LoadingTextProvider(props.type) }</div>
       </div>
     </div>
   );
