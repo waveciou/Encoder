@@ -11,7 +11,5 @@ module.exports = function (payload, offset) {
     return (parseInt(item) + (offset * vector)) % 10;
   });
 
-  const result = resultArray.join('');
-
-  return result;
+  return resultArray.join('');
 };

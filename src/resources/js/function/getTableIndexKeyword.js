@@ -7,8 +7,9 @@
   */
 
 module.exports = function (payload, isEncode, $param) {
-  let keyWords = $param.tableKeyword;
-  const result = isEncode === true ? keyWords[payload] : keyWords.indexOf(payload);
+  if (isEncode === true && typeof(payload) !== 'number') return;
+  if (isEncode === false && typeof(payload) !== 'string') return;
 
-  return result;
+  let keyWords = $param.tableKeyword;
+  return isEncode === true ? keyWords[payload] : keyWords.indexOf(payload);
 };

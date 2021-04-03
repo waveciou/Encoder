@@ -1,11 +1,14 @@
 /**
   * 驗證是否為 Unicode 值
-  * @param { Number } payload
+  * @param { String } payload
   * @returns { Boolean }
   */
 
 module.exports = function (payload) {
-  if (typeof payload !== 'number') return false;
-  if (payload === 10) return true;
-  return payload < 65536 && payload > 31 ? true : false;
+  if (typeof payload !== 'string') return false;
+
+  const value = parseInt(payload);
+
+  if (value === 10) return true;
+  return value < 65536 && value > 31 ? true : false;
 };
