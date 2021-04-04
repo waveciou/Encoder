@@ -22,11 +22,25 @@ class selectControl extends Component {
     return (
       <div className="select__control">
         <div className="select__fieldset">
-          <input type="radio" name="select-control" id="encode" value="true" onChange={ this.changeHandler } checked={ encode_selected === true } />
+          <input
+            type="radio"
+            name="select-control"
+            id="encode"
+            value="true"
+            onChange={ this.changeHandler }
+            checked={ encode_selected === true }
+          />
           <label htmlFor="encode" title="Encode">Encode<span></span></label>
         </div>
         <div className="select__fieldset">
-          <input type="radio" name="select-control" id="decode" value="false" onChange={ this.changeHandler } checked={ encode_selected === false } />
+          <input
+            type="radio"
+            name="select-control"
+            id="decode"
+            value="false"
+            onChange={ this.changeHandler }
+            checked={ encode_selected === false }
+          />
           <label htmlFor="decode" title="Decode">Decode<span></span></label>
         </div>
       </div>

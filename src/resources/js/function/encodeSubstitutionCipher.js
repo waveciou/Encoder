@@ -9,6 +9,9 @@ const getTableIndexKeyword = require('./getTableIndexKeyword');
   */
 
 module.exports = function (payload, tableIndex, $param) {
+  if (typeof payload !== 'string') return;
+  if (typeof tableIndex !== 'number') return;
+
   // 取得對應的對照表
   const table = $param.table[tableIndex];
   let result = '';

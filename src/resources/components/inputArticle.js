@@ -6,14 +6,21 @@ class inputArticle extends Component {
   };
 
   changeHandler = (e) => {
-    this.props.updateTextInput(e.target.value);
+    const result = e.target.value.trim();
+    this.props.updateTextInput(result);
   };
 
   render() {
     return (
       <div className="article">
         <label className="caption" htmlFor="input-area">Input :</label>
-        <textarea id="input-area" className="textarea" value={ this.props.textInput } onChange={ this.changeHandler } placeholder={ this.props.placeholder } />
+        <textarea
+          id="input-area"
+          className="textarea"
+          value={ this.props.textInput }
+          onChange={ this.changeHandler }
+          splaceholder={ this.props.placeholder }
+        />
       </div>
     );
   }
