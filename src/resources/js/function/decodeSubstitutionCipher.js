@@ -8,6 +8,8 @@ const getTableIndexKeyword = require('./getTableIndexKeyword');
   */
 
 module.exports = function (payload, $param) {
+  if (typeof payload !== 'string') return;
+
   // 取得對照表索引數
   const strArray = payload.split('');
   const tableKey = strArray.splice(strArray.length - 1, 1)[0];

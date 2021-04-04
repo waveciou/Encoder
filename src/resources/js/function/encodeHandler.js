@@ -10,6 +10,8 @@ const encodeCaesarCipher = require('./encodeCaesarCipher');
   */
 
 module.exports = function (plaintext, $param, test_public_const) {
+  if (typeof plaintext !== 'string') return;
+
   // 把字串轉成陣列
   const strArray = plaintext.split('');
 

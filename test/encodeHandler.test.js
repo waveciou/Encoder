@@ -11,6 +11,6 @@ const param = require('./_defaultConfigParam');
 
 const plainText = '我要加密的文字';
 
-test ('測試基本明文轉換', () => {
+test ('測試明文轉換', () => {
   expect(encodeHandler(plainText, param, 0)).toBe('138694754795234975766626813655356290');
 });

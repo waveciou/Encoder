@@ -10,6 +10,6 @@ const param = require('./_defaultConfigParam');
 
 const ciphertext = '138694754795234975766626813655356290';
 
-test ('測試基本密文轉換', () => {
+test ('測試密文轉換', () => {
   expect(decodeHandler(ciphertext, param)).toBe('我要加密的文字');
 });

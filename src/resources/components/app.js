@@ -10,9 +10,9 @@ import OutputArticleComponent from './outputArticle';
 import setDefaultParam from '../js/function/setDefaultParam';
 import getRandomNumber from '../js/function/getRandomNumber';
 import encodeHandler from '../js/function/encodeHandler';
-import replaceHandler from '../js/function/replaceHandler';
 import decodeHandler from '../js/function/decodeHandler';
-import reductionHandler from '../js/function/reductionHandler';
+import encodeSubstitutionCipher from '../js/function/encodeSubstitutionCipher';
+import decodeSubstitutionCipher from '../js/function/decodeSubstitutionCipher';
 
 class App extends Component {
 
@@ -105,10 +105,10 @@ class App extends Component {
       // 編碼
       const code = encodeHandler(textInput, parameter);
       const tableKey = getRandomNumber(0, parameter.tableKeyword.length);
-      return replaceHandler(code, tableKey, parameter);
+      return encodeSubstitutionCipher(code, tableKey, parameter);
     } else {
       // 解碼
-      const code = reductionHandler(textInput, parameter);
+      const code = decodeSubstitutionCipher(textInput, parameter);
       return decodeHandler(code, parameter);
     }
   };

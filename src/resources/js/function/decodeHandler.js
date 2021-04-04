@@ -9,13 +9,15 @@ const unicodeValidator = require('./unicodeValidator');
   */
 
 module.exports = function (ciphertext, $param) {
+  if (typeof ciphertext !== 'string') return;
+
   // 判斷傳入值是否可以轉為數字
-  let isError = parseInt(ciphertext) ? false : true;
+  let isError = parseInt(ciphertext, 10) ? false : true;
   if (isError === true) return 'error';
 
   // 取得密文裡的公用常數，並將密文轉成陣列
   let strArray = ciphertext.split('');
-  const publicConst = parseInt(strArray[strArray.length - 1]);
+  const publicConst = parseInt(strArray[strArray.length - 1], 10);
   strArray.splice(strArray.length - 1, 1);
 
   // 把密文陣列以每 5 個字串組成新陣列
