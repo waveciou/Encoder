@@ -19,7 +19,7 @@ class inputArticle extends Component {
           className="textarea"
           value={ this.props.textInput }
           onChange={ this.changeHandler }
-          splaceholder={ this.props.placeholder }
+          placeholder={ this.props.placeholder }
         />
       </div>
     );
