@@ -32,20 +32,17 @@ const App = () => {
     type: ''
   });
 
-  // Effect
+  // * useEffect
   useEffect(() => {
     const data = require('../data/parameter.json');
     const _param = setDefaultParam(data, parameter);
-    setParameter({..._param});
 
-    setLoading({
-      control: false,
-      type: ''
-    });
+    setParameter({ ..._param });
+    setLoading({ control: false, type: '' });
   }, []);
 
   // * 更新輸入明文
-  const updateTextInput = (payload) => {
+  const updateTextInputHandler = (payload) => {
     setTextInput(payload);
   };
 
@@ -67,22 +64,19 @@ const App = () => {
       const result = computedCode(encode_selected);
 
       setTextOutput(result);
-      setLoading({
-        control: false,
-        type: ''
-      });
+      setLoading({ control: false, type: '' });
     }
     return false;
   };
 
   // * 判斷目前是編碼或解碼，並回傳對應的編解碼值
-  const computedCode = (encodeSelected) => {
+  const computedCode = (isEncode) => {
     setLoading({
       control: true,
-      type: encodeSelected === true ? 'encode' : 'decode'
+      type: isEncode === true ? 'encode' : 'decode'
     });
 
-    if (encodeSelected === true) {
+    if (isEncode === true) {
       // 編碼
       const code = encodeHandler(textInput, parameter);
       const tableKey = getRandomNumber(0, parameter.tableKeyword.length);
@@ -95,8 +89,13 @@ const App = () => {
   };
 
   // * 輸入欄的 Placeholder
-  const placeholderHandler = (encodeSelected) => {
-    return encodeSelected === true ? 'Please enter the some text for Encode.' : 'Please enter the some text for Decode.';
+  const placeholderHandler = (isEncode) => {
+    const resultText = {
+      encode: 'Please enter the some text for Encode.',
+      decode: 'Please enter the some text for Decode.'
+    };
+
+    return isEncode === true ? resultText.encode : resultText.decode;
   };
 
   return (
@@ -108,7 +107,7 @@ const App = () => {
 
       <InputArticleComponent
         textInput={ textInput }
-        updateTextInput={ updateTextInput }
+        updateTextInput={ updateTextInputHandler }
         placeholder={ placeholderHandler(encode_selected) }
       />
 
