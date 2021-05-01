@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class inputArticle extends Component {
-  state = {
-    value: ''
-  };
+const inputArticle = (props) => {
+  const { textInput, placeholder, updateTextInput } = props;
 
-  changeHandler = (e) => {
+  const changeHandler = (e) => {
     const result = e.target.value.trim();
-    this.props.updateTextInput(result);
+    updateTextInput(result);
   };
 
-  render() {
-    return (
-      <div className="article">
-        <label className="caption" htmlFor="input-area">Input :</label>
-        <textarea
-          id="input-area"
-          className="textarea"
-          value={ this.props.textInput }
-          onChange={ this.changeHandler }
-          placeholder={ this.props.placeholder }
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="article">
+      <label className="caption" htmlFor="input-area">Input :</label>
+      <textarea
+        id="input-area"
+        className="textarea"
+        value={ textInput }
+        onChange={ changeHandler }
+        placeholder={ placeholder }
+      />
+    </div>
+  );
+};
 
 export default inputArticle;
