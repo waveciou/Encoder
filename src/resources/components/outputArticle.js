@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class outputArticle extends Component {
-  render() {
-    const { textOutput } = this.props;
-    return (
-      <div className="article">
-        <label className="caption" htmlFor="output-area">Output :</label>
-        <div id="output-area" className="textarea">{ textOutput }</div>
-      </div>
-    );
-  }
-}
+const outputArticle = (props) => {
+  const { textOutput } = props;
+
+  return (
+    <div className="article">
+      <label className="caption" htmlFor="output-area">Output :</label>
+      <div id="output-area" className="textarea">{ textOutput }</div>
+    </div>
+  );
+};
 
 export default outputArticle;
