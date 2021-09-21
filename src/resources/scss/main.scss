@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=fallback');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
+// @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '_reset.scss';
 
 $color-white: #fff;
@@ -8,7 +9,19 @@ $color-green: #3bb763;
 $color-blue: #02a4e0;
 $color-yellow: #efce4a;
 
-$normal-font-size: (desktop: 20px, mobile: 16px);
+$normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://example.com/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+  // url('https://example.com/MaterialIcons-Regular.woff2') format('woff2'),
+  // url('https://example.com/MaterialIcons-Regular.woff') format('woff'),
+  // url('https://example.com/MaterialIcons-Regular.ttf') format('truetype');
+}
 
 @mixin min-width($breakpoints) {
   @media screen and (min-width: $breakpoints) {
@@ -16,7 +29,32 @@ $normal-font-size: (desktop: 20px, mobile: 16px);
   }
 }
 
-@mixin text-style {
+@mixin font-material {
+  font-size: 24px;
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  white-space: nowrap;
+  font-style: normal;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+@mixin style--font-text {
   font-size: map-get($normal-font-size, mobile);
   font-family: 'Noto Sans TC', sans-serif, Arial;
   line-height: 1.6em;
@@ -29,7 +67,7 @@ $normal-font-size: (desktop: 20px, mobile: 16px);
 }
 
 body {
-  @include text-style;
+  @include style--font-text;
 
   overflow-x: hidden;
   overflow-y: auto;
@@ -65,7 +103,7 @@ p {
 }
 
 .textarea {
-  @include text-style;
+  @include style--font-text;
 
   width: 100%;
   height: 200px;
@@ -170,6 +208,11 @@ p {
   color: $color-white;
 }
 
+.article__header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title {
   margin: 1rem 0 1.5rem;
   font-size: 26px;
@@ -213,7 +256,7 @@ p {
 }
 
 .btn {
-  @include text-style;
+  @include style--font-text;
 
   width: 100%;
   padding: 10px 25px;
@@ -251,6 +294,22 @@ p {
   &:active {
     color: $color-black;
     background-color: $color-white;
+  }
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  font-size: map-get($normal-font-size, small);
+  color: $color-white;
+
+  &::before {
+    @include font-material;
+
+    content: '\e14d';
+    margin-right: 5px;
+    display: block;
+    font-size: 20px;
   }
 }
 

@@ -1,11 +1,29 @@
 import React from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const outputArticle = (props) => {
   const { textOutput } = props;
 
   return (
     <div className="article">
-      <label className="caption" htmlFor="output-area">Output :</label>
+      <div className="article__header">
+        <label className="caption" htmlFor="output-area">Output :</label>
+        {
+          textOutput !== '' &&
+          (
+            <CopyToClipboard
+              text={textOutput}
+              onCopy={() => {
+                window.alert('Successfully Copied!');
+              }}
+            >
+              <button type="button" className="copy-btn">
+                <span>Copy Result</span>
+              </button>
+            </CopyToClipboard>
+          )
+        }
+      </div>
       <div id="output-area" className="textarea">{ textOutput }</div>
     </div>
   );

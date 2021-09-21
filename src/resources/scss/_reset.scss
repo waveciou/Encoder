@@ -155,8 +155,13 @@ a {
 button {
   padding: 0;
   margin: 0;
+  font-family: 'Noto Sans TC', sans-serif, arial;
+  background-color: transparent;
   border: none;
   line-height: 1;
   font: inherit;
   cursor: pointer;
+  border-radius: 0;
+  outline: none;
+  transform: translateZ(0);
 }
