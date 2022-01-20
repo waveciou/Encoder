@@ -35,7 +35,6 @@ const App = () => {
     type: ''
   });
 
-  // * useEffect
   useEffect(() => {
     const data = require('../data/parameter.json');
     const _param = setDefaultParam(data, parameter);
@@ -132,7 +131,7 @@ const App = () => {
 
         { loading.control && <LoadingComponent type={ loading.type } /> }
       </div>
-      <div class="copyright">Version: {pkg.version}<br />Created By <a href="https://github.com/waveciou" target="_blank" title="GitHub @waveciou">@waveciou</a></div>
+      <div className="copyright">Version: {pkg.version}<br />Created By <a href="https://github.com/waveciou" target="_blank" title="GitHub @waveciou">@waveciou</a></div>
     </>
   );
 };
