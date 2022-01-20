@@ -31,8 +31,6 @@ module.exports = function (payload, tableIndex, $param) {
   }
 
   // 將對照表索引數添加至密文最後面
-  let tableKey = getTableIndexKeyword(tableIndex, true, $param);
-  result = result + `${tableKey}`;
-
-  return result;
+  const tableKey = getTableIndexKeyword(tableIndex, true, $param);
+  return `${result}${tableKey}`;
 };

@@ -1,12 +1,12 @@
 {
   "name": "text-encoder",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "",
   "main": "main.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack serve --mode development --open",
     "start": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "serve": "cross-env NODE_ENV=development webpack serve --mode development --open",
     "test": "jest"
   },
   "repository": {

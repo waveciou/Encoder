@@ -17,15 +17,11 @@ module.exports = function (payload, $param) {
 
   // 取得對應的對照表
   const table = $param.table[tableIndex];
-  let result = '';
 
   // 將對應的字母替換上去
-  for (let i = 0; i < strArray.length; i++) {
-    const text = strArray[i];
-    const index = $param.alphabet.indexOf(text);
-    const replaceText = index >= 0 ? table[index] : text;
-    result = result + replaceText;
-  }
-
-  return result;
+  return strArray.reduce((prev, current) => {
+    const index = $param.alphabet.indexOf(current);
+    const replaceText = index >= 0 ? table[index] : current;
+    return `${prev}${replaceText}`;
+  }, '');
 };

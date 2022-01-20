@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=fallback');
-// @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '_reset.scss';
 
-$color-white: #fff;
-$color-black: #2c2c2c;
-$color-green: #3bb763;
-$color-blue: #02a4e0;
-$color-yellow: #efce4a;
+$color-white: #FFFFFF;
+$color-black: #2C2C2C;
+$color-green: #3BB763;
+$color-blue: #02A4E0;
+$color-yellow: #EFCE4A;
 
 $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
 
@@ -15,12 +14,8 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url('https://example.com/MaterialIcons-Regular.eot'); /* For IE6-8 */
-  src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-  // url('https://example.com/MaterialIcons-Regular.woff2') format('woff2'),
-  // url('https://example.com/MaterialIcons-Regular.woff') format('woff'),
-  // url('https://example.com/MaterialIcons-Regular.ttf') format('truetype');
+  src: url('https://example.com/MaterialIcons-Regular.eot');
+  src: local('Material Icons'), local('MaterialIcons-Regular'),
 }
 
 @mixin min-width($breakpoints) {
@@ -33,8 +28,8 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   font-size: 24px;
   font-family: 'Material Icons', sans-serif;
   font-weight: normal;
-  white-space: nowrap;
   font-style: normal;
+  white-space: nowrap;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
@@ -85,7 +80,8 @@ p {
 }
 
 .wrapper {
-  padding: 1rem 0 2rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .wrap {
@@ -99,7 +95,8 @@ p {
 }
 
 .main {
-  margin: 30px 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .textarea {
@@ -204,7 +201,8 @@ p {
 }
 
 .article {
-  margin: 1rem 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   color: $color-white;
 }
 
@@ -214,7 +212,8 @@ p {
 }
 
 .title {
-  margin: 1rem 0 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   font-size: 26px;
   text-align: center;
   color: $color-white;
@@ -244,7 +243,8 @@ p {
 }
 
 .row {
-  margin: 1rem 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -260,7 +260,8 @@ p {
 
   width: 100%;
   padding: 10px 25px;
-  margin: 5px 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: block;
   background-color: transparent;
   border: 1px $color-white solid;

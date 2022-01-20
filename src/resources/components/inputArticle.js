@@ -1,8 +1,6 @@
 import React from 'react';
 
-const inputArticle = (props) => {
-  const { textInput, placeholder, updateTextInput } = props;
-
+const inputArticle = ({ textInput, placeholder, updateTextInput }) => {
   const changeHandler = (e) => {
     const result = e.target.value.trim();
     updateTextInput(result);
