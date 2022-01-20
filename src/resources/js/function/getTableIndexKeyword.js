@@ -11,5 +11,5 @@ module.exports = function (payload, isEncode, $param) {
   if (isEncode === false && typeof(payload) !== 'string') return;
 
   const keyWords = $param.tableKeyword;
-  return isEncode === true ? keyWords[payload] : keyWords.indexOf(payload);
+  return isEncode ? keyWords[payload] : keyWords.indexOf(payload);
 };

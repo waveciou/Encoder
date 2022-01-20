@@ -9,8 +9,8 @@ module.exports = function (payload, offset) {
   if (typeof offset !== 'number') return;
 
   let resultArray = payload.map((item, index) => {
-    let result = null;
     const vector = index + 1 === 5 ? (index + 2) : (index + 1);
+    let result = null;
 
     for (let i = 0; i < 10; i++) {
       if (((i + (offset * vector)) % 10) === parseInt(item, 10)) {

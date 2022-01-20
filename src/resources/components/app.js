@@ -30,10 +30,7 @@ const App = () => {
     tableKeyword: []
   });
 
-  const [ loading, setLoading ] = useState({
-    control: true,
-    type: ''
-  });
+  const [ loading, setLoading ] = useState({ control: true, type: '' });
 
   useEffect(() => {
     const data = require('../data/parameter.json');
@@ -44,9 +41,7 @@ const App = () => {
   }, []);
 
   // * 更新輸入明文
-  const updateTextInputHandler = (payload) => {
-    setTextInput(payload);
-  };
+  const updateTextInputHandler = (payload) => setTextInput(payload);
 
   // * 編解碼選擇（Radio Button）
   const setSelectedHandler = (payload) => {
@@ -64,7 +59,6 @@ const App = () => {
   const submitHandler = () => {
     if (textInput && typeof textInput === 'string') {
       const result = computedCode(encode_selected);
-
       setTextOutput(result);
       setLoading({ control: false, type: '' });
     }
@@ -75,7 +69,7 @@ const App = () => {
   const computedCode = (isEncode) => {
     setLoading({
       control: true,
-      type: isEncode === true ? 'encode' : 'decode'
+      type: isEncode ? 'encode' : 'decode'
     });
 
     if (isEncode) {
@@ -92,12 +86,9 @@ const App = () => {
 
   // * 輸入欄的 Placeholder
   const placeholderHandler = (isEncode) => {
-    const resultText = {
-      encode: 'Please enter the some text for Encode.',
-      decode: 'Please enter the some text for Decode.'
-    };
-
-    return isEncode === true ? resultText.encode : resultText.decode;
+    const encode = 'Please enter the some text for Encode.';
+    const decode = 'Please enter the some text for Decode.';
+    return isEncode ? encode : decode;
   };
 
   return (

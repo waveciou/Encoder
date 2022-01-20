@@ -10,9 +10,7 @@ const outputArticle = ({ textOutput }) => (
           (
             <CopyToClipboard
               text={textOutput}
-              onCopy={() => {
-                window.alert('Successfully Copied!');
-              }}
+              onCopy={() => window.alert('Successfully copied')}
             >
               <button type="button" className="copy-btn">
                 <span>Copy Result</span>
