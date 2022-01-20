@@ -1,15 +1,12 @@
 import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const outputArticle = (props) => {
-  const { textOutput } = props;
-
-  return (
-    <div className="article">
-      <div className="article__header">
-        <label className="caption" htmlFor="output-area">Output :</label>
-        {
-          textOutput !== '' &&
+const outputArticle = ({ textOutput }) => (
+  <div className="article">
+    <div className="article__header">
+      <label className="caption" htmlFor="output-area">Output :</label>
+      {
+        textOutput !== '' &&
           (
             <CopyToClipboard
               text={textOutput}
@@ -22,11 +19,10 @@ const outputArticle = (props) => {
               </button>
             </CopyToClipboard>
           )
-        }
-      </div>
-      <div id="output-area" className="textarea">{ textOutput }</div>
+      }
     </div>
-  );
-};
+    <div id="output-area" className="textarea">{ textOutput }</div>
+  </div>
+);
 
 export default outputArticle;

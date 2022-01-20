@@ -13,7 +13,7 @@ module.exports = function (ciphertext, $param) {
 
   // 判斷傳入值是否可以轉為數字
   let isError = parseInt(ciphertext, 10) ? false : true;
-  if (isError === true) return 'error';
+  if (isError) return 'error';
 
   // 取得密文裡的公用常數，並將密文轉成陣列
   let strArray = ciphertext.split('');

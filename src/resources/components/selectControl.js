@@ -9,9 +9,7 @@ const stringToBoolean = (value) => {
   return value;
 };
 
-const selectControl = (props) => {
-  const { encode_selected, setEncodeSelected } = props;
-
+const selectControl = ({ encode_selected, setEncodeSelected }) => {
   const changeHandler = (e) => {
     const selectValue = stringToBoolean(e.target.value);
     setEncodeSelected(selectValue);

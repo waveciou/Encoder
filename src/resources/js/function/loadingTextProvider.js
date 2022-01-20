@@ -1,7 +1,7 @@
 /**
   * Loading 顯示文字
   * @param { String } type
-  * @returns { String }
+  * @returns { String }
   */
 
 module.exports = function (type) {

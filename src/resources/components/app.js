@@ -14,6 +14,9 @@ import decodeHandler from '../js/function/decodeHandler';
 import encodeSubstitutionCipher from '../js/function/encodeSubstitutionCipher';
 import decodeSubstitutionCipher from '../js/function/decodeSubstitutionCipher';
 
+// * Package
+import pkg from '../../../package.json';
+
 const App = () => {
   const [ textInput, setTextInput ] = useState('');
   const [ textOutput, setTextOutput ] = useState('');
@@ -76,7 +79,7 @@ const App = () => {
       type: isEncode === true ? 'encode' : 'decode'
     });
 
-    if (isEncode === true) {
+    if (isEncode) {
       // 編碼
       const code = encodeHandler(textInput, parameter);
       const tableKey = getRandomNumber(0, parameter.tableKeyword.length);
@@ -99,35 +102,38 @@ const App = () => {
   };
 
   return (
-    <div className="main">
-      <SelectControlComponent
-        setEncodeSelected={ setSelectedHandler }
-        encode_selected={ encode_selected }
-      />
+    <>
+      <div className="main">
+        <SelectControlComponent
+          setEncodeSelected={ setSelectedHandler }
+          encode_selected={ encode_selected }
+        />
 
-      <InputArticleComponent
-        textInput={ textInput }
-        updateTextInput={ updateTextInputHandler }
-        placeholder={ placeholderHandler(encode_selected) }
-      />
+        <InputArticleComponent
+          textInput={ textInput }
+          updateTextInput={ updateTextInputHandler }
+          placeholder={ placeholderHandler(encode_selected) }
+        />
 
-      <div className="row">
-        <button
-          className="btn"
-          title="Submit"
-          onClick={ submitHandler }
-        >Submit</button>
-        <button
-          className="btn"
-          title="Clear"
-          onClick={ clearHandler }
-        >Clear</button>
+        <div className="row">
+          <button
+            className="btn"
+            title="Submit"
+            onClick={ submitHandler }
+          >Submit</button>
+          <button
+            className="btn"
+            title="Clear"
+            onClick={ clearHandler }
+          >Clear</button>
+        </div>
+
+        <OutputArticleComponent textOutput={ textOutput } />
+
+        { loading.control && <LoadingComponent type={ loading.type } /> }
       </div>
-
-      <OutputArticleComponent textOutput={ textOutput } />
-
-      { loading.control === true ? <LoadingComponent type={ loading.type } /> : null }
-    </div>
+      <div class="copyright">Version: {pkg.version}<br />Created By <a href="https://github.com/waveciou" target="_blank" title="GitHub @waveciou">@waveciou</a></div>
+    </>
   );
 };
 
