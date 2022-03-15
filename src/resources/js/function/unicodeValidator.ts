@@ -4,11 +4,11 @@
   * @returns { Boolean }
   */
 
-module.exports = function (payload) {
+export default function (payload: string) {
   if (typeof payload !== 'string') return false;
 
   const value = parseInt(payload, 10);
 
   if (value === 10) return true;
   return value < 65536 && value > 31 ? true : false;
-};
+}

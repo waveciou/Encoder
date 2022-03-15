@@ -1,4 +1,4 @@
-const getTableIndexKeyword = require('./getTableIndexKeyword');
+import getTableIndexKeyword from './getTableIndexKeyword';
 
 /**
   * 替換式密碼轉換（解碼）
@@ -7,7 +7,7 @@ const getTableIndexKeyword = require('./getTableIndexKeyword');
   * @returns { String }
   */
 
-module.exports = function (payload, $param) {
+export default function (payload: string, $param: any) {
   if (typeof payload !== 'string') return;
 
   // 取得對照表索引數
@@ -24,4 +24,4 @@ module.exports = function (payload, $param) {
     const replaceText = index >= 0 ? table[index] : current;
     return `${prev}${replaceText}`;
   }, '');
-};
+}

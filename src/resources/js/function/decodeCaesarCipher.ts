@@ -5,10 +5,10 @@
   * @returns { String }
   */
 
-module.exports = function (payload, offset) {
+export default function (payload: any[], offset: number) {
   if (typeof offset !== 'number') return;
 
-  let resultArray = payload.map((item, index) => {
+  const resultArray = payload.map((item, index) => {
     const vector = index + 1 === 5 ? (index + 2) : (index + 1);
     let result = null;
 
@@ -23,4 +23,4 @@ module.exports = function (payload, offset) {
   });
 
   return resultArray.join('');
-};
+}

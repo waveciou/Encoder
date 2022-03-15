@@ -1,4 +1,4 @@
-const getTableIndexKeyword = require('./getTableIndexKeyword');
+import getTableIndexKeyword from './getTableIndexKeyword';
 
 /**
   * 替換式密碼轉換（編碼）
@@ -8,7 +8,7 @@ const getTableIndexKeyword = require('./getTableIndexKeyword');
   * @returns { String }
   */
 
-module.exports = function (payload, tableIndex, $param) {
+export default function (payload: string, tableIndex: number, $param: any) {
   if (typeof payload !== 'string') return;
   if (typeof tableIndex !== 'number') return;
 
@@ -19,18 +19,18 @@ module.exports = function (payload, tableIndex, $param) {
   // 將對應的字母替換上去
   for (let i = 0; i < payload.length; i += 2) {
     let text = `${payload[i]}`;
-    let nextText = payload[i + 1];
+    const nextText = payload[i + 1];
 
     if (nextText) {
       text = `${text}${nextText}`;
     }
 
-    let index = table.indexOf(text);
-    let replaceText = index >= 0 ? $param.alphabet[index] : text;
+    const index = table.indexOf(text);
+    const replaceText = index >= 0 ? $param.alphabet[index] : text;
     result = result + replaceText;
   }
 
   // 將對照表索引數添加至密文最後面
   const tableKey = getTableIndexKeyword(tableIndex, true, $param);
   return `${result}${tableKey}`;
-};
+}

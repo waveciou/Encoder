@@ -1,12 +1,13 @@
+/* stylelint-disable function-no-unknown */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=fallback');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '_reset.scss';
 
-$color-white: #FFFFFF;
-$color-black: #2C2C2C;
-$color-green: #3BB763;
-$color-blue: #02A4E0;
-$color-yellow: #EFCE4A;
+$color-white: #fff;
+$color-black: #2c2c2c;
+$color-green: #3bb763;
+$color-blue: #02a4e0;
+$color-yellow: #efce4a;
 
 $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
 
@@ -15,7 +16,7 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   font-style: normal;
   font-weight: 400;
   src: url('https://example.com/MaterialIcons-Regular.eot');
-  src: local('Material Icons'), local('MaterialIcons-Regular'),
+  src: local('Material Icons'), local('MaterialIcons-Regular'),;
 }
 
 @mixin min-width($breakpoints) {
@@ -40,7 +41,7 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   -webkit-font-smoothing: antialiased;
 
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
 
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
@@ -174,7 +175,7 @@ p {
       word-wrap: normal;
       direction: ltr;
       text-transform: none;
-      text-rendering: optimizeLegibility;
+      text-rendering: optimizelegibility;
 
       @include min-width(1025px) {
         margin-left: -#{map-get($normal-font-size, desktop)};

@@ -1,5 +1,5 @@
-const decodeCaesarCipher = require('./decodeCaesarCipher');
-const unicodeValidator = require('./unicodeValidator');
+import decodeCaesarCipher from './decodeCaesarCipher';
+import unicodeValidator from './unicodeValidator';
 
 /**
   * 解碼演算法
@@ -8,7 +8,7 @@ const unicodeValidator = require('./unicodeValidator');
   * @returns { String }
   */
 
-module.exports = function (ciphertext, $param) {
+export default function (ciphertext: string, $param: any) {
   if (typeof ciphertext !== 'string') return;
 
   // 判斷傳入值是否可以轉為數字
@@ -16,12 +16,12 @@ module.exports = function (ciphertext, $param) {
   if (isError) return 'error';
 
   // 取得密文裡的公用常數，並將密文轉成陣列
-  let strArray = ciphertext.split('');
+  const strArray = ciphertext.split('');
   const publicConst = parseInt(strArray[strArray.length - 1], 10);
   strArray.splice(strArray.length - 1, 1);
 
   // 把密文陣列以每 5 個字串組成新陣列
-  let codeArray = [];
+  const codeArray = [];
 
   for (let i = 0; i < strArray.length; i += $param.digits) {
     codeArray.push(strArray.slice(i, i + $param.digits).join(''));
@@ -29,18 +29,18 @@ module.exports = function (ciphertext, $param) {
 
   // 取得公用常數值與私用常數值乘積列表
   const publicPrime = $param.prime[publicConst];
-  const keysArray = $param.prime.map(prime => prime * publicPrime);
+  const keysArray = $param.prime.map((prime: number) => prime * publicPrime);
 
   // 處理並轉換密文
   const resultArray = codeArray.map((cipherCode, index) => {
-    let cipherCodeArray = cipherCode.split('');
+    const cipherCodeArray = cipherCode.split('');
     let plainCode = '';
 
     // 將乘積列表全部帶進凱薩密碼驗證
     for (let i = 0; i < keysArray.length; i++) {
-      let _plainCode = decodeCaesarCipher(cipherCodeArray, keysArray[i]);
+      const _plainCode = decodeCaesarCipher(cipherCodeArray, keysArray[i]);
       if (index % 10 === i) {
-        plainCode = _plainCode;
+        plainCode = _plainCode as string;
         break;
       }
     }
@@ -58,4 +58,4 @@ module.exports = function (ciphertext, $param) {
 
   if (result === '') isError = true;
   return isError ? 'error' : result;
-};
+}

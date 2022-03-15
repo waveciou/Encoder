@@ -5,7 +5,7 @@
   * @returns { Object }
   */
 
-module.exports = function (defaultData, $param) {
+export default function (defaultData: any, $param: any) {
   const result = {};
 
   Object.keys($param).forEach(key => {
@@ -19,4 +19,4 @@ module.exports = function (defaultData, $param) {
   }
 
   return result;
-};
+}

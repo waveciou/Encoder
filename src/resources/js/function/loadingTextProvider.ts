@@ -4,7 +4,7 @@
   * @returns { String }
   */
 
-module.exports = function (type) {
+export default function (type: string) {
   let result = '';
 
   switch (type) {
@@ -20,4 +20,4 @@ module.exports = function (type) {
   }
 
   return result;
-};
+}

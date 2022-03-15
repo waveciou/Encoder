@@ -1,5 +1,5 @@
-const getRandomNumber = require('./getRandomNumber');
-const encodeCaesarCipher = require('./encodeCaesarCipher');
+import getRandomNumber from './getRandomNumber';
+import encodeCaesarCipher from './encodeCaesarCipher';
 
 /**
   * 編碼演算法
@@ -9,7 +9,7 @@ const encodeCaesarCipher = require('./encodeCaesarCipher');
   * @returns { String }
   */
 
-module.exports = function (plaintext, $param, test_public_const) {
+export default function (plaintext: string, $param: any, test_public_const: number) {
   if (typeof plaintext !== 'string') return;
 
   // 把字串轉成陣列
@@ -22,10 +22,10 @@ module.exports = function (plaintext, $param, test_public_const) {
     publicConst = getRandomNumber(0, 9);
   }
 
-  let resultArray = strArray.map((itemText, index) => {
+  const resultArray: any = strArray.map((itemText, index) => {
     // 把明文轉成 unicode
     const unicode = `${itemText.charCodeAt(0)}`;
-    let unicodeArray = unicode.split('');
+    const unicodeArray = unicode.split('');
 
     // 將 unicode 代碼補 0（5位數）
     const supValue = 0 - (unicodeArray.length - $param.digits);
@@ -44,4 +44,4 @@ module.exports = function (plaintext, $param, test_public_const) {
   // 將公用常數添加至密文裡面
   resultArray.push(publicConst);
   return resultArray.join('');
-};
+}

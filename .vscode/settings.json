@@ -5,5 +5,19 @@
   },
   "eslint.validate": [
     "javascript",
-  ]
+  ],
+  "stylelint.snippet": [
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss"
+  ],
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss"
+  ],
 }
