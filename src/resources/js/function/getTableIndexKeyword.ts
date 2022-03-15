@@ -1,3 +1,5 @@
+import { I_Parameter } from '../../components/app';
+
 /**
   * 轉換圖表索引數關鍵字
   * @param { Encode：Number, Decode：String } payload
@@ -6,10 +8,9 @@
   * @returns { Encode：String, Decode：Number }
   */
 
-export default function (payload: any, isEncode: boolean, $param: any) {
-  if (isEncode === true && typeof(payload) !== 'number') return;
-  if (isEncode === false && typeof(payload) !== 'string') return;
+const getTableIndexKeyword = (payload: string, isEncode: boolean, $param: I_Parameter) => {
+  const keyWords: string[] = $param.tableKeyword;
+  return isEncode ? keyWords[parseInt(payload, 10)] : keyWords.indexOf(payload);
+};
 
-  const keyWords = $param.tableKeyword;
-  return isEncode ? keyWords[payload] : keyWords.indexOf(payload);
-}
+export default getTableIndexKeyword;

@@ -1,4 +1,5 @@
 import getTableIndexKeyword from './getTableIndexKeyword';
+import { I_Parameter } from '../../components/app';
 
 /**
   * 替換式密碼轉換（解碼）
@@ -7,16 +8,16 @@ import getTableIndexKeyword from './getTableIndexKeyword';
   * @returns { String }
   */
 
-export default function (payload: string, $param: any) {
-  if (typeof payload !== 'string') return;
+const decodeSubstitutionCipher = (payload: string, $param: I_Parameter) => {
+  if (typeof payload !== 'string') return '';
 
   // 取得對照表索引數
-  const strArray = payload.split('');
-  const tableKey = strArray.splice(strArray.length - 1, 1)[0];
-  const tableIndex = getTableIndexKeyword(tableKey, false, $param);
+  const strArray: string[] = payload.split('');
+  const tableKey: string = strArray.splice(strArray.length - 1, 1)[0];
+  const tableIndex: string | number = getTableIndexKeyword(tableKey, false, $param);
 
   // 取得對應的對照表
-  const table = $param.table[tableIndex];
+  const table = $param.table[tableIndex as number];
 
   // 將對應的字母替換上去
   return strArray.reduce((prev, current) => {
@@ -24,4 +25,6 @@ export default function (payload: string, $param: any) {
     const replaceText = index >= 0 ? table[index] : current;
     return `${prev}${replaceText}`;
   }, '');
-}
+};
+
+export default decodeSubstitutionCipher;

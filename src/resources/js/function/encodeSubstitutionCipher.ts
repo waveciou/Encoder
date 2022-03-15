@@ -1,4 +1,5 @@
 import getTableIndexKeyword from './getTableIndexKeyword';
+import { I_Parameter } from '../../components/app';
 
 /**
   * 替換式密碼轉換（編碼）
@@ -8,9 +9,9 @@ import getTableIndexKeyword from './getTableIndexKeyword';
   * @returns { String }
   */
 
-export default function (payload: string, tableIndex: number, $param: any) {
-  if (typeof payload !== 'string') return;
-  if (typeof tableIndex !== 'number') return;
+export default function (payload: string, tableIndex: number, $param: I_Parameter) {
+  if (typeof payload !== 'string') return '';
+  if (typeof tableIndex !== 'number') return '';
 
   // 取得對應的對照表
   const table = $param.table[tableIndex];
@@ -31,6 +32,6 @@ export default function (payload: string, tableIndex: number, $param: any) {
   }
 
   // 將對照表索引數添加至密文最後面
-  const tableKey = getTableIndexKeyword(tableIndex, true, $param);
+  const tableKey = getTableIndexKeyword(`${tableIndex}`, true, $param);
   return `${result}${tableKey}`;
 }

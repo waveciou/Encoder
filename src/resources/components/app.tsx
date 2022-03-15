@@ -17,12 +17,22 @@ import decodeSubstitutionCipher from '../js/function/decodeSubstitutionCipher';
 // * Package
 import pkg from '../../../package.json';
 
-const App = () => {
-  const [ textInput, setTextInput ] = useState('');
-  const [ textOutput, setTextOutput ] = useState('');
-  const [ encode_selected, setEncodeSelected ] = useState(true);
+import parameterData from '../data/parameter.json';
 
-  const [ parameter, setParameter ] = useState({
+export interface I_Parameter {
+  digits: number;
+  prime: number[];
+  table: string[];
+  alphabet: string[];
+  tableKeyword: string[];
+}
+
+const App = () => {
+  const [ textInput, setTextInput ] = useState<string>('');
+  const [ textOutput, setTextOutput ] = useState<string>('');
+  const [ encode_selected, setEncodeSelected ] = useState<boolean>(true);
+
+  const [ parameter, setParameter ] = useState<I_Parameter>({
     digits: 5,
     prime: [],
     table: [],
@@ -30,21 +40,24 @@ const App = () => {
     tableKeyword: []
   });
 
-  const [ loading, setLoading ] = useState({ control: true, type: '' });
+  const [ loading, setLoading ] = useState<{ control: boolean; type: string }>({
+    control: true,
+    type: ''
+  });
 
   useEffect(() => {
-    const data = require('../data/parameter.json');
+    const data = parameterData;
     const _param = setDefaultParam(data, parameter);
 
-    setParameter({ ..._param });
+    setParameter({ ..._param as I_Parameter });
     setLoading({ control: false, type: '' });
   }, []);
 
   // * 更新輸入明文
-  const updateTextInputHandler = (payload) => setTextInput(payload);
+  const updateTextInputHandler = (payload: string) => setTextInput(payload);
 
   // * 編解碼選擇（Radio Button）
-  const setSelectedHandler = (payload) => {
+  const setSelectedHandler = (payload: boolean) => {
     clearHandler();
     setEncodeSelected(payload);
   };
@@ -58,7 +71,7 @@ const App = () => {
   // * 送出內容（編碼或解碼）
   const submitHandler = () => {
     if (textInput && typeof textInput === 'string') {
-      const result = computedCode(encode_selected);
+      const result = computedCode(encode_selected) || '';
       setTextOutput(result);
       setLoading({ control: false, type: '' });
     }
@@ -66,7 +79,7 @@ const App = () => {
   };
 
   // * 判斷目前是編碼或解碼，並回傳對應的編解碼值
-  const computedCode = (isEncode) => {
+  const computedCode = (isEncode: boolean) => {
     setLoading({
       control: true,
       type: isEncode ? 'encode' : 'decode'
@@ -74,18 +87,18 @@ const App = () => {
 
     if (isEncode) {
       // 編碼
-      const code = encodeHandler(textInput, parameter);
-      const tableKey = getRandomNumber(0, parameter.tableKeyword.length);
+      const code: string = encodeHandler(textInput, parameter);
+      const tableKey: number = getRandomNumber(0, parameter.tableKeyword.length);
       return encodeSubstitutionCipher(code, tableKey, parameter);
     } else {
       // 解碼
-      const code = decodeSubstitutionCipher(textInput, parameter);
+      const code: string = decodeSubstitutionCipher(textInput, parameter);
       return decodeHandler(code, parameter);
     }
   };
 
   // * 輸入欄的 Placeholder
-  const placeholderHandler = (isEncode) => {
+  const placeholderHandler = (isEncode: boolean) => {
     const encode = 'Please enter the some text for Encode.';
     const decode = 'Please enter the some text for Decode.';
     return isEncode ? encode : decode;
