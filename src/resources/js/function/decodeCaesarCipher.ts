@@ -5,12 +5,12 @@
   * @returns { String }
   */
 
-export default function (payload: any[], offset: number) {
-  if (typeof offset !== 'number') return;
+const decodeCaesarCipher = (payload: string[], offset: number): string => {
+  if (typeof offset !== 'number') return '';
 
-  const resultArray = payload.map((item, index) => {
-    const vector = index + 1 === 5 ? (index + 2) : (index + 1);
-    let result = null;
+  const resultArray: number[] = payload.map((item: string, index: number) => {
+    const vector: number = index + 1 === 5 ? (index + 2) : (index + 1);
+    let result = 0;
 
     for (let i = 0; i < 10; i++) {
       if (((i + (offset * vector)) % 10) === parseInt(item, 10)) {
@@ -23,4 +23,6 @@ export default function (payload: any[], offset: number) {
   });
 
   return resultArray.join('');
-}
+};
+
+export default decodeCaesarCipher;

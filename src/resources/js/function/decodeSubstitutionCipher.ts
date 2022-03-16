@@ -8,7 +8,7 @@ import { I_Parameter } from '../../components/app';
   * @returns { String }
   */
 
-const decodeSubstitutionCipher = (payload: string, $param: I_Parameter) => {
+const decodeSubstitutionCipher = (payload: string, $param: I_Parameter): string => {
   if (typeof payload !== 'string') return '';
 
   // 取得對照表索引數
@@ -17,12 +17,12 @@ const decodeSubstitutionCipher = (payload: string, $param: I_Parameter) => {
   const tableIndex: string | number = getTableIndexKeyword(tableKey, false, $param);
 
   // 取得對應的對照表
-  const table = $param.table[tableIndex as number];
+  const table: string = $param.table[tableIndex as number];
 
   // 將對應的字母替換上去
-  return strArray.reduce((prev, current) => {
-    const index = $param.alphabet.indexOf(current);
-    const replaceText = index >= 0 ? table[index] : current;
+  return strArray.reduce((prev: string, current: string) => {
+    const index: number = $param.alphabet.indexOf(current);
+    const replaceText: string = index >= 0 ? table[index] : current;
     return `${prev}${replaceText}`;
   }, '');
 };

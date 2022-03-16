@@ -6,22 +6,18 @@ import { I_Parameter } from '../../components/app';
   * 編碼演算法
   * @param { String } plaintext
   * @param { Object } $param
-  * @param { Number } test_public_const
+  * @param { Number } testPublicConst
   * @returns { String }
   */
 
-const encodeHandler = (plaintext: string, $param: I_Parameter, test_public_const?: number) => {
+const encodeHandler = (plaintext: string, $param: I_Parameter, testPublicConst?: number): string => {
   if (typeof plaintext !== 'string') return '';
 
   // 把字串轉成陣列
   const strArray: string[] = plaintext.split('');
 
   // 公用常數
-  let publicConst: number | undefined = test_public_const;
-
-  if (publicConst === undefined) {
-    publicConst = getRandomNumber(0, 9);
-  }
+  const publicConst: number = testPublicConst ?? getRandomNumber(0, 9);
 
   const resultArray: string[] = strArray.map((itemText, index) => {
     // 把明文轉成 unicode

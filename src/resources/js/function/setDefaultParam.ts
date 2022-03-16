@@ -1,3 +1,5 @@
+import { I_Parameter, I_ParameterData } from '../../components/app';
+
 /**
   * 設定預設參數
   * @param { Object } defaultData
@@ -5,12 +7,24 @@
   * @returns { Object }
   */
 
-export default function (defaultData: any, $param: any) {
-  const result = {};
+const setDefaultParam = (defaultData: I_ParameterData, $param: I_Parameter) => {
+  const result: {
+    digits: number;
+    prime: number[];
+    table: string[][];
+    alphabet: string[];
+    tableKeyword: string[];
+  } = {
+    digits: $param.digits,
+    prime: defaultData.prime,
+    table: defaultData.table,
+    alphabet: defaultData.alphabet,
+    tableKeyword: $param.tableKeyword,
+  };
 
-  Object.keys($param).forEach(key => {
-    result[key] = defaultData[key] || $param[key];
-  });
+  // Object.keys($param).forEach((key: string) => {
+  //   result[key] = defaultData[key] || $param[key];
+  // });
 
   result.tableKeyword = [...result.alphabet];
 
@@ -19,4 +33,6 @@ export default function (defaultData: any, $param: any) {
   }
 
   return result;
-}
+};
+
+export default setDefaultParam;

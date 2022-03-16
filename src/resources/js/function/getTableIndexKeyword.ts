@@ -8,7 +8,7 @@ import { I_Parameter } from '../../components/app';
   * @returns { Encode：String, Decode：Number }
   */
 
-const getTableIndexKeyword = (payload: string, isEncode: boolean, $param: I_Parameter) => {
+const getTableIndexKeyword = (payload: string, isEncode: boolean, $param: I_Parameter): string | number => {
   const keyWords: string[] = $param.tableKeyword;
   return isEncode ? keyWords[parseInt(payload, 10)] : keyWords.indexOf(payload);
 };

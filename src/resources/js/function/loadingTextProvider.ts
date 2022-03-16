@@ -4,20 +4,15 @@
   * @returns { String }
   */
 
-export default function (type: string) {
-  let result = '';
-
+const loadingTextProvider = (type: string): string => {
   switch (type) {
   case 'encode':
-    result = 'Encoding...';
-    break;
+    return 'Encoding...';
   case 'decode':
-    result = 'Decoding...';
-    break;
+    return 'Decoding...';
   default:
-    result = 'Loading...';
-    break;
+    return 'Loading...';
   }
+};
 
-  return result;
-}
+export default loadingTextProvider;

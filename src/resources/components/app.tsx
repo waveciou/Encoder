@@ -27,6 +27,12 @@ export interface I_Parameter {
   tableKeyword: string[];
 }
 
+export interface I_ParameterData {
+  prime: number[];
+  alphabet: string[];
+  table: string[][];
+}
+
 const App = () => {
   const [ textInput, setTextInput ] = useState<string>('');
   const [ textOutput, setTextOutput ] = useState<string>('');
@@ -46,10 +52,10 @@ const App = () => {
   });
 
   useEffect(() => {
-    const data = parameterData;
+    const data: I_ParameterData = parameterData;
     const _param = setDefaultParam(data, parameter);
 
-    setParameter({ ..._param as I_Parameter });
+    setParameter({ ..._param as any });
     setLoading({ control: false, type: '' });
   }, []);
 

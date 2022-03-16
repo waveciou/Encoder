@@ -4,11 +4,13 @@
   * @returns { Boolean }
   */
 
-export default function (payload: string) {
+const unicodeValidator = (payload: string): boolean => {
   if (typeof payload !== 'string') return false;
 
-  const value = parseInt(payload, 10);
+  const value: number = parseInt(payload, 10);
 
   if (value === 10) return true;
   return value < 65536 && value > 31 ? true : false;
-}
+};
+
+export default unicodeValidator;
