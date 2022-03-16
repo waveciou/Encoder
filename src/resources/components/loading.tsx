@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LoadingTextProvider from '../js/function/loadingTextProvider';
 
 const loading = ({ type }) => (

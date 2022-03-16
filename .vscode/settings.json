@@ -6,6 +6,8 @@
   "eslint.validate": [
     "javascript",
   ],
+  "editor.formatOnSave": true,
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
   "stylelint.snippet": [
     "css",
     "less",
