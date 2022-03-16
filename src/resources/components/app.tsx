@@ -22,7 +22,7 @@ import parameterData from '../data/parameter.json';
 export interface I_Parameter {
   digits: number;
   prime: number[];
-  table: string[];
+  table: string[][];
   alphabet: string[];
   tableKeyword: string[];
 }
@@ -31,6 +31,11 @@ export interface I_ParameterData {
   prime: number[];
   alphabet: string[];
   table: string[][];
+}
+
+interface I_Loading {
+  control: boolean;
+  type: string
 }
 
 const App = () => {
@@ -46,16 +51,16 @@ const App = () => {
     tableKeyword: []
   });
 
-  const [ loading, setLoading ] = useState<{ control: boolean; type: string }>({
+  const [ loading, setLoading ] = useState<I_Loading>({
     control: true,
     type: ''
   });
 
   useEffect(() => {
     const data: I_ParameterData = parameterData;
-    const _param = setDefaultParam(data, parameter);
+    const _param: I_Parameter = setDefaultParam(data, parameter);
 
-    setParameter({ ..._param as any });
+    setParameter({ ..._param });
     setLoading({ control: false, type: '' });
   }, []);
 
@@ -76,16 +81,14 @@ const App = () => {
 
   // * 送出內容（編碼或解碼）
   const submitHandler = () => {
-    if (textInput && typeof textInput === 'string') {
-      const result = computedCode(encode_selected) || '';
-      setTextOutput(result);
-      setLoading({ control: false, type: '' });
-    }
+    const result: string = computedCode(encode_selected) || '';
+    setTextOutput(result);
+    setLoading({ control: false, type: '' });
     return false;
   };
 
   // * 判斷目前是編碼或解碼，並回傳對應的編解碼值
-  const computedCode = (isEncode: boolean) => {
+  const computedCode = (isEncode: boolean): string => {
     setLoading({
       control: true,
       type: isEncode ? 'encode' : 'decode'
@@ -104,7 +107,7 @@ const App = () => {
   };
 
   // * 輸入欄的 Placeholder
-  const placeholderHandler = (isEncode: boolean) => {
+  const placeholderHandler = (isEncode: boolean): string => {
     const encode = 'Please enter the some text for Encode.';
     const decode = 'Please enter the some text for Decode.';
     return isEncode ? encode : decode;

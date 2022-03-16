@@ -7,24 +7,10 @@ import { I_Parameter, I_ParameterData } from '../../components/app';
   * @returns { Object }
   */
 
-const setDefaultParam = (defaultData: I_ParameterData, $param: I_Parameter) => {
-  const result: {
-    digits: number;
-    prime: number[];
-    table: string[][];
-    alphabet: string[];
-    tableKeyword: string[];
-  } = {
-    digits: $param.digits,
-    prime: defaultData.prime,
-    table: defaultData.table,
-    alphabet: defaultData.alphabet,
-    tableKeyword: $param.tableKeyword,
-  };
-
-  // Object.keys($param).forEach((key: string) => {
-  //   result[key] = defaultData[key] || $param[key];
-  // });
+const setDefaultParam = (defaultData: I_ParameterData, $param: I_Parameter): I_Parameter => {
+  const { digits, tableKeyword } = $param;
+  const { prime, table, alphabet } = defaultData;
+  const result: I_Parameter = { digits, prime, table, alphabet, tableKeyword };
 
   result.tableKeyword = [...result.alphabet];
 
