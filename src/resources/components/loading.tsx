@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LoadingTextProvider from '../js/function/loadingTextProvider';
+import LoadingTextProvider from '@/Functions/loadingTextProvider';
 
 const loading = ({ type }) => (
   <div className="loading">

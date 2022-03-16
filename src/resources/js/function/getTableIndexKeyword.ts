@@ -1,4 +1,4 @@
-import { I_Parameter } from '../../components/app';
+import { I_Parameter } from '@/Components/app';
 
 /**
   * 轉換圖表索引數關鍵字

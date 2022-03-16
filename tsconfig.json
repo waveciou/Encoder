@@ -15,19 +15,20 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": "src/resources/",
     "paths": {
-      "@/Src/*": ["src/*"],
-      "@/Data/*": ["src/resources/data/*"],
-      "@/Js/*": ["src/resources/js/*"],
-      "@/Functions/*": ["src/resources/js/function/*"],
-      "@/Interfaces/*": ["src/resources/interfaces/*"],
-      "@/Components/*": ["src/resources/components/*"],
-      "@/Img/*": ["src/resources/img/*"],
-      "@/Scss/*": ["src/resources/scss/*"],
+      "@/Functions/*": ["js/function/*"],
+      "@/Interfaces/*": ["interfaces/*"],
+      "@/Components/*": ["components/*"],
+      "@/Scss/*": ["scss/*"],
     }
   },
-  "include": ["src"],
+  "include": [
+    "src",
+  ],
+  "exclude": [
+    "./node_modules"
+  ],
   "references": [{
     "path": "./tsconfig.node.json"
   }]

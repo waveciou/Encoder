@@ -1,4 +1,4 @@
-import { I_Parameter, I_ParameterData } from '../../components/app';
+import { I_Parameter, I_ParameterData } from '@/Components/app';
 
 /**
   * 設定預設參數

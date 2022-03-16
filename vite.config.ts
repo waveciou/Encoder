@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
+
 import react from '@vitejs/plugin-react';
 
 const root = resolve(__dirname, 'src');
@@ -10,6 +11,13 @@ const assetsDir = 'resources';
 // https://vitejs.dev/config/
 export default defineConfig({
   root,
+  resolve: {
+    alias: [
+      { find: '@/Components', replacement: resolve(__dirname, 'src/resources/components') },
+      { find: '@/Interfaces', replacement: resolve(__dirname, 'src/resources/interfaces') },
+      { find: '@/Functions', replacement: resolve(__dirname, 'src/resources/js/function') },
+    ],
+  },
   plugins: [
     react(),
     createHtmlPlugin({
@@ -37,4 +45,4 @@ export default defineConfig({
       }
     },
   }
-})
+});

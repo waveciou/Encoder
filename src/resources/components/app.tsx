@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
-// * Package
+import InputArticleComponent from '@/Components/inputArticle';
+import LoadingComponent from '@/Components/loading';
+import OutputArticleComponent from '@/Components/outputArticle';
+import SelectControlComponent from '@/Components/selectControl';
+import decodeHandler from '@/Functions/decodeHandler';
+import decodeSubstitutionCipher from '@/Functions/decodeSubstitutionCipher';
+import encodeHandler from '@/Functions/encodeHandler';
+import encodeSubstitutionCipher from '@/Functions/encodeSubstitutionCipher';
+import getRandomNumber from '@/Functions/getRandomNumber';
+import setDefaultParam from '@/Functions/setDefaultParam';
+
 import pkg from '../../../package.json';
 import parameterData from '../data/parameter.json';
-import decodeHandler from '../js/function/decodeHandler';
-import decodeSubstitutionCipher from '../js/function/decodeSubstitutionCipher';
-import encodeHandler from '../js/function/encodeHandler';
-import encodeSubstitutionCipher from '../js/function/encodeSubstitutionCipher';
-import getRandomNumber from '../js/function/getRandomNumber';
-// * Function
-import setDefaultParam from '../js/function/setDefaultParam';
-import InputArticleComponent from './inputArticle';
-// * Component
-import LoadingComponent from './loading';
-import OutputArticleComponent from './outputArticle';
-import SelectControlComponent from './selectControl';
 
 export interface I_Parameter {
   digits: number;
