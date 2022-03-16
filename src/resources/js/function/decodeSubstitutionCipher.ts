@@ -1,5 +1,5 @@
-import { I_Parameter } from '@/Components/app';
 import getTableIndexKeyword from '@/Functions/getTableIndexKeyword';
+import { I_Parameter } from '@/Interfaces/index';
 
 /**
   * 替換式密碼轉換（解碼）

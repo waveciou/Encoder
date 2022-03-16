@@ -1,4 +1,4 @@
-import { I_Parameter, I_ParameterData } from '@/Components/app';
+import { I_Parameter, I_ParameterData } from '@/Interfaces/index';
 
 /**
   * 設定預設參數

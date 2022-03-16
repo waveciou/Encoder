@@ -1,6 +1,6 @@
-import { I_Parameter } from '@/Components/app';
 import decodeCaesarCipher from '@/Functions/decodeCaesarCipher';
 import unicodeValidator from '@/Functions/unicodeValidator';
+import { I_Parameter } from '@/Interfaces/index';
 
 /**
   * 解碼演算法

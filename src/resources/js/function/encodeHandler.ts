@@ -1,6 +1,6 @@
-import { I_Parameter } from '@/Components/app';
 import encodeCaesarCipher from '@/Functions/encodeCaesarCipher';
 import getRandomNumber from '@/Functions/getRandomNumber';
+import { I_Parameter } from '@/Interfaces/index';
 
 /**
   * 編碼演算法

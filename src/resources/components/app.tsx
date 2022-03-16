@@ -10,28 +10,10 @@ import encodeHandler from '@/Functions/encodeHandler';
 import encodeSubstitutionCipher from '@/Functions/encodeSubstitutionCipher';
 import getRandomNumber from '@/Functions/getRandomNumber';
 import setDefaultParam from '@/Functions/setDefaultParam';
+import { I_Loading, I_Parameter, I_ParameterData } from '@/Interfaces/index';
 
 import pkg from '../../../package.json';
 import parameterData from '../data/parameter.json';
-
-export interface I_Parameter {
-  digits: number;
-  prime: number[];
-  table: string[][];
-  alphabet: string[];
-  tableKeyword: string[];
-}
-
-export interface I_ParameterData {
-  prime: number[];
-  alphabet: string[];
-  table: string[][];
-}
-
-interface I_Loading {
-  control: boolean;
-  type: string
-}
 
 const App = () => {
   const [ textInput, setTextInput ] = useState<string>('');
