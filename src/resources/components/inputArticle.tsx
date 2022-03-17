@@ -1,8 +1,12 @@
 import React from 'react';
 
-const inputArticle = ({ textInput, placeholder, updateTextInput }) => {
-  const changeHandler = (e) => {
-    const result = e.target.value.trim();
+const inputArticle = ({ textInput, placeholder, updateTextInput }: {
+  textInput: string;
+  placeholder: string;
+  updateTextInput: (payload: string) => void;
+}) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const result: string = e.target.value.trim();
     updateTextInput(result);
   };
 

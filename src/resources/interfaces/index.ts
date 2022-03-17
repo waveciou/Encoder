@@ -14,5 +14,5 @@ export interface I_ParameterData {
 
 export interface I_Loading {
   control: boolean;
-  type: string
+  type: '' | 'encode' | 'decode'
 }

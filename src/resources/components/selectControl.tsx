@@ -1,18 +1,21 @@
 import React from 'react';
 
 // * 字串轉布林
-const stringToBoolean = (value) => {
+const stringToBoolean = (value: string): boolean => {
   if (value && typeof value === 'string') {
     if (value.toLowerCase() === 'true') return true;
     if (value.toLowerCase() === 'false') return false;
   }
-  return value;
+  return true;
 };
 
-const selectControl = ({ encode_selected, setEncodeSelected }) => {
-  const changeHandler = (e) => {
-    const selectValue = stringToBoolean(e.target.value);
-    setEncodeSelected(selectValue);
+const selectControl = ({ selected, setSelected }: {
+  selected: boolean;
+  setSelected: (payload: boolean) => void;
+}) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const selectValue: boolean = stringToBoolean(e.target.value);
+    setSelected(selectValue);
   };
 
   return (
@@ -24,7 +27,7 @@ const selectControl = ({ encode_selected, setEncodeSelected }) => {
           id="encode"
           value="true"
           onChange={ changeHandler }
-          checked={ encode_selected === true }
+          checked={ selected === true }
         />
         <label htmlFor="encode" title="Encode">Encode<span></span></label>
       </div>
@@ -35,7 +38,7 @@ const selectControl = ({ encode_selected, setEncodeSelected }) => {
           id="decode"
           value="false"
           onChange={ changeHandler }
-          checked={ encode_selected === false }
+          checked={ selected === false }
         />
         <label htmlFor="decode" title="Decode">Decode<span></span></label>
       </div>

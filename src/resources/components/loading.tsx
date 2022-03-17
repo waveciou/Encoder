@@ -2,7 +2,7 @@ import React from 'react';
 
 import LoadingTextProvider from '@/Functions/loadingTextProvider';
 
-const loading = ({ type }) => (
+const loading = ({ type }: { type: string }) => (
   <div className="loading">
     <div>
       <div className="bouncing-loader">

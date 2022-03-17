@@ -18,7 +18,7 @@ import parameterData from '../data/parameter.json';
 const App = () => {
   const [ textInput, setTextInput ] = useState<string>('');
   const [ textOutput, setTextOutput ] = useState<string>('');
-  const [ encode_selected, setEncodeSelected ] = useState<boolean>(true);
+  const [ encodeSelected, setEncodeSelected ] = useState<boolean>(true);
 
   const [ parameter, setParameter ] = useState<I_Parameter>({
     digits: 5,
@@ -42,23 +42,23 @@ const App = () => {
   }, []);
 
   // * 更新輸入明文
-  const updateTextInputHandler = (payload: string) => setTextInput(payload);
+  const updateTextInputHandler = (payload: string): void => setTextInput(payload);
 
   // * 編解碼選擇（Radio Button）
-  const setSelectedHandler = (payload: boolean) => {
+  const setSelectedHandler = (payload: boolean): void => {
     clearHandler();
     setEncodeSelected(payload);
   };
 
   // * 清除 Input 和 Output 的內容
-  const clearHandler = () => {
+  const clearHandler = (): void => {
     setTextInput('');
     setTextOutput('');
   };
 
   // * 送出內容（編碼或解碼）
-  const submitHandler = () => {
-    const result: string = computedCode(encode_selected) || '';
+  const submitHandler = (): false => {
+    const result: string = computedCode(encodeSelected) || '';
     setTextOutput(result);
     setLoading({ control: false, type: '' });
     return false;
@@ -94,14 +94,14 @@ const App = () => {
     <>
       <div className="main">
         <SelectControlComponent
-          setEncodeSelected={ setSelectedHandler }
-          encode_selected={ encode_selected }
+          selected={ encodeSelected }
+          setSelected={ setSelectedHandler }
         />
 
         <InputArticleComponent
           textInput={ textInput }
+          placeholder={ placeholderHandler(encodeSelected) }
           updateTextInput={ updateTextInputHandler }
-          placeholder={ placeholderHandler(encode_selected) }
         />
 
         <div className="row">

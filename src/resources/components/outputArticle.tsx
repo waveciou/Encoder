@@ -1,7 +1,7 @@
 import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const outputArticle = ({ textOutput }) => (
+const outputArticle = ({ textOutput }: { textOutput: string }) => (
   <div className="article">
     <div className="article__header">
       <label className="caption" htmlFor="output-area">Output :</label>
@@ -9,7 +9,7 @@ const outputArticle = ({ textOutput }) => (
         textOutput !== '' &&
           (
             <CopyToClipboard
-              text={textOutput}
+              text={ textOutput }
               onCopy={() => window.alert('Successfully copied')}
             >
               <button type="button" className="copy-btn">
