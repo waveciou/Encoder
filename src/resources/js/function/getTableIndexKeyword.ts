@@ -1,3 +1,4 @@
+import parseToInt from '@/Functions/parseToInt';
 import { I_Parameter } from '@/Interfaces/index';
 
 /**
@@ -10,7 +11,7 @@ import { I_Parameter } from '@/Interfaces/index';
 
 const getTableIndexKeyword = (payload: string, isEncode: boolean, $param: I_Parameter): string => {
   const keyWords: string[] = $param.tableKeyword;
-  const result: string = isEncode ? keyWords[parseInt(payload, 10)] : `${keyWords.indexOf(payload)}`;
+  const result: string = isEncode ? keyWords[parseToInt(payload)] : `${keyWords.indexOf(payload)}`;
   return result;
 };
 

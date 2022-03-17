@@ -1,4 +1,5 @@
 import decodeCaesarCipher from '@/Functions/decodeCaesarCipher';
+import parseToInt from '@/Functions/parseToInt';
 import unicodeValidator from '@/Functions/unicodeValidator';
 import { I_Parameter } from '@/Interfaces/index';
 
@@ -11,12 +12,12 @@ import { I_Parameter } from '@/Interfaces/index';
 
 const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
   // 判斷傳入值是否可以轉為數字
-  let isError: boolean = parseInt(ciphertext, 10) ? false : true;
+  let isError: boolean = parseToInt(ciphertext) ? false : true;
   if (isError) return 'error';
 
   // 取得密文裡的公用常數，並將密文轉成陣列
   const strArray: string[] = ciphertext.split('');
-  const publicConst: number = parseInt(strArray[strArray.length - 1], 10);
+  const publicConst: number = parseToInt(strArray[strArray.length - 1]);
 
   strArray.splice(strArray.length - 1, 1);
 
@@ -51,7 +52,7 @@ const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
     }
 
     // unicode 轉回明文
-    return String.fromCharCode(parseInt(plainCode, 10));
+    return String.fromCharCode(parseToInt(plainCode));
   });
 
   const result: string = resultArray.join('').trim();

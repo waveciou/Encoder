@@ -1,3 +1,5 @@
+import parseToInt from '@/Functions/parseToInt';
+
 /**
   * 凱薩密碼轉換（解碼）
   * @param { Array } payload
@@ -11,7 +13,7 @@ const decodeCaesarCipher = (payload: string[], offset: number): string => {
     let _result = 0;
 
     for (let i = 0; i < 10; i++) {
-      if (((i + (offset * vector)) % 10) === parseInt(item, 10)) {
+      if (((i + (offset * vector)) % 10) === parseToInt(item)) {
         _result = i;
         break;
       }
