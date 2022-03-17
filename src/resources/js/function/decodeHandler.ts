@@ -10,8 +10,6 @@ import { I_Parameter } from '@/Interfaces/index';
   */
 
 const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
-  if (typeof ciphertext !== 'string') return '';
-
   // 判斷傳入值是否可以轉為數字
   let isError: boolean = parseInt(ciphertext, 10) ? false : true;
   if (isError) return 'error';
@@ -19,6 +17,7 @@ const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
   // 取得密文裡的公用常數，並將密文轉成陣列
   const strArray: string[] = ciphertext.split('');
   const publicConst: number = parseInt(strArray[strArray.length - 1], 10);
+
   strArray.splice(strArray.length - 1, 1);
 
   // 把密文陣列以每 5 個字串組成新陣列
@@ -58,6 +57,7 @@ const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
   const result: string = resultArray.join('').trim();
 
   if (result === '') isError = true;
+
   return isError ? 'error' : result;
 };
 

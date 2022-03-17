@@ -11,17 +11,15 @@ import { I_Parameter } from '@/Interfaces/index';
   */
 
 const encodeHandler = (plaintext: string, $param: I_Parameter, testPublicConst?: number): string => {
-  if (typeof plaintext !== 'string') return '';
-
   // 把字串轉成陣列
   const strArray: string[] = plaintext.split('');
 
   // 公用常數
   const publicConst: number = testPublicConst ?? getRandomNumber(0, 9);
 
-  const resultArray: string[] = strArray.map((itemText, index) => {
+  const result: string[] = strArray.map((item: string, index: number) => {
     // 把明文轉成 unicode
-    const unicode = `${itemText.charCodeAt(0)}`;
+    const unicode = `${item.charCodeAt(0)}`;
     const unicodeArray: string[] = unicode.split('');
 
     // 將 unicode 代碼補 0（5位數）
@@ -34,13 +32,14 @@ const encodeHandler = (plaintext: string, $param: I_Parameter, testPublicConst?:
     // 取得「公用常數」與「私用常數」的乘積，並做凱薩密碼處理
     const privateConst: number = index % 10;
     const privatePrime: number = $param.prime[privateConst];
-    const publicPrime: number = $param.prime[publicConst as number];
+    const publicPrime: number = $param.prime[publicConst];
     return encodeCaesarCipher(unicodeArray, privatePrime * publicPrime);
   });
 
   // 將公用常數添加至密文裡面
-  resultArray.push(`${publicConst}`);
-  return resultArray.join('');
+  result.push(`${publicConst}`);
+
+  return result.join('');
 };
 
 export default encodeHandler;

@@ -9,15 +9,13 @@ import { I_Parameter } from '@/Interfaces/index';
   */
 
 const decodeSubstitutionCipher = (payload: string, $param: I_Parameter): string => {
-  if (typeof payload !== 'string') return '';
-
   // 取得對照表索引數
   const strArray: string[] = payload.split('');
   const tableKey: string = strArray.splice(strArray.length - 1, 1)[0];
-  const tableIndex: string | number = getTableIndexKeyword(tableKey, false, $param);
+  const tableIndex: string = getTableIndexKeyword(tableKey, false, $param);
 
   // 取得對應的對照表
-  const table: string = $param.table[tableIndex as number];
+  const table: string[] = $param.table[parseInt(tableIndex, 10)];
 
   // 將對應的字母替換上去
   return strArray.reduce((prev: string, current: string) => {

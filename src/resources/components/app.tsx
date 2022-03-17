@@ -10,7 +10,7 @@ import encodeHandler from '@/Functions/encodeHandler';
 import encodeSubstitutionCipher from '@/Functions/encodeSubstitutionCipher';
 import getRandomNumber from '@/Functions/getRandomNumber';
 import setDefaultParam from '@/Functions/setDefaultParam';
-import { I_Loading, I_Parameter, I_ParameterData } from '@/Interfaces/index';
+import { I_Loading, I_Parameter } from '@/Interfaces/index';
 
 import pkg from '../../../package.json';
 import parameterData from '../data/parameter.json';
@@ -21,10 +21,10 @@ const App = () => {
   const [ encodeSelected, setEncodeSelected ] = useState<boolean>(true);
 
   const [ parameter, setParameter ] = useState<I_Parameter>({
+    alphabet: [],
     digits: 5,
     prime: [],
     table: [],
-    alphabet: [],
     tableKeyword: []
   });
 
@@ -34,10 +34,9 @@ const App = () => {
   });
 
   useEffect(() => {
-    const data: I_ParameterData = parameterData;
-    const _param: I_Parameter = setDefaultParam(data, parameter);
+    const param: I_Parameter = setDefaultParam(parameterData, parameter);
 
-    setParameter({ ..._param });
+    setParameter({ ...param });
     setLoading({ control: false, type: '' });
   }, []);
 
@@ -58,7 +57,7 @@ const App = () => {
 
   // * 送出內容（編碼或解碼）
   const submitHandler = (): false => {
-    const result: string = computedCode(encodeSelected) || '';
+    const result: string = computedCode(encodeSelected);
     setTextOutput(result);
     setLoading({ control: false, type: '' });
     return false;

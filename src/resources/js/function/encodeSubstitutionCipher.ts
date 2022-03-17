@@ -10,11 +10,8 @@ import { I_Parameter } from '@/Interfaces/index';
   */
 
 const encodeSubstitutionCipher = (payload: string, tableIndex: number, $param: I_Parameter): string => {
-  if (typeof payload !== 'string') return '';
-  if (typeof tableIndex !== 'number') return '';
-
   // 取得對應的對照表
-  const table: string = $param.table[tableIndex];
+  const table: string[] = $param.table[tableIndex];
   let result = '';
 
   // 將對應的字母替換上去
@@ -32,7 +29,8 @@ const encodeSubstitutionCipher = (payload: string, tableIndex: number, $param: I
   }
 
   // 將對照表索引數添加至密文最後面
-  const tableKey: string | number = getTableIndexKeyword(`${tableIndex}`, true, $param);
+  const tableKey: string = getTableIndexKeyword(`${tableIndex}`, true, $param);
+
   return `${result}${tableKey}`;
 };
 

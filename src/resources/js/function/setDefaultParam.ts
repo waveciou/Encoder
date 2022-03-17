@@ -9,8 +9,8 @@ import { I_Parameter, I_ParameterData } from '@/Interfaces/index';
 
 const setDefaultParam = (defaultData: I_ParameterData, $param: I_Parameter): I_Parameter => {
   const { digits, tableKeyword } = $param;
-  const { prime, table, alphabet } = defaultData;
-  const result: I_Parameter = { digits, prime, table, alphabet, tableKeyword };
+  const { alphabet, prime, table } = defaultData;
+  const result: I_Parameter = { alphabet, digits, prime, table, tableKeyword };
 
   result.tableKeyword = [...result.alphabet];
 

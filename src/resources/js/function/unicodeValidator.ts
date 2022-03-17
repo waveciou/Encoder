@@ -5,8 +5,6 @@
   */
 
 const unicodeValidator = (payload: string): boolean => {
-  if (typeof payload !== 'string') return false;
-
   const value: number = parseInt(payload, 10);
 
   if (value === 10) return true;
