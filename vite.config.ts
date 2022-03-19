@@ -11,6 +11,7 @@ const assetsDir = 'resources';
 // https://vitejs.dev/config/
 export default defineConfig({
   root,
+  base: './',
   resolve: {
     alias: [
       { find: '@/Component', replacement: resolve(__dirname, 'src/resources/components') },
