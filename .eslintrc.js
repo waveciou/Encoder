@@ -2,7 +2,8 @@
 module.exports = {
   'env': {
     'browser': true,
-    'es2021': true
+    'es2021': true,
+    'jest/globals': true
   },
   'extends': [
     'eslint:recommended',
@@ -19,7 +20,8 @@ module.exports = {
   },
   'plugins': [
     'react',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'jest'
   ],
   'rules': {
     'indent': [
@@ -37,6 +39,11 @@ module.exports = {
     'semi': [
       'error',
       'always'
-    ]
+    ],
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error'
   }
 };

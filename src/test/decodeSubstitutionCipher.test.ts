@@ -1,5 +1,5 @@
-const decodeSubstitutionCipher = require('../src/resources/js/function/decodeSubstitutionCipher');
-const param = require('./_defaultConfigParam');
+import decodeSubstitutionCipher from '@/Function/decodeSubstitutionCipher';
+import param from '@/Test/_defaultConfigParam';
 
 /**
   * 替換式密碼轉換（解碼）

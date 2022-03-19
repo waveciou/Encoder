@@ -1,5 +1,5 @@
-const decodeHandler = require('../src/resources/js/function/decodeHandler');
-const param = require('./_defaultConfigParam');
+import decodeHandler from '@/Function/decodeHandler';
+import param from '@/Test/_defaultConfigParam';
 
 /**
   * 解碼演算法

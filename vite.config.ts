@@ -16,6 +16,7 @@ export default defineConfig({
       { find: '@/Component', replacement: resolve(__dirname, 'src/resources/components') },
       { find: '@/Interface', replacement: resolve(__dirname, 'src/resources/interface') },
       { find: '@/Function', replacement: resolve(__dirname, 'src/resources/ts') },
+      { find: '@/Test', replacement: resolve(__dirname, 'src/test') },
     ],
   },
   plugins: [

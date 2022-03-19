@@ -3,9 +3,9 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": false,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,11 +15,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src/resources/",
+    "baseUrl": "src/",
     "paths": {
-      "@/Function/*": ["ts/*"],
-      "@/Interface/*": ["interface/*"],
-      "@/Component/*": ["components/*"],
+      "@/Function/*": ["resources/ts/*"],
+      "@/Interface/*": ["resources/interface/*"],
+      "@/Component/*": ["resources/components/*"],
+      "@/Test/*": ["test/*"],
     }
   },
   "include": [

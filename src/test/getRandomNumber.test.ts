@@ -1,4 +1,4 @@
-const getRandomNumber = require('../src/resources/js/function/getRandomNumber');
+import getRandomNumber from '@/Function/getRandomNumber';
 
 /**
   * 回傳亂數

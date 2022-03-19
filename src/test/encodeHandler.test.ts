@@ -1,5 +1,5 @@
-const encodeHandler = require('../src/resources/js/function/encodeHandler');
-const param = require('./_defaultConfigParam');
+import encodeHandler from '@/Function/encodeHandler';
+import param from '@/Test/_defaultConfigParam';
 
 /**
   * 編碼演算法
