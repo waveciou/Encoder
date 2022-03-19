@@ -1,4 +1,5 @@
 import '../scss/main.scss';
+import '../img/demo.gif';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
