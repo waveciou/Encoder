@@ -4,8 +4,8 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 
 import react from '@vitejs/plugin-react';
 
-const root = resolve(__dirname, 'src');
-const outDir = resolve(__dirname, 'dist');
+const root: string = resolve(__dirname, 'src');
+const outDir: string = resolve(__dirname, 'dist');
 const assetsDir = 'resources';
 
 // https://vitejs.dev/config/
