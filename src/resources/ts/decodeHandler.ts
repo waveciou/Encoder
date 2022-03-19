@@ -1,16 +1,16 @@
-import decodeCaesarCipher from '@/Functions/decodeCaesarCipher';
-import parseToInt from '@/Functions/parseToInt';
-import unicodeValidator from '@/Functions/unicodeValidator';
-import { I_Parameter } from '@/Interfaces/index';
+import decodeCaesarCipher from '@/Function/decodeCaesarCipher';
+import parseToInt from '@/Function/parseToInt';
+import unicodeValidator from '@/Function/unicodeValidator';
+import { I_ConfigParam } from '@/Interface/index';
 
 /**
   * 解碼演算法
   * @param { String } ciphertext
-  * @param { Object } $param
+  * @param { Object } $config
   * @returns { String }
   */
 
-const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
+const decodeHandler = (ciphertext: string, $config: I_ConfigParam): string => {
   // 判斷傳入值是否可以轉為數字
   let isError: boolean = parseToInt(ciphertext) ? false : true;
   if (isError) return 'error';
@@ -24,13 +24,13 @@ const decodeHandler = (ciphertext: string, $param: I_Parameter): string => {
   // 把密文陣列以每 5 個字串組成新陣列
   const codeArray: string[] = [];
 
-  for (let i = 0; i < strArray.length; i += $param.digits) {
-    codeArray.push(strArray.slice(i, i + $param.digits).join(''));
+  for (let i = 0; i < strArray.length; i += $config.digits) {
+    codeArray.push(strArray.slice(i, i + $config.digits).join(''));
   }
 
   // 取得公用常數值與私用常數值乘積列表
-  const publicPrime: number = $param.prime[publicConst];
-  const keysArray: number[] = $param.prime.map((prime: number) => prime * publicPrime);
+  const publicPrime: number = $config.prime[publicConst];
+  const keysArray: number[] = $config.prime.map((prime: number) => prime * publicPrime);
 
   // 處理並轉換密文
   const resultArray: string[] = codeArray.map((cipherCode: string, index: number) => {

@@ -1,16 +1,16 @@
-import encodeCaesarCipher from '@/Functions/encodeCaesarCipher';
-import getRandomNumber from '@/Functions/getRandomNumber';
-import { I_Parameter } from '@/Interfaces/index';
+import encodeCaesarCipher from '@/Function/encodeCaesarCipher';
+import getRandomNumber from '@/Function/getRandomNumber';
+import { I_ConfigParam } from '@/Interface/index';
 
 /**
   * 編碼演算法
   * @param { String } plaintext
-  * @param { Object } $param
+  * @param { Object } $config
   * @param { Number } testPublicConst
   * @returns { String }
   */
 
-const encodeHandler = (plaintext: string, $param: I_Parameter, testPublicConst?: number): string => {
+const encodeHandler = (plaintext: string, $config: I_ConfigParam, testPublicConst?: number): string => {
   // 把字串轉成陣列
   const strArray: string[] = plaintext.split('');
 
@@ -23,7 +23,7 @@ const encodeHandler = (plaintext: string, $param: I_Parameter, testPublicConst?:
     const unicodeArray: string[] = unicode.split('');
 
     // 將 unicode 代碼補 0（5位數）
-    const supValue: number = 0 - (unicodeArray.length - $param.digits);
+    const supValue: number = 0 - (unicodeArray.length - $config.digits);
 
     for (let i = 0; i < supValue; i++) {
       unicodeArray.unshift('0');
@@ -31,8 +31,8 @@ const encodeHandler = (plaintext: string, $param: I_Parameter, testPublicConst?:
 
     // 取得「公用常數」與「私用常數」的乘積，並做凱薩密碼處理
     const privateConst: number = index % 10;
-    const privatePrime: number = $param.prime[privateConst];
-    const publicPrime: number = $param.prime[publicConst];
+    const privatePrime: number = $config.prime[privateConst];
+    const publicPrime: number = $config.prime[publicConst];
     return encodeCaesarCipher(unicodeArray, privatePrime * publicPrime);
   });
 

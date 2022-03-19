@@ -9,7 +9,7 @@ const stringToBoolean = (value: string): boolean => {
   return true;
 };
 
-const selectControl = ({ selected, setSelected }: {
+const selecter = ({ selected, setSelected }: {
   selected: boolean;
   setSelected: (payload: boolean) => void;
 }) => {
@@ -46,4 +46,4 @@ const selectControl = ({ selected, setSelected }: {
   );
 };
 
-export default selectControl;
+export default selecter;

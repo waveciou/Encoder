@@ -4,11 +4,11 @@ const param = require('./_defaultConfigParam');
 /**
   * 解碼演算法
   * @param { String } ciphertext
-  * @param { Object } $param
+  * @param { Object } $config
   * @returns { String }
   */
 
-test ('測試密文轉換', () => {
+test('測試密文轉換', () => {
   expect(decodeHandler('106630', param)).toBe('好');
   expect(decodeHandler('43011686200', param)).toBe('👀');
   expect(decodeHandler('987960', param)).toBe('error');

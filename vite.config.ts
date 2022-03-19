@@ -13,9 +13,9 @@ export default defineConfig({
   root,
   resolve: {
     alias: [
-      { find: '@/Components', replacement: resolve(__dirname, 'src/resources/components') },
-      { find: '@/Interfaces', replacement: resolve(__dirname, 'src/resources/interfaces') },
-      { find: '@/Functions', replacement: resolve(__dirname, 'src/resources/js/function') },
+      { find: '@/Component', replacement: resolve(__dirname, 'src/resources/components') },
+      { find: '@/Interface', replacement: resolve(__dirname, 'src/resources/interface') },
+      { find: '@/Function', replacement: resolve(__dirname, 'src/resources/ts') },
     ],
   },
   plugins: [

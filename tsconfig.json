@@ -17,10 +17,9 @@
     "jsx": "react-jsx",
     "baseUrl": "src/resources/",
     "paths": {
-      "@/Functions/*": ["js/function/*"],
-      "@/Interfaces/*": ["interfaces/*"],
-      "@/Components/*": ["components/*"],
-      "@/Scss/*": ["scss/*"],
+      "@/Function/*": ["ts/*"],
+      "@/Interface/*": ["interface/*"],
+      "@/Component/*": ["components/*"],
     }
   },
   "include": [

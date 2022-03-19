@@ -1,4 +1,4 @@
-import parseToInt from '@/Functions/parseToInt';
+import parseToInt from '@/Function/parseToInt';
 
 /**
   * 驗證是否為 Unicode 值

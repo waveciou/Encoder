@@ -1,4 +1,4 @@
-import parseToInt from '@/Functions/parseToInt';
+import parseToInt from '@/Function/parseToInt';
 
 /**
   * 凱薩密碼轉換（編碼）

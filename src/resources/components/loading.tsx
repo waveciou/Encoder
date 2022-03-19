@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LoadingTextProvider from '@/Functions/loadingTextProvider';
+import LoaderHeading from '@/Function/loaderHeading';
 
 const loading = ({ type }: { type: string }) => (
   <div className="loading">
@@ -10,7 +10,7 @@ const loading = ({ type }: { type: string }) => (
         <div></div>
         <div></div>
       </div>
-      <div className="loading-text">{ LoadingTextProvider(type) }</div>
+      <div className="loading-text">{ LoaderHeading(type) }</div>
     </div>
   </div>
 );

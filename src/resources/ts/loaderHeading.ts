@@ -4,7 +4,7 @@
   * @returns { String }
   */
 
-const loadingTextProvider = (type: string): string => {
+const loaderHeading = (type: string): string => {
   switch (type) {
   case 'encode':
     return 'Encoding...';
@@ -15,4 +15,4 @@ const loadingTextProvider = (type: string): string => {
   }
 };
 
-export default loadingTextProvider;
+export default loaderHeading;

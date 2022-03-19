@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import InputArticleComponent from '@/Components/inputArticle';
-import LoadingComponent from '@/Components/loading';
-import OutputArticleComponent from '@/Components/outputArticle';
-import SelectControlComponent from '@/Components/selectControl';
-import decodeHandler from '@/Functions/decodeHandler';
-import decodeSubstitutionCipher from '@/Functions/decodeSubstitutionCipher';
-import encodeHandler from '@/Functions/encodeHandler';
-import encodeSubstitutionCipher from '@/Functions/encodeSubstitutionCipher';
-import getRandomNumber from '@/Functions/getRandomNumber';
-import setDefaultParam from '@/Functions/setDefaultParam';
-import { I_Loading, I_Parameter } from '@/Interfaces/index';
+import InputArticleComponent from '@/Component/inputArticle';
+import LoadingComponent from '@/Component/loading';
+import OutputArticleComponent from '@/Component/outputArticle';
+import SelecterComponent from '@/Component/selecter';
+import decodeHandler from '@/Function/decodeHandler';
+import decodeSubstitutionCipher from '@/Function/decodeSubstitutionCipher';
+import encodeHandler from '@/Function/encodeHandler';
+import encodeSubstitutionCipher from '@/Function/encodeSubstitutionCipher';
+import getRandomNumber from '@/Function/getRandomNumber';
+import setDefaultConfig from '@/Function/setDefaultConfig';
+import { I_ConfigParam, I_Loading } from '@/Interface/index';
 
 import pkg from '../../../package.json';
 import parameterData from '../data/parameter.json';
@@ -20,7 +20,7 @@ const App = () => {
   const [ textOutput, setTextOutput ] = useState<string>('');
   const [ encodeSelected, setEncodeSelected ] = useState<boolean>(true);
 
-  const [ parameter, setParameter ] = useState<I_Parameter>({
+  const [ parameter, setParameter ] = useState<I_ConfigParam>({
     alphabet: [],
     digits: 5,
     prime: [],
@@ -34,7 +34,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    const param: I_Parameter = setDefaultParam(parameterData, parameter);
+    const param: I_ConfigParam = setDefaultConfig(parameterData, parameter);
 
     setParameter({ ...param });
     setLoading({ control: false, type: '' });
@@ -92,7 +92,7 @@ const App = () => {
   return (
     <>
       <div className="main">
-        <SelectControlComponent
+        <SelecterComponent
           selected={ encodeSelected }
           setSelected={ setSelectedHandler }
         />

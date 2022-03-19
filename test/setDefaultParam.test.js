@@ -12,7 +12,7 @@ const parameter = {
 /**
   * 設定預設參數
   * @param { Object } defaultData
-  * @param { Object } $param
+  * @param { Object } $config
   * @returns { Object }
   */
 
@@ -42,7 +42,7 @@ describe('測試參數的型別', () => {
       const _data = setDefaultParam(data, parameter)[testCase[i]];
 
       for (let j = 0; j < _data.length; j++) {
-        expect(typeof(_data[j])).toBe('string');
+        expect(typeof (_data[j])).toBe('string');
       }
     }
   });
@@ -59,7 +59,7 @@ describe('測試參數的型別', () => {
     const _data = setDefaultParam(data, parameter)['prime'];
 
     for (let i = 0; i < _data.length; i++) {
-      expect(typeof(_data[i])).toBe('number');
+      expect(typeof (_data[i])).toBe('number');
     }
   });
 });

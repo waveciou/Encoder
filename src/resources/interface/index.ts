@@ -1,4 +1,4 @@
-export interface I_Parameter {
+export interface I_ConfigParam {
   alphabet: string[];
   digits: number;
   prime: number[];
@@ -6,7 +6,7 @@ export interface I_Parameter {
   tableKeyword: string[];
 }
 
-export interface I_ParameterData {
+export interface I_Parameter {
   alphabet: string[];
   prime: number[];
   table: string[][];
