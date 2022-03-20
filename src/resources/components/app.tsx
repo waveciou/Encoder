@@ -57,15 +57,21 @@ const App = () => {
     setProcessTime(null);
   };
 
+  // * 取得時間
+  const getDateTimeHandler = (): number => {
+    const date: Date = new Date();
+    return date.getTime();
+  };
+
   // * 送出內容（編碼或解碼）
   const submitHandler = (): false => {
-    const startDate: Date = new Date();
-    const startTime: number = startDate.getTime();
+    if (textInput === '') {
+      return false;
+    }
 
+    const startTime: number = getDateTimeHandler();
     const result: string = computedCode(encodeSelected);
-
-    const endDate: Date = new Date();
-    const endTime: number = endDate.getTime();
+    const endTime: number = getDateTimeHandler();
     const time: number = (endTime - startTime) || 1;
 
     setTextOutput(result);
