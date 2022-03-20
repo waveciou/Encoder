@@ -1,5 +1,5 @@
 import decodeSubstitutionCipher from '@/Function/decodeSubstitutionCipher';
-import param from '@/Test/_defaultConfigParam';
+import $config from '@/Test/_configParam';
 
 /**
   * 替換式密碼轉換（解碼）
@@ -9,5 +9,5 @@ import param from '@/Test/_defaultConfigParam';
   */
 
 test('測試替換式密碼轉換', () => {
-  expect(decodeSubstitutionCipher('l86gv47R2349v7666Eei55FB90A', param)).toBe('138694754795234975766626813655356290');
+  expect(decodeSubstitutionCipher('l86gv47R2349v7666Eei55FB90A', $config)).toBe('138694754795234975766626813655356290');
 });
