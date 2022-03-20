@@ -303,6 +303,7 @@ p {
   display: flex;
   align-items: center;
   font-size: map-get($normal-font-size, small);
+  text-align: left;
   color: $color-white;
 
   &::before {
@@ -312,6 +313,16 @@ p {
     margin-right: 5px;
     display: block;
     font-size: 20px;
+  }
+
+  span {
+    min-width: 50px;
+    display: block;
+    color: inherit;
+  }
+
+  &.is-active {
+    color: $color-yellow;
   }
 }
 
