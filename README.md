@@ -9,8 +9,8 @@
 ## 💡 從這個專案當中學到了什麼
 
 - 基本的密碼學原理運用（凱薩密碼、替換式密碼）
-- 使用 [vite](https://vitejs.dev/) 建立 [React](https://zh-hant.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/) 開發環境
-- 使用 [jest](https://jestjs.io/) 替每個執行的函式做單元測試（Unit Test）
+- 使用 [Vite](https://vitejs.dev/) 建立 [React](https://zh-hant.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/) 開發環境
+- 使用 [Jest](https://jestjs.io/) 替每個執行的函式做單元測試（Unit Test）
 
 ## 演算法說明
 
