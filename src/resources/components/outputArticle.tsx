@@ -29,7 +29,11 @@ const outputArticle = ({ textOutput }: { textOutput: string }) => {
             text={ textOutput }
             onCopy={() => copiedHandler()}
           >
-            <button type="button" className={`copy-btn ${ isCopied && 'is-active' }`}>
+            <button
+              type="button"
+              title="Copy"
+              className={`copy-btn ${ isCopied && 'is-active' }`}
+            >
               <span>{ isCopied ? 'Copied' : 'Copy'}</span>
             </button>
           </CopyToClipboard>

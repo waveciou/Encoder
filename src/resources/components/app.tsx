@@ -19,6 +19,7 @@ const App = () => {
   const [ textInput, setTextInput ] = useState<string>('');
   const [ textOutput, setTextOutput ] = useState<string>('');
   const [ encodeSelected, setEncodeSelected ] = useState<boolean>(true);
+  const [ processTime, setProcessTime ] = useState<number | null>(null);
 
   const [ parameter, setParameter ] = useState<I_ConfigParam>({
     alphabet: [],
@@ -53,12 +54,22 @@ const App = () => {
   const clearHandler = (): void => {
     setTextInput('');
     setTextOutput('');
+    setProcessTime(null);
   };
 
   // * 送出內容（編碼或解碼）
   const submitHandler = (): false => {
+    const startDate: Date = new Date();
+    const startTime: number = startDate.getTime();
+
     const result: string = computedCode(encodeSelected);
+
+    const endDate: Date = new Date();
+    const endTime: number = endDate.getTime();
+    const time: number = (endTime - startTime) || 1;
+
     setTextOutput(result);
+    setProcessTime(time);
     setLoading({ control: false, type: '' });
     return false;
   };
@@ -117,6 +128,10 @@ const App = () => {
         </div>
 
         <OutputArticleComponent textOutput={ textOutput } />
+
+        <div className={`process-time ${processTime === null && 'is-hidden'}`}>
+          <span>Time: { processTime } ms</span>
+        </div>
 
         { loading.control && <LoadingComponent type={ loading.type } /> }
       </div>
