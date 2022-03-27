@@ -133,11 +133,7 @@ const App = () => {
           >Clear</button>
         </div>
 
-        <OutputArticleComponent textOutput={ textOutput } />
-
-        <div className={`process-time ${processTime === null && 'is-hidden'}`}>
-          <span>Time: { processTime } ms</span>
-        </div>
+        <OutputArticleComponent textOutput={ textOutput } processTime={processTime} />
 
         { loading.control && <LoadingComponent type={ loading.type } /> }
       </div>
