@@ -97,7 +97,7 @@ p {
 
 .main {
   margin-top: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .textarea {
@@ -209,7 +209,18 @@ p {
 
 .article__header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.article__feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  @include min-width(480px) {
+    margin-bottom: 0;
+  }
 }
 
 .title {
@@ -327,9 +338,16 @@ p {
 }
 
 .process-time {
+  margin-right: 10px;
   display: flex;
   align-items: center;
   font-size: map-get($normal-font-size, small);
+
+  > label::before {
+    @include min-width(480px) {
+      content: 'Time: ';
+    }
+  }
 
   &.is-hidden {
     visibility: hidden;
@@ -378,13 +396,6 @@ p {
   color: $color-white;
 }
 
-@keyframes bouncing-loader {
-  to {
-    opacity: 0.1;
-    transform: translate3d(0, -1rem, 0);
-  }
-}
-
 .bouncing-loader {
   display: flex;
   justify-content: center;
@@ -423,4 +434,11 @@ p {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0);
+  }
 }
