@@ -1,6 +1,7 @@
 import '../scss/main.scss';
 import '../img/demo.gif';
 
+// import '../data/manifest.json';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -42,6 +42,9 @@ export default defineConfig({
           if (/\.css$/.test(name)) {
             return `${assetsDir}/css/[name].[ext]`;
           }
+          if (/manifest\.json$/.test(name)) {
+            return '[name].[ext]';
+          }
           return `${assetsDir}/[name].[ext]`;
         }
       }
