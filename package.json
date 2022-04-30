@@ -1,5 +1,5 @@
 {
-  "name": "text-encoder",
+  "name": "encoder",
   "version": "1.3.2",
   "description": "",
   "main": "main.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waveciou/text-encoder.git"
+    "url": "git+https://github.com/waveciou/Encoder.git"
   },
   "author": "waveciou <waveciou@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/waveciou/text-encoder/issues"
+    "url": "https://github.com/waveciou/Encoder/issues"
   },
-  "homepage": "https://github.com/waveciou/text-encoder#readme",
+  "homepage": "https://github.com/waveciou/Encoder#readme",
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
