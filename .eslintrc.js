@@ -8,7 +8,8 @@ module.exports = {
   'extends': [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
@@ -24,22 +25,22 @@ module.exports = {
     'jest'
   ],
   'rules': {
-    'indent': [
-      'error',
-      2
-    ],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
-    'semi': [
-      'error',
-      'always'
-    ],
+    // 'indent': [
+    //   'error',
+    //   2
+    // ],
+    // 'linebreak-style': [
+    //   'error',
+    //   'unix'
+    // ],
+    // 'quotes': [
+    //   'error',
+    //   'single'
+    // ],
+    // 'semi': [
+    //   'error',
+    //   'always'
+    // ],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
