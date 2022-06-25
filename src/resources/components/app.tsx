@@ -105,8 +105,8 @@ const App = () => {
 
   // * 輸入欄的 Placeholder
   const placeholderHandler = (isEncode: boolean): string => {
-    const encode = 'Please enter the some text for Encode.';
-    const decode = 'Please enter the some text for Decode.';
+    const encode = 'Please input the some text for Encode.';
+    const decode = 'Please input the some text for Decode.';
     return isEncode ? encode : decode;
   };
 
