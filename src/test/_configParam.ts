@@ -7,7 +7,7 @@ const configParam = setDefaultConfig(data, {
   digits: 5,
   prime: [],
   table: [],
-  tableKeyword: []
+  tableKeyword: [],
 });
 
 export default configParam;

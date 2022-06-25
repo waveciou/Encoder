@@ -1,6 +1,10 @@
 import React from 'react';
 
-const inputArticle = ({ textInput, placeholder, updateTextInput }: {
+const inputArticle = ({
+  textInput,
+  placeholder,
+  updateTextInput,
+}: {
   textInput: string;
   placeholder: string;
   updateTextInput: (payload: string) => void;
@@ -12,13 +16,15 @@ const inputArticle = ({ textInput, placeholder, updateTextInput }: {
 
   return (
     <div className="article">
-      <label className="caption" htmlFor="input-area">Input :</label>
+      <label className="caption" htmlFor="input-area">
+        Input :
+      </label>
       <textarea
         id="input-area"
         className="textarea"
-        value={ textInput }
-        onChange={ changeHandler }
-        placeholder={ placeholder }
+        value={textInput}
+        onChange={changeHandler}
+        placeholder={placeholder}
       />
     </div>
   );

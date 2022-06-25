@@ -11,7 +11,9 @@ ReactDOM.render(
     <div className="wrapper">
       <div className="wrap">
         <h1 className="title">TEXT ENCODER</h1>
-        <p className="text-center">This is an encoder for string, it can be transform the text into code.</p>
+        <p className="text-center">
+          This is an encoder for string, it can be transform the text into code.
+        </p>
         <App />
       </div>
     </div>

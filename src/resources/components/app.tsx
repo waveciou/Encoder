@@ -16,22 +16,22 @@ import pkg from '../../../package.json';
 import parameterData from '../data/parameter.json';
 
 const App = () => {
-  const [ textInput, setTextInput ] = useState<string>('');
-  const [ textOutput, setTextOutput ] = useState<string>('');
-  const [ encodeSelected, setEncodeSelected ] = useState<boolean>(true);
-  const [ processTime, setProcessTime ] = useState<number | null>(null);
+  const [textInput, setTextInput] = useState<string>('');
+  const [textOutput, setTextOutput] = useState<string>('');
+  const [encodeSelected, setEncodeSelected] = useState<boolean>(true);
+  const [processTime, setProcessTime] = useState<number | null>(null);
 
-  const [ parameter, setParameter ] = useState<I_ConfigParam>({
+  const [parameter, setParameter] = useState<I_ConfigParam>({
     alphabet: [],
     digits: 5,
     prime: [],
     table: [],
-    tableKeyword: []
+    tableKeyword: [],
   });
 
-  const [ loading, setLoading ] = useState<I_Loading>({
+  const [loading, setLoading] = useState<I_Loading>({
     control: true,
-    type: ''
+    type: '',
   });
 
   useEffect(() => {
@@ -42,7 +42,8 @@ const App = () => {
   }, []);
 
   // * 更新輸入明文
-  const updateTextInputHandler = (payload: string): void => setTextInput(payload);
+  const updateTextInputHandler = (payload: string): void =>
+    setTextInput(payload);
 
   // * 編解碼選擇（Radio Button）
   const setSelectedHandler = (payload: boolean): void => {
@@ -72,7 +73,7 @@ const App = () => {
     const startTime: number = getDateTimeHandler();
     const result: string = computedCode(encodeSelected);
     const endTime: number = getDateTimeHandler();
-    const time: number = (endTime - startTime) || 1;
+    const time: number = endTime - startTime || 1;
 
     setTextOutput(result);
     setProcessTime(time);
@@ -84,13 +85,16 @@ const App = () => {
   const computedCode = (isEncode: boolean): string => {
     setLoading({
       control: true,
-      type: isEncode ? 'encode' : 'decode'
+      type: isEncode ? 'encode' : 'decode',
     });
 
     if (isEncode) {
       // 編碼
       const code: string = encodeHandler(textInput, parameter);
-      const tableKey: number = getRandomNumber(0, parameter.tableKeyword.length);
+      const tableKey: number = getRandomNumber(
+        0,
+        parameter.tableKeyword.length
+      );
       return encodeSubstitutionCipher(code, tableKey, parameter);
     } else {
       // 解碼
@@ -110,34 +114,45 @@ const App = () => {
     <>
       <div className="main">
         <SelecterComponent
-          selected={ encodeSelected }
-          setSelected={ setSelectedHandler }
+          selected={encodeSelected}
+          setSelected={setSelectedHandler}
         />
 
         <InputArticleComponent
-          textInput={ textInput }
-          placeholder={ placeholderHandler(encodeSelected) }
-          updateTextInput={ updateTextInputHandler }
+          textInput={textInput}
+          placeholder={placeholderHandler(encodeSelected)}
+          updateTextInput={updateTextInputHandler}
         />
 
         <div className="row">
-          <button
-            className="btn"
-            title="Submit"
-            onClick={ submitHandler }
-          >Submit</button>
-          <button
-            className="btn"
-            title="Clear"
-            onClick={ clearHandler }
-          >Clear</button>
+          <button className="btn" title="Submit" onClick={submitHandler}>
+            Submit
+          </button>
+          <button className="btn" title="Clear" onClick={clearHandler}>
+            Clear
+          </button>
         </div>
 
-        <OutputArticleComponent textOutput={ textOutput } processTime={processTime} />
+        <OutputArticleComponent
+          textOutput={textOutput}
+          processTime={processTime}
+        />
 
-        { loading.control && <LoadingComponent type={ loading.type } /> }
+        {loading.control && <LoadingComponent type={loading.type} />}
       </div>
-      <div className="copyright">Version: {pkg.version}<br />Created By <a href="https://github.com/waveciou" target="_blank" title="GitHub @waveciou" rel="noreferrer">@waveciou</a></div>
+      <div className="copyright">
+        Version: {pkg.version}
+        <br />
+        Created By{' '}
+        <a
+          href="https://github.com/waveciou"
+          target="_blank"
+          title="GitHub @waveciou"
+          rel="noreferrer"
+        >
+          @waveciou
+        </a>
+      </div>
     </>
   );
 };
