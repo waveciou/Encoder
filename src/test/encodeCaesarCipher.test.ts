@@ -1,11 +1,11 @@
 import encodeCaesarCipher from '@/Function/encodeCaesarCipher';
 
 /**
-  * 凱薩密碼轉換（編碼）
-  * @param { Array } payload
-  * @param { Number } offset
-  * @returns { String }
-  */
+ * 凱薩密碼轉換（編碼）
+ * @param { Array } payload
+ * @param { Number } offset
+ * @returns { String }
+ */
 
 const testCase = ['12345', '24681', '36927', '48263', '50509', '62845'];
 

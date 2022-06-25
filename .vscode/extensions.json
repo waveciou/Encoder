@@ -3,6 +3,7 @@
     "stylelint.vscode-stylelint",
     "dbaeumer.vscode-eslint",
     "orta.vscode-jest",
-    "mike-co.import-sorter"
+    "mike-co.import-sorter",
+    "esbenp.prettier-vscode"
   ]
 }

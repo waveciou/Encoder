@@ -3,7 +3,7 @@ module.exports = {
   'env': {
     'browser': true,
     'es2021': true,
-    'jest/globals': true
+    'jest/globals': true,
   },
   'extends': [
     'eslint:recommended',
@@ -14,16 +14,12 @@ module.exports = {
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
     'ecmaFeatures': {
-      'jsx': true
+      'jsx': true,
     },
     'ecmaVersion': 12,
-    'sourceType': 'module'
+    'sourceType': 'module',
   },
-  'plugins': [
-    'react',
-    '@typescript-eslint',
-    'jest'
-  ],
+  'plugins': ['react', '@typescript-eslint', 'jest'],
   'rules': {
     // 'indent': [
     //   'error',
@@ -45,6 +41,6 @@ module.exports = {
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
-    'jest/valid-expect': 'error'
-  }
+    'jest/valid-expect': 'error',
+  },
 };

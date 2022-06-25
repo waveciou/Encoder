@@ -7,15 +7,15 @@ const parameter = {
   digits: 5,
   prime: [],
   table: [],
-  tableKeyword: []
+  tableKeyword: [],
 };
 
 /**
-  * 設定預設參數
-  * @param { Object } defaultData
-  * @param { Object } $config
-  * @returns { Object }
-  */
+ * 設定預設參數
+ * @param { Object } defaultData
+ * @param { Object } $config
+ * @returns { Object }
+ */
 
 describe('測試預設參數', () => {
   test('digits', () => {

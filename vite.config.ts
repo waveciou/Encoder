@@ -14,9 +14,18 @@ export default defineConfig({
   base: '/Encoder/',
   resolve: {
     alias: [
-      { find: '@/Component', replacement: resolve(__dirname, 'src/resources/components') },
-      { find: '@/Interface', replacement: resolve(__dirname, 'src/resources/interface') },
-      { find: '@/Function', replacement: resolve(__dirname, 'src/resources/ts') },
+      {
+        find: '@/Component',
+        replacement: resolve(__dirname, 'src/resources/components'),
+      },
+      {
+        find: '@/Interface',
+        replacement: resolve(__dirname, 'src/resources/interface'),
+      },
+      {
+        find: '@/Function',
+        replacement: resolve(__dirname, 'src/resources/ts'),
+      },
       { find: '@/Test', replacement: resolve(__dirname, 'src/test') },
     ],
   },
@@ -24,7 +33,7 @@ export default defineConfig({
     react(),
     createHtmlPlugin({
       minify: true,
-    })
+    }),
   ],
   build: {
     outDir,
@@ -36,7 +45,7 @@ export default defineConfig({
         entryFileNames: `${assetsDir}/js/main.js`,
         chunkFileNames: `${assetsDir}/js/[name].js`,
         assetFileNames: ({ name = '' }) => {
-          if (/\.(gif|jpe?g|png|svg)$/.test(name)){
+          if (/\.(gif|jpe?g|png|svg)$/.test(name)) {
             return `${assetsDir}/img/[name].[ext]`;
           }
           if (/\.css$/.test(name)) {
@@ -46,8 +55,8 @@ export default defineConfig({
             return '[name].[ext]';
           }
           return `${assetsDir}/[name].[ext]`;
-        }
-      }
+        },
+      },
     },
-  }
+  },
 });

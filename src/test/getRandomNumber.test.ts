@@ -1,11 +1,11 @@
 import getRandomNumber from '@/Function/getRandomNumber';
 
 /**
-  * 回傳亂數
-  * @param { Number } min
-  * @param { Number } max
-  * @returns { Number }
-  */
+ * 回傳亂數
+ * @param { Number } min
+ * @param { Number } max
+ * @returns { Number }
+ */
 
 test('亂數數值測試', () => {
   const min = 0;
