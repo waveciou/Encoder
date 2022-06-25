@@ -10,7 +10,7 @@ const loading = ({ type }: { type: string }) => (
         <div></div>
         <div></div>
       </div>
-      <div className="loading-text">{ LoaderHeading(type) }</div>
+      <div className="loading-text">{LoaderHeading(type)}</div>
     </div>
   </div>
 );

@@ -2,14 +2,18 @@ import getTableIndexKeyword from '@/Function/getTableIndexKeyword';
 import { I_ConfigParam } from '@/Interface/index';
 
 /**
-  * 替換式密碼轉換（編碼）
-  * @param { String } payload
-  * @param { Number } tableIndex
-  * @param { Object } $config
-  * @returns { String }
-  */
+ * 替換式密碼轉換（編碼）
+ * @param { String } payload
+ * @param { Number } tableIndex
+ * @param { Object } $config
+ * @returns { String }
+ */
 
-const encodeSubstitutionCipher = (payload: string, tableIndex: number, $config: I_ConfigParam): string => {
+const encodeSubstitutionCipher = (
+  payload: string,
+  tableIndex: number,
+  $config: I_ConfigParam
+): string => {
   // 取得對應的對照表
   const table: string[] = $config.table[tableIndex];
   let result = '';

@@ -3,14 +3,18 @@ import getRandomNumber from '@/Function/getRandomNumber';
 import { I_ConfigParam } from '@/Interface/index';
 
 /**
-  * 編碼演算法
-  * @param { String } plaintext
-  * @param { Object } $config
-  * @param { Number } testPublicConst
-  * @returns { String }
-  */
+ * 編碼演算法
+ * @param { String } plaintext
+ * @param { Object } $config
+ * @param { Number } testPublicConst
+ * @returns { String }
+ */
 
-const encodeHandler = (plaintext: string, $config: I_ConfigParam, testPublicConst?: number): string => {
+const encodeHandler = (
+  plaintext: string,
+  $config: I_ConfigParam,
+  testPublicConst?: number
+): string => {
   // 把字串轉成陣列
   const strArray: string[] = plaintext.split('');
 

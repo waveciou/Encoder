@@ -1,10 +1,10 @@
 import parseToInt from '@/Function/parseToInt';
 
 /**
-  * 驗證是否為 Unicode 值
-  * @param { String } payload
-  * @returns { Boolean }
-  */
+ * 驗證是否為 Unicode 值
+ * @param { String } payload
+ * @returns { Boolean }
+ */
 
 const unicodeValidator = (payload: string): boolean => {
   const value: number = parseToInt(payload);

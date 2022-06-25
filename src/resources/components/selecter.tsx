@@ -9,7 +9,10 @@ const stringToBoolean = (value: string): boolean => {
   return true;
 };
 
-const selecter = ({ selected, setSelected }: {
+const selecter = ({
+  selected,
+  setSelected,
+}: {
   selected: boolean;
   setSelected: (payload: boolean) => void;
 }) => {
@@ -26,10 +29,12 @@ const selecter = ({ selected, setSelected }: {
           name="select-control"
           id="encode"
           value="true"
-          onChange={ changeHandler }
-          checked={ selected === true }
+          onChange={changeHandler}
+          checked={selected === true}
         />
-        <label htmlFor="encode" title="Encode">Encode<span></span></label>
+        <label htmlFor="encode" title="Encode">
+          Encode<span></span>
+        </label>
       </div>
       <div className="select__fieldset">
         <input
@@ -37,10 +42,12 @@ const selecter = ({ selected, setSelected }: {
           name="select-control"
           id="decode"
           value="false"
-          onChange={ changeHandler }
-          checked={ selected === false }
+          onChange={changeHandler}
+          checked={selected === false}
         />
-        <label htmlFor="decode" title="Decode">Decode<span></span></label>
+        <label htmlFor="decode" title="Decode">
+          Decode<span></span>
+        </label>
       </div>
     </div>
   );

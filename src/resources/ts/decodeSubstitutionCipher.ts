@@ -3,13 +3,16 @@ import parseToInt from '@/Function/parseToInt';
 import { I_ConfigParam } from '@/Interface/index';
 
 /**
-  * 替換式密碼轉換（解碼）
-  * @param { String } payload
-  * @param { Object } $config
-  * @returns { String }
-  */
+ * 替換式密碼轉換（解碼）
+ * @param { String } payload
+ * @param { Object } $config
+ * @returns { String }
+ */
 
-const decodeSubstitutionCipher = (payload: string, $config: I_ConfigParam): string => {
+const decodeSubstitutionCipher = (
+  payload: string,
+  $config: I_ConfigParam
+): string => {
   // 取得對照表索引數
   const strArray: string[] = payload.split('');
   const tableKey: string = strArray.splice(strArray.length - 1, 1)[0];
