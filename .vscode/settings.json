@@ -3,9 +3,6 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true,
   },
-  // "eslint.validate": [
-  //   "javascript",
-  // ],
   "editor.formatOnSave": true,
   "importSorter.generalConfiguration.sortOnBeforeSave": true,
   "stylelint.snippet": [

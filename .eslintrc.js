@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 module.exports = {
   'env': {
     'browser': true,
@@ -21,22 +20,6 @@ module.exports = {
   },
   'plugins': ['react', '@typescript-eslint', 'jest'],
   'rules': {
-    // 'indent': [
-    //   'error',
-    //   2
-    // ],
-    // 'linebreak-style': [
-    //   'error',
-    //   'unix'
-    // ],
-    // 'quotes': [
-    //   'error',
-    //   'single'
-    // ],
-    // 'semi': [
-    //   'error',
-    //   'always'
-    // ],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
