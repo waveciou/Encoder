@@ -19,6 +19,11 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   src: local('Material Icons'), local('MaterialIcons-Regular'),;
 }
 
+/* stylelint-disable scss/at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @mixin min-width($breakpoints) {
   @media screen and (min-width: $breakpoints) {
     @content;
