@@ -77,32 +77,8 @@ body {
   -o-overflow-scrolling: touch;
 }
 
-p {
-  margin-bottom: 1rem;
-}
-
 [v-cloak] {
   display: none;
-}
-
-.wrapper {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
-
-.wrap {
-  width: 100%;
-  max-width: calc(100% - 30px);
-  margin: 0 auto;
-
-  @include min-width(768px + 30px) {
-    max-width: 768px;
-  }
-}
-
-.main {
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .textarea {
@@ -124,10 +100,6 @@ p {
   transform: translateZ(0);
   box-sizing: border-box;
   word-break: break-word;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .select__control {
@@ -365,21 +337,6 @@ p {
     margin-right: 5px;
     display: block;
     font-size: 20px;
-  }
-}
-
-.copyright {
-  font-size: 1rem;
-  line-height: 1.4em;
-  text-align: center;
-
-  a {
-    @include min-width(1025px) {
-      &:hover,
-      &:active {
-        color: $color-yellow;
-      }
-    }
   }
 }
 
