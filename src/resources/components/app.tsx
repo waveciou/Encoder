@@ -124,7 +124,7 @@ const App = () => {
           updateTextInput={updateTextInputHandler}
         />
 
-        <div className="row">
+        <div className="tw-my-4 tw-flex tw-items-center tw-justify-between tw-flex-wrap mobile:tw-justify-center">
           <button className="btn" title="Submit" onClick={submitHandler}>
             Submit
           </button>

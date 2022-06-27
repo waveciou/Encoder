@@ -15,8 +15,8 @@ const inputArticle = ({
   };
 
   return (
-    <div className="article">
-      <label className="caption" htmlFor="input-area">
+    <div className="tw-my-4 tw-text-white">
+      <label className="tw-block tw-mb-3" htmlFor="input-area">
         Input :
       </label>
       <textarea

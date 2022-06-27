@@ -26,7 +26,11 @@ module.exports = {
       blue: '#02A4E0',
       yellow: '#EFCE4A',
     },
-    extend: {},
+    extend: {
+      zIndex: {
+        '1000': '1000',
+      },
+    },
   },
   plugins: [],
 };
