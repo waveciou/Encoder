@@ -132,46 +132,20 @@ body {
   }
 }
 
-.title {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 26px;
-  text-align: center;
-  color: $color-white;
-  line-height: 1.6em;
-
-  @include min-width(768px) {
-    font-size: 35px;
-  }
-
-  &::before {
-    content: '';
-    width: 1.6em;
-    height: 1.6em;
-    margin-right: 1rem;
-    display: inline-block;
-    background: url('../img/icon.svg') no-repeat center/70%;
-    vertical-align: top;
-    border: 3px $color-white solid;
-    border-radius: 7px;
-    box-sizing: border-box;
-  }
-}
-
 .btn {
-  @include style--font-text;
-
   width: 100%;
   padding: 10px 25px;
   margin-top: 5px;
-  margin-bottom: 5px;
   display: block;
+  font-size: map-get($normal-font-size, mobile);
   background-color: transparent;
   border: 1px $color-white solid;
   border-radius: 5px;
   outline: none;
-  font: inherit;
+  margin-bottom: 5px;
   cursor: pointer;
+  letter-spacing: 1px;
+  line-height: 1.6em;
   box-sizing: border-box;
 
   @include min-width(370px) {
@@ -188,6 +162,7 @@ body {
   @include min-width(1025px) {
     padding-top: 7px;
     padding-bottom: 7px;
+    font-size: map-get($normal-font-size, desktop);
 
     &:hover {
       color: $color-black;
@@ -250,21 +225,13 @@ body {
   }
 }
 
-.bouncing-loader > div {
+.bouncing-loader-item {
   width: 1rem;
   height: 1rem;
   margin: 3rem 0.2rem;
   background-color: $color-white;
   border-radius: 50%;
   animation: bouncing-loader 0.6s infinite alternate;
-
-  @at-root .is-encode & {
-    background-color: $color-green;
-  }
-
-  @at-root .is-decode & {
-    background-color: $color-blue;
-  }
 
   &:nth-child(2) {
     animation-delay: 0.2s;

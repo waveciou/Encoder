@@ -11,6 +11,8 @@ module.exports = {
       small: '14px',
       mobile: '16px',
       desktop: '20px',
+      title: '26px',
+      'title-lg': '35px',
     },
     screens: {
       small: '370px',
@@ -25,6 +27,9 @@ module.exports = {
       green: '#3BB763',
       blue: '#02A4E0',
       yellow: '#EFCE4A',
+    },
+    backgroundSize: {
+      '70%': '70%',
     },
     extend: {
       zIndex: {
