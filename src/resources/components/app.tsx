@@ -112,7 +112,7 @@ const App = () => {
 
   return (
     <>
-      <div className="main">
+      <div className="tw-my-8">
         <SelecterComponent
           selected={encodeSelected}
           setSelected={setSelectedHandler}
@@ -124,7 +124,7 @@ const App = () => {
           updateTextInput={updateTextInputHandler}
         />
 
-        <div className="row">
+        <div className="tw-my-4 tw-flex tw-items-center tw-justify-between tw-flex-wrap mobile:tw-justify-center">
           <button className="btn" title="Submit" onClick={submitHandler}>
             Submit
           </button>
@@ -140,18 +140,30 @@ const App = () => {
 
         {loading.control && <LoadingComponent type={loading.type} />}
       </div>
-      <div className="copyright">
-        Version: {pkg.version}
-        <br />
-        Created By{' '}
-        <a
-          href="https://github.com/waveciou"
-          target="_blank"
-          title="GitHub @waveciou"
-          rel="noreferrer"
-        >
-          @waveciou
-        </a>
+      <div className="tw-w-full tw-flex tw-items-center tw-justify-center before:tw-content-[''] before:tw-block before:tw-w-10 before:tw-h-10 before:tw-mr-2 before:tw-bg-[url('../img/github.svg')] before:tw-bg-no-repeat before:tw-bg-center">
+        <div className="tw-text-mobile tw-leading-6">
+          Version:{' '}
+          <a
+            href="https://github.com/waveciou/Encoder"
+            target="_blank"
+            title={pkg.version}
+            rel="noreferrer"
+            className="desktop:hover:tw-text-yellow"
+          >
+            {pkg.version}
+          </a>
+          <br />
+          Created By{' '}
+          <a
+            href="https://github.com/waveciou"
+            target="_blank"
+            title="GitHub @waveciou"
+            rel="noreferrer"
+            className="desktop:hover:tw-text-yellow"
+          >
+            @waveciou
+          </a>
+        </div>
       </div>
     </>
   );

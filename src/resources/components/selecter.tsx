@@ -22,8 +22,8 @@ const selecter = ({
   };
 
   return (
-    <div className="select__control">
-      <div className="select__fieldset">
+    <div className="tw-flex">
+      <div className="select__fieldset tw-w-6/12 tw-flex-1">
         <input
           type="radio"
           name="select-control"
@@ -36,7 +36,7 @@ const selecter = ({
           Encode<span></span>
         </label>
       </div>
-      <div className="select__fieldset">
+      <div className="select__fieldset tw-w-6/12 tw-flex-1">
         <input
           type="radio"
           name="select-control"

@@ -29,15 +29,17 @@ const outputArticle = ({
   }, [textOutput]);
 
   return (
-    <div className="article">
-      <div className="article__header">
-        <label className="caption" htmlFor="output-area">
+    <div className="tw-my-4 tw-text-white">
+      <div className="tw-flex tw-items-center tw-justify-between">
+        <label className="tw-block tw-mb-3" htmlFor="output-area">
           Output :
         </label>
         {textOutput !== '' && (
-          <div className="article__feature">
+          <div className="tw-flex tw-items-center tw-mb-3 mobile:tw-mb-0">
             <div
-              className={`process-time ${processTime === null && 'is-hidden'}`}
+              className={`process-time ${
+                processTime === null ? 'tw-invisible' : ''
+              }`}
             >
               <label>{processTime} ms</label>
             </div>

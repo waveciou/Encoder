@@ -19,6 +19,11 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   src: local('Material Icons'), local('MaterialIcons-Regular'),;
 }
 
+/* stylelint-disable scss/at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @mixin min-width($breakpoints) {
   @media screen and (min-width: $breakpoints) {
     @content;
@@ -72,32 +77,8 @@ body {
   -o-overflow-scrolling: touch;
 }
 
-p {
-  margin-bottom: 1rem;
-}
-
 [v-cloak] {
   display: none;
-}
-
-.wrapper {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
-
-.wrap {
-  width: 100%;
-  max-width: calc(100% - 30px);
-  margin: 0 auto;
-
-  @include min-width(768px + 30px) {
-    max-width: 768px;
-  }
-}
-
-.main {
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .textarea {
@@ -106,7 +87,6 @@ p {
   width: 100%;
   height: 200px;
   padding: 10px 15px;
-  margin: 0;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
@@ -114,25 +94,10 @@ p {
   background-color: $color-black;
   border: 1px $color-white solid;
   border-radius: 5px;
-  outline: none;
-  resize: none;
-  transform: translateZ(0);
-  box-sizing: border-box;
   word-break: break-word;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.select__control {
-  display: flex;
-}
-
 .select__fieldset {
-  width: 50%;
-  flex: 1;
-
   input[type='radio'] {
     width: 0;
     height: 0;
@@ -201,28 +166,6 @@ p {
   }
 }
 
-.article {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  color: $color-white;
-}
-
-.article__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.article__feature {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-
-  @include min-width(480px) {
-    margin-bottom: 0;
-  }
-}
-
 .title {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
@@ -246,24 +189,6 @@ p {
     border: 3px $color-white solid;
     border-radius: 7px;
     box-sizing: border-box;
-  }
-}
-
-.caption {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.row {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  @include min-width(480px) {
-    justify-content: center;
   }
 }
 
@@ -349,10 +274,6 @@ p {
     }
   }
 
-  &.is-hidden {
-    visibility: hidden;
-  }
-
   &::before {
     @include font-material;
 
@@ -363,43 +284,7 @@ p {
   }
 }
 
-.copyright {
-  font-size: 1rem;
-  line-height: 1.4em;
-  text-align: center;
-
-  a {
-    @include min-width(1025px) {
-      &:hover,
-      &:active {
-        color: $color-yellow;
-      }
-    }
-  }
-}
-
-.loading {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba($color-black, 0.8);
-  z-index: 1000;
-}
-
-.loading-text {
-  text-align: center;
-  color: $color-white;
-}
-
 .bouncing-loader {
-  display: flex;
-  justify-content: center;
-
   > div {
     width: 1rem;
     height: 1rem;
