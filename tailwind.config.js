@@ -28,6 +28,7 @@ module.exports = {
     },
     extend: {
       zIndex: {
+        '-1': '-1',
         '1000': '1000',
       },
     },

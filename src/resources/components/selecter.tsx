@@ -23,7 +23,7 @@ const selecter = ({
 
   return (
     <div className="tw-flex">
-      <div className="select__fieldset tw-w-6/12 tw-flex-1">
+      <div className="select-fieldset tw-w-6/12 tw-flex-1">
         <input
           type="radio"
           name="select-control"
@@ -31,12 +31,17 @@ const selecter = ({
           value="true"
           onChange={changeHandler}
           checked={selected === true}
+          className="tw-w-0 tw-h-0 tw-p-0 tw-m-0 tw-absolute tw-opacity-0 -tw-z-1"
         />
-        <label htmlFor="encode" title="Encode">
-          Encode<span></span>
+        <label
+          htmlFor="encode"
+          title="Encode"
+          className="tw-p-2.5 tw-block tw-text-center tw-text-white tw-cursor-pointer tw-bg-green"
+        >
+          Encode
         </label>
       </div>
-      <div className="select__fieldset tw-w-6/12 tw-flex-1">
+      <div className="select-fieldset tw-w-6/12 tw-flex-1">
         <input
           type="radio"
           name="select-control"
@@ -44,9 +49,14 @@ const selecter = ({
           value="false"
           onChange={changeHandler}
           checked={selected === false}
+          className="tw-w-0 tw-h-0 tw-p-0 tw-m-0 tw-absolute tw-opacity-0 -tw-z-1"
         />
-        <label htmlFor="decode" title="Decode">
-          Decode<span></span>
+        <label
+          htmlFor="decode"
+          title="Decode"
+          className="tw-p-2.5 tw-block tw-text-center tw-text-white tw-cursor-pointer tw-bg-blue"
+        >
+          Decode
         </label>
       </div>
     </div>

@@ -97,71 +97,37 @@ body {
   word-break: break-word;
 }
 
-.select__fieldset {
-  input[type='radio'] {
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-
-    &#encode + label {
-      background-color: $color-green;
-    }
-
-    &#decode + label {
-      background-color: $color-blue;
-    }
-
-    &:checked + label::before {
-      opacity: 1;
-    }
+.select-fieldset {
+  input[type='radio']:checked + label::before {
+    opacity: 1;
   }
 
-  label {
-    padding: 10px;
-    display: block;
-    text-align: center;
-    color: $color-white;
-    cursor: pointer;
+  label::before {
+    content: 'check';
+    margin-right: 5px;
+    margin-left: -#{map-get($normal-font-size, mobile)};
+    display: inline-block;
+    white-space: nowrap;
+    opacity: 0;
+    vertical-align: top;
+    line-height: 1.6em;
+    letter-spacing: normal;
+    word-wrap: normal;
+    direction: ltr;
+    text-transform: none;
+    text-rendering: optimizelegibility;
 
-    &::before {
-      content: 'check';
-      margin-right: 5px;
-      margin-left: -#{map-get($normal-font-size, mobile)};
-      display: inline-block;
-      white-space: nowrap;
-      opacity: 0;
-      vertical-align: top;
-      line-height: 1.6em;
-      letter-spacing: normal;
-      word-wrap: normal;
-      direction: ltr;
-      text-transform: none;
-      text-rendering: optimizelegibility;
-
-      @include min-width(1025px) {
-        margin-left: -#{map-get($normal-font-size, desktop)};
-        font-size: map-get($normal-font-size, desktop);
-      }
-
-      font: {
-        family: 'Material Icons';
-        weight: bold;
-        style: normal;
-        size: map-get($normal-font-size, mobile);
-        feature-settings: 'liga';
-      }
+    @include min-width(1025px) {
+      margin-left: -#{map-get($normal-font-size, desktop)};
+      font-size: map-get($normal-font-size, desktop);
     }
 
-    span {
-      display: none;
-
-      @include min-width(370px) {
-        display: inline;
-      }
+    font: {
+      family: 'Material Icons';
+      weight: bold;
+      style: normal;
+      size: map-get($normal-font-size, mobile);
+      feature-settings: 'liga';
     }
   }
 }
@@ -284,30 +250,28 @@ body {
   }
 }
 
-.bouncing-loader {
-  > div {
-    width: 1rem;
-    height: 1rem;
-    margin: 3rem 0.2rem;
-    background-color: $color-white;
-    border-radius: 50%;
-    animation: bouncing-loader 0.6s infinite alternate;
+.bouncing-loader > div {
+  width: 1rem;
+  height: 1rem;
+  margin: 3rem 0.2rem;
+  background-color: $color-white;
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
 
-    @at-root .is-encode & {
-      background-color: $color-green;
-    }
+  @at-root .is-encode & {
+    background-color: $color-green;
+  }
 
-    @at-root .is-decode & {
-      background-color: $color-blue;
-    }
+  @at-root .is-decode & {
+    background-color: $color-blue;
+  }
 
-    &:nth-child(2) {
-      animation-delay: 0.2s;
-    }
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
 
-    &:nth-child(3) {
-      animation-delay: 0.4s;
-    }
+  &:nth-child(3) {
+    animation-delay: 0.4s;
   }
 }
 
