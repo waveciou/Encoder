@@ -30,31 +30,6 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   }
 }
 
-@mixin font-material {
-  font-size: 24px;
-  font-family: 'Material Icons', sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  white-space: nowrap;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizelegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
 @mixin style--font-text {
   font-size: map-get($normal-font-size, mobile);
   font-family: 'Noto Sans TC', sans-serif, Arial;
@@ -79,6 +54,31 @@ body {
 
 [v-cloak] {
   display: none;
+}
+
+.before-font-material::before {
+  font-size: 24px;
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  white-space: nowrap;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizelegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
 .textarea {
@@ -173,55 +173,6 @@ body {
   &:active {
     color: $color-black;
     background-color: $color-white;
-  }
-}
-
-.copy-btn {
-  display: flex;
-  align-items: center;
-  font-size: map-get($normal-font-size, small);
-  text-align: left;
-  color: $color-white;
-
-  &::before {
-    @include font-material;
-
-    content: '\e14d';
-    margin-right: 5px;
-    display: block;
-    font-size: 20px;
-  }
-
-  span {
-    min-width: 50px;
-    display: block;
-    color: inherit;
-  }
-
-  &.is-active {
-    color: $color-yellow;
-  }
-}
-
-.process-time {
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  font-size: map-get($normal-font-size, small);
-
-  > label::before {
-    @include min-width(480px) {
-      content: 'Time: ';
-    }
-  }
-
-  &::before {
-    @include font-material;
-
-    content: '\e8b5';
-    margin-right: 5px;
-    display: block;
-    font-size: 20px;
   }
 }
 
