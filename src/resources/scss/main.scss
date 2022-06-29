@@ -77,37 +77,12 @@ body {
 }
 
 .select-fieldset {
-  input[type='radio']:checked + label::before {
-    opacity: 1;
+  label::before {
+    opacity: 0;
   }
 
-  label::before {
-    content: 'check';
-    margin-right: 5px;
-    margin-left: -#{map-get($normal-font-size, mobile)};
-    display: inline-block;
-    white-space: nowrap;
-    opacity: 0;
-    vertical-align: top;
-    line-height: 1.6em;
-    letter-spacing: normal;
-    word-wrap: normal;
-    direction: ltr;
-    text-transform: none;
-    text-rendering: optimizelegibility;
-
-    @include min-width(1025px) {
-      margin-left: -#{map-get($normal-font-size, desktop)};
-      font-size: map-get($normal-font-size, desktop);
-    }
-
-    font: {
-      family: 'Material Icons';
-      weight: bold;
-      style: normal;
-      size: map-get($normal-font-size, mobile);
-      feature-settings: 'liga';
-    }
+  input[type='radio']:checked + label::before {
+    opacity: 1;
   }
 }
 

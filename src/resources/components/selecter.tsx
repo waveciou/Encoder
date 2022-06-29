@@ -36,7 +36,7 @@ const selecter = ({
         <label
           htmlFor="encode"
           title="Encode"
-          className="tw-p-2.5 tw-block tw-text-center tw-text-white tw-cursor-pointer tw-bg-green"
+          className="tw-p-2.5 tw-flex tw-items-center tw-justify-center tw-text-white tw-cursor-pointer tw-bg-green before-font-material before:tw-content-['\e5ca'] before:tw-mr-1 before:-tw-ml-4 before:tw-block before:tw-text-mobile desktop:before:-tw-ml-5 desktop:before:tw-text-desktop"
         >
           Encode
         </label>
@@ -54,7 +54,7 @@ const selecter = ({
         <label
           htmlFor="decode"
           title="Decode"
-          className="tw-p-2.5 tw-block tw-text-center tw-text-white tw-cursor-pointer tw-bg-blue"
+          className="tw-p-2.5 tw-flex tw-items-center tw-justify-center tw-text-white tw-cursor-pointer tw-bg-blue before-font-material before:tw-content-['\e5ca'] before:tw-mr-1 before:-tw-ml-4 before:tw-block before:tw-text-mobile desktop:before:-tw-ml-5 desktop:before:tw-text-desktop"
         >
           Decode
         </label>
