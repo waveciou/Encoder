@@ -125,10 +125,18 @@ const App = () => {
         />
 
         <div className="tw-my-4 tw-flex tw-items-center tw-justify-between tw-flex-wrap mobile:tw-justify-center">
-          <button className="btn" title="Submit" onClick={submitHandler}>
+          <button
+            className="tw-w-full tw-py-2.5 tw-px-6 tw-my-2 tw-block tw-text-mobile tw-bg-transparent tw-border tw-border-white tw-border-solid tw-rounded-md tw-outline-none tw-cursor-pointer tw-tracking-wide tw-leading-relaxed tw-box-border small:tw-w-[calc((100%-10px)/2)] mobile:tw-w-auto mobile:tw-min-w-[160px] mobile:tw-mx-1.5 desktop:tw-py-2 desktop:tw-text-desktop desktop:hover:tw-text-black desktop:hover:tw-bg-white active:tw-text-black active:tw-bg-white"
+            title="Submit"
+            onClick={submitHandler}
+          >
             Submit
           </button>
-          <button className="btn" title="Clear" onClick={clearHandler}>
+          <button
+            className="tw-w-full tw-py-2.5 tw-px-6 tw-my-2 tw-block tw-text-mobile tw-bg-transparent tw-border tw-border-white tw-border-solid tw-rounded-md tw-outline-none tw-cursor-pointer tw-tracking-wide tw-leading-relaxed tw-box-border small:tw-w-[calc((100%-10px)/2)] mobile:tw-w-auto mobile:tw-min-w-[160px] mobile:tw-mx-1.5 desktop:tw-py-2 desktop:tw-text-desktop desktop:hover:tw-text-black desktop:hover:tw-bg-white active:tw-text-black active:tw-bg-white"
+            title="Clear"
+            onClick={clearHandler}
+          >
             Clear
           </button>
         </div>
