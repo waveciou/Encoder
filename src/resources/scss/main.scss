@@ -30,6 +30,13 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
   }
 }
 
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0);
+  }
+}
+
 body {
   overflow-x: hidden;
   overflow-y: auto;
@@ -83,13 +90,6 @@ body {
 
   input[type='radio']:checked + label::before {
     opacity: 1;
-  }
-}
-
-@keyframes bouncing-loader {
-  to {
-    opacity: 0.1;
-    transform: translate3d(0, -1rem, 0);
   }
 }
 
