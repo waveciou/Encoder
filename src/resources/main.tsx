@@ -8,12 +8,12 @@ import App from '@/Component/app';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="tw-pt-4 tw-pb-8">
-      <div className="tw-w-full tw-m-auto tw-max-w-[calc(100%-30px)] tablet-lg:tw-max-w-[768px]">
-        <h1 className="tw-mt-4 tw-mb-6 tw-text-title tablet:tw-text-title-lg tw-text-white tw-text-center tw-leading-[1.6em] before:tw-content-[''] before:tw-w-[1.6em] before:tw-h-[1.6em] before:tw-mr-4 before:tw-inline-block before:tw-align-top before:tw-box-border before:tw-border-4 before:tw-border-white before:tw-border-solid before:tw-rounded-lg before:tw-bg-[url('../img/icon.svg')] before:tw-bg-no-repeat before:tw-bg-center before:tw-bg-70%">
+    <div className="pt-4 pb-8">
+      <div className="w-full m-auto max-w-[calc(100%-30px)] tablet-lg:max-w-[768px]">
+        <h1 className="mt-4 mb-6 text-title tablet:text-title-lg text-white text-center leading-[1.6em] before:content-[''] before:w-[1.6em] before:h-[1.6em] before:mr-4 before:inline-block before:align-top before:box-border before:border-4 before:border-white before:border-solid before:rounded-lg before:bg-[url('../img/icon.svg')] before:bg-no-repeat before:bg-center before:bg-70%">
           TEXT ENCODER
         </h1>
-        <p className="tw-text-center tw-mb-4">
+        <p className="text-center mb-4">
           This is an encoder for string, it can be transform the text into code.
         </p>
         <App />

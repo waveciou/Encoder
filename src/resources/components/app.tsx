@@ -112,7 +112,7 @@ const App = () => {
 
   return (
     <>
-      <div className="tw-my-8">
+      <div className="my-8">
         <SelecterComponent
           selected={encodeSelected}
           setSelected={setSelectedHandler}
@@ -124,16 +124,16 @@ const App = () => {
           updateTextInput={updateTextInputHandler}
         />
 
-        <div className="tw-my-4 tw-flex tw-items-center tw-justify-between tw-flex-wrap mobile:tw-justify-center">
+        <div className="my-4 flex items-center justify-between flex-wrap mobile:justify-center">
           <button
-            className="tw-w-full tw-py-2.5 tw-px-6 tw-my-2 tw-block tw-text-mobile tw-bg-transparent tw-border tw-border-white tw-border-solid tw-rounded-md tw-outline-none tw-cursor-pointer tw-tracking-wide tw-leading-relaxed tw-box-border small:tw-w-[calc((100%-10px)/2)] mobile:tw-w-auto mobile:tw-min-w-[160px] mobile:tw-mx-1.5 desktop:tw-py-2 desktop:tw-text-desktop desktop:hover:tw-text-black desktop:hover:tw-bg-white active:tw-text-black active:tw-bg-white"
+            className="w-full py-2.5 px-6 my-2 block text-mobile bg-transparent border border-white border-solid rounded-md outline-none cursor-pointer tracking-wide leading-relaxed box-border small:w-[calc((100%-10px)/2)] mobile:w-auto mobile:min-w-[160px] mobile:mx-1.5 desktop:py-2 desktop:text-desktop desktop:hover:text-black desktop:hover:bg-white active:text-black active:bg-white"
             title="Submit"
             onClick={submitHandler}
           >
             Submit
           </button>
           <button
-            className="tw-w-full tw-py-2.5 tw-px-6 tw-my-2 tw-block tw-text-mobile tw-bg-transparent tw-border tw-border-white tw-border-solid tw-rounded-md tw-outline-none tw-cursor-pointer tw-tracking-wide tw-leading-relaxed tw-box-border small:tw-w-[calc((100%-10px)/2)] mobile:tw-w-auto mobile:tw-min-w-[160px] mobile:tw-mx-1.5 desktop:tw-py-2 desktop:tw-text-desktop desktop:hover:tw-text-black desktop:hover:tw-bg-white active:tw-text-black active:tw-bg-white"
+            className="w-full py-2.5 px-6 my-2 block text-mobile bg-transparent border border-white border-solid rounded-md outline-none cursor-pointer tracking-wide leading-relaxed box-border small:w-[calc((100%-10px)/2)] mobile:w-auto mobile:min-w-[160px] mobile:mx-1.5 desktop:py-2 desktop:text-desktop desktop:hover:text-black desktop:hover:bg-white active:text-black active:bg-white"
             title="Clear"
             onClick={clearHandler}
           >
@@ -148,15 +148,15 @@ const App = () => {
 
         {loading.control && <LoadingComponent type={loading.type} />}
       </div>
-      <div className="tw-w-full tw-flex tw-items-center tw-justify-center before:tw-content-[''] before:tw-block before:tw-w-10 before:tw-h-10 before:tw-mr-2 before:tw-bg-[url('../img/github.svg')] before:tw-bg-no-repeat before:tw-bg-center">
-        <div className="tw-text-mobile tw-leading-6">
+      <div className="w-full flex items-center justify-center before:content-[''] before:block before:w-10 before:h-10 before:mr-2 before:bg-[url('../img/github.svg')] before:bg-no-repeat before:bg-center">
+        <div className="text-mobile leading-6">
           Version:{' '}
           <a
             href="https://github.com/waveciou/Encoder"
             target="_blank"
             title={pkg.version}
             rel="noreferrer"
-            className="desktop:hover:tw-text-yellow"
+            className="desktop:hover:text-yellow"
           >
             {pkg.version}
           </a>
@@ -167,7 +167,7 @@ const App = () => {
             target="_blank"
             title="GitHub @waveciou"
             rel="noreferrer"
-            className="desktop:hover:tw-text-yellow"
+            className="desktop:hover:text-yellow"
           >
             @waveciou
           </a>
