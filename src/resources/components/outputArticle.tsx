@@ -29,28 +29,28 @@ const outputArticle = ({
   }, [textOutput]);
 
   return (
-    <div className="tw-my-4 tw-text-white">
-      <div className="tw-flex tw-items-center tw-justify-between">
-        <label className="tw-block tw-mb-3" htmlFor="output-area">
+    <div className="my-4 text-white">
+      <div className="flex items-center justify-between">
+        <label className="block mb-3" htmlFor="output-area">
           Output :
         </label>
         {textOutput !== '' && (
-          <div className="tw-flex tw-items-center tw-mb-3 mobile:tw-mb-0">
-            <div className={`${processTime === null ? 'tw-invisible' : ''}`}>
-              <div className="before-font-material tw-flex tw-items-center tw-mr-2.5 tw-text-small before:tw-content-['\e8b5'] before:tw-mr-1 before:tw-block before:tw-text-desktop">
-                <label className="mobile:before:tw-content-['Time:']">
+          <div className="flex items-center mb-3 mobile:mb-0">
+            <div className={`${processTime === null ? 'invisible' : ''}`}>
+              <div className="before-font-material flex items-center mr-2.5 text-small before:content-['\e8b5'] before:mr-1 before:block before:text-desktop">
+                <label className="mobile:before:content-['Time:']">
                   {processTime} ms
                 </label>
               </div>
             </div>
             <CopyToClipboard text={textOutput} onCopy={() => copiedHandler()}>
-              <div className={`${isCopied ? 'tw-text-yellow' : ''}`}>
+              <div className={`${isCopied ? 'text-yellow' : ''}`}>
                 <button
                   type="button"
                   title="Copy"
-                  className="before-font-material tw-flex tw-items-center tw-text-small tw-text-left tw-text-inherit before:tw-content-['\e14d'] before:tw-mr-1 before:tw-block before:tw-text-desktop"
+                  className="before-font-material flex items-center text-small text-left text-inherit before:content-['\e14d'] before:mr-1 before:block before:text-desktop"
                 >
-                  <span className="tw-block tw-min-w-[50px] tw-text-inherit">
+                  <span className="block min-w-[50px] text-inherit">
                     {isCopied ? 'Copied' : 'Copy'}
                   </span>
                 </button>
@@ -61,7 +61,7 @@ const outputArticle = ({
       </div>
       <div
         id="output-area"
-        className="tw-w-full tw-h-48 tw-py-2.5 tw-px-4 tw-block tw-overflow-x-hidden tw-overflow-y-auto tw-text-yellow tw-bg-black tw-break-words tw-tracking-wide tw-border tw-border-white tw-border-solid tw-rounded-md tw-resize-none"
+        className="w-full h-48 py-2.5 px-4 block overflow-x-hidden overflow-y-auto text-yellow bg-black break-words tracking-wide border border-white border-solid rounded-md resize-none"
       >
         {textOutput}
       </div>

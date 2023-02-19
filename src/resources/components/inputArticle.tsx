@@ -15,13 +15,13 @@ const inputArticle = ({
   };
 
   return (
-    <div className="tw-my-4 tw-text-white">
-      <label className="tw-block tw-mb-3" htmlFor="input-area">
+    <div className="my-4 text-white">
+      <label className="block mb-3" htmlFor="input-area">
         Input :
       </label>
       <textarea
         id="input-area"
-        className="tw-w-full tw-h-48 tw-py-2.5 tw-px-4 tw-block tw-overflow-x-hidden tw-overflow-y-auto tw-text-yellow tw-bg-black tw-break-words tw-tracking-wide tw-border tw-border-white tw-border-solid tw-rounded-md tw-resize-none"
+        className="w-full h-48 py-2.5 px-4 block overflow-x-hidden overflow-y-auto text-yellow bg-black break-words tracking-wide border border-white border-solid rounded-md resize-none"
         value={textInput}
         onChange={changeHandler}
         placeholder={placeholder}
