@@ -1,10 +1,10 @@
 # 📌 文字編碼器 Text Encoder
 
-[Demo](https://waveciou.github.io/Encoder/)
+[Demo](https://waveciou-encoder.netlify.app/)
 
 自製的文字編碼器 Side Project，運用一些基本的密碼學原理，將輸入的文字加密編碼成不易破解的亂數密碼，同時也能夠即時將密碼解碼還原成原本的內容。
 
-![Text Encoder Demo](https://waveciou.github.io/Encoder/resources/img/demo.gif "Text Encoder Demo")
+![Text Encoder Demo](https://waveciou.github.io/Encoder/resources/img/demo.gif 'Text Encoder Demo')
 
 ## 💡 從這個專案當中學到了什麼
 
