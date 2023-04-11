@@ -1,17 +1,19 @@
 # 📌 文字編碼器 Text Encoder
 
-[Demo](https://waveciou-encoder.netlify.app/)
-
 自製的文字編碼器 Side Project，運用一些基本的密碼學原理，將輸入的文字加密編碼成不易破解的亂數密碼，同時也能夠即時將密碼解碼還原成原本的內容。
 
 ![Text Encoder Demo](https://user-images.githubusercontent.com/17502097/229436798-5becbe2d-c13e-4d1b-8cb8-2edb8e21ddc6.gif 'Text Encoder Demo')
 
+## Demo
+
+[https://waveciou-encoder.netlify.app/](https://waveciou-encoder.netlify.app/)
+
 ## 💡 從這個專案當中學到了什麼
 
-- 基本的密碼學原理運用（凱薩密碼、替換式密碼）
-- 使用 [Vite](https://vitejs.dev/) 建立 [React](https://zh-hant.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/) 開發環境
-- 使用 [Jest](https://jestjs.io/) 替每個執行的函式做單元測試（Unit Test）
-- 使用 [Netlify](https://www.netlify.com/) 作為專案部署的 Serverless 平台
+- 基本的密碼學原理運用（凱薩密碼、替換式密碼）。
+- 使用 [Vite](https://vitejs.dev/) 建立 [React](https://zh-hant.reactjs.org/) + [TypeScript](https://www.typescriptlang.org/) 開發環境。
+- 使用 [Jest](https://jestjs.io/) 替每個執行的函式做單元測試（Unit Test）。
+- 使用 [Netlify](https://www.netlify.com/) 作為專案部署的 Serverless 平台。
 
 ## 演算法說明
 
