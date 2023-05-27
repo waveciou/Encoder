@@ -1,7 +1,7 @@
 import decodeCaesarCipher from '@/Function/decodeCaesarCipher';
 import parseToInt from '@/Function/parseToInt';
 import unicodeValidator from '@/Function/unicodeValidator';
-import { I_ConfigParam } from '@/Interface/index';
+import { IConfigParam } from '@/Interface/index';
 
 /**
  * 解碼演算法
@@ -10,7 +10,7 @@ import { I_ConfigParam } from '@/Interface/index';
  * @returns { String }
  */
 
-const decodeHandler = (ciphertext: string, $config: I_ConfigParam): string => {
+const decodeHandler = (ciphertext: string, $config: IConfigParam): string => {
   // 判斷傳入值是否可以轉為數字
   let isError: boolean = parseToInt(ciphertext) ? false : true;
   if (isError) return 'error';

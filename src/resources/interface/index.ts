@@ -1,4 +1,4 @@
-export interface I_ConfigParam {
+interface IConfigParam {
   alphabet: string[];
   digits: number;
   prime: number[];
@@ -6,13 +6,15 @@ export interface I_ConfigParam {
   tableKeyword: string[];
 }
 
-export interface I_Parameter {
+interface IParameter {
   alphabet: string[];
   prime: number[];
   table: string[][];
 }
 
-export interface I_Loading {
+interface ILoading {
   control: boolean;
   type: '' | 'encode' | 'decode';
 }
+
+export type { IConfigParam, IParameter, ILoading };
