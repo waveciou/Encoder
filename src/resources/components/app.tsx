@@ -47,6 +47,11 @@ const App = () => {
 
   // * 編解碼選擇（Radio Button）
   const setSelectedHandler = (payload: boolean): void => {
+    if (window.gtag) {
+      const name: 'encode' | 'decode' = payload === true ? 'encode' : 'decode';
+      window.gtag('event', 'click_navtab_button', { 'tabname': name });
+    }
+
     clearHandler();
     setEncodeSelected(payload);
   };
@@ -68,6 +73,12 @@ const App = () => {
   const submitHandler = (): false => {
     if (textInput === '') {
       return false;
+    }
+
+    if (window.gtag) {
+      const name: 'encode' | 'decode' =
+        encodeSelected === true ? 'encode' : 'decode';
+      window.gtag('event', 'click_submit_button', { 'processName': name });
     }
 
     const startTime: number = getDateTimeHandler();
