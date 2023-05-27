@@ -1,4 +1,4 @@
-import { I_ConfigParam, I_Parameter } from '@/Interface/index';
+import { IConfigParam, IParameter } from '@/Interface/index';
 
 /**
  * 設定預設參數
@@ -8,12 +8,12 @@ import { I_ConfigParam, I_Parameter } from '@/Interface/index';
  */
 
 const setDefaultConfig = (
-  defaultData: I_Parameter,
-  $config: I_ConfigParam
-): I_ConfigParam => {
+  defaultData: IParameter,
+  $config: IConfigParam
+): IConfigParam => {
   const { digits, tableKeyword } = $config;
   const { alphabet, prime, table } = defaultData;
-  const result: I_ConfigParam = {
+  const result: IConfigParam = {
     alphabet,
     digits,
     prime,

@@ -1,6 +1,6 @@
 import encodeCaesarCipher from '@/Function/encodeCaesarCipher';
 import getRandomNumber from '@/Function/getRandomNumber';
-import { I_ConfigParam } from '@/Interface/index';
+import { IConfigParam } from '@/Interface/index';
 
 /**
  * 編碼演算法
@@ -12,7 +12,7 @@ import { I_ConfigParam } from '@/Interface/index';
 
 const encodeHandler = (
   plaintext: string,
-  $config: I_ConfigParam,
+  $config: IConfigParam,
   testPublicConst?: number
 ): string => {
   // 把字串轉成陣列

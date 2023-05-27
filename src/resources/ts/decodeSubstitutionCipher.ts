@@ -1,6 +1,6 @@
 import getTableIndexKeyword from '@/Function/getTableIndexKeyword';
 import parseToInt from '@/Function/parseToInt';
-import { I_ConfigParam } from '@/Interface/index';
+import { IConfigParam } from '@/Interface/index';
 
 /**
  * 替換式密碼轉換（解碼）
@@ -11,7 +11,7 @@ import { I_ConfigParam } from '@/Interface/index';
 
 const decodeSubstitutionCipher = (
   payload: string,
-  $config: I_ConfigParam
+  $config: IConfigParam
 ): string => {
   // 取得對照表索引數
   const strArray: string[] = payload.split('');

@@ -10,7 +10,7 @@ import encodeHandler from '@/Function/encodeHandler';
 import encodeSubstitutionCipher from '@/Function/encodeSubstitutionCipher';
 import getRandomNumber from '@/Function/getRandomNumber';
 import setDefaultConfig from '@/Function/setDefaultConfig';
-import { I_ConfigParam, I_Loading } from '@/Interface/index';
+import { IConfigParam, ILoading } from '@/Interface/index';
 
 import pkg from '../../../package.json';
 import parameterData from '../data/parameter.json';
@@ -21,7 +21,7 @@ const App = () => {
   const [encodeSelected, setEncodeSelected] = useState<boolean>(true);
   const [processTime, setProcessTime] = useState<number | null>(null);
 
-  const [parameter, setParameter] = useState<I_ConfigParam>({
+  const [parameter, setParameter] = useState<IConfigParam>({
     alphabet: [],
     digits: 5,
     prime: [],
@@ -29,13 +29,13 @@ const App = () => {
     tableKeyword: [],
   });
 
-  const [loading, setLoading] = useState<I_Loading>({
+  const [loading, setLoading] = useState<ILoading>({
     control: true,
     type: '',
   });
 
   useEffect(() => {
-    const param: I_ConfigParam = setDefaultConfig(parameterData, parameter);
+    const param: IConfigParam = setDefaultConfig(parameterData, parameter);
 
     setParameter({ ...param });
     setLoading({ control: false, type: '' });

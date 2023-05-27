@@ -1,5 +1,5 @@
 import parseToInt from '@/Function/parseToInt';
-import { I_ConfigParam } from '@/Interface/index';
+import { IConfigParam } from '@/Interface/index';
 
 /**
  * 轉換圖表索引數關鍵字
@@ -12,7 +12,7 @@ import { I_ConfigParam } from '@/Interface/index';
 const getTableIndexKeyword = (
   payload: string,
   isEncode: boolean,
-  $config: I_ConfigParam
+  $config: IConfigParam
 ): string => {
   const keyWords: string[] = $config.tableKeyword;
   const result: string = isEncode
