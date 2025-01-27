@@ -6,7 +6,7 @@
 
 ## Demo
 
-[https://waveciou-encoder.netlify.app/](https://waveciou-encoder.netlify.app/)
+[https://waveciou-encoder.vercel.app](https://waveciou-encoder.vercel.app)
 
 ## 💡 從這個專案當中學到了什麼
 
