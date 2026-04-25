@@ -137,14 +137,14 @@ const App = () => {
 
         <div className="my-4 flex items-center justify-between flex-wrap mobile:justify-center">
           <button
-            className="w-full py-2.5 px-6 my-2 block text-mobile bg-transparent border border-white border-solid rounded-md outline-none cursor-pointer tracking-wide leading-relaxed box-border small:w-[calc((100%-10px)/2)] mobile:w-auto mobile:min-w-40 mobile:mx-1.5 desktop:py-2 desktop:text-desktop desktop:hover:text-black desktop:hover:bg-white active:text-black active:bg-white"
+            className="w-full py-2.5 px-6 my-2 block text-mobile bg-transparent border border-white border-solid rounded-md outline-none tracking-wide leading-relaxed box-border small:w-[calc((100%-10px)/2)] mobile:w-auto mobile:min-w-40 mobile:mx-1.5 desktop:py-2 desktop:text-desktop desktop:hover:text-black desktop:hover:bg-white active:text-black active:bg-white"
             title="Submit"
             onClick={submitHandler}
           >
             Submit
           </button>
           <button
-            className="w-full py-2.5 px-6 my-2 block text-mobile bg-transparent border border-white border-solid rounded-md outline-none cursor-pointer tracking-wide leading-relaxed box-border small:w-[calc((100%-10px)/2)] mobile:w-auto mobile:min-w-40 mobile:mx-1.5 desktop:py-2 desktop:text-desktop desktop:hover:text-black desktop:hover:bg-white active:text-black active:bg-white"
+            className="w-full py-2.5 px-6 my-2 block text-mobile bg-transparent border border-white border-solid rounded-md outline-none tracking-wide leading-relaxed box-border small:w-[calc((100%-10px)/2)] mobile:w-auto mobile:min-w-40 mobile:mx-1.5 desktop:py-2 desktop:text-desktop desktop:hover:text-black desktop:hover:bg-white active:text-black active:bg-white"
             title="Clear"
             onClick={clearHandler}
           >

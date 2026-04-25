@@ -48,7 +48,7 @@ const outputArticle = ({
                 <button
                   type="button"
                   title="Copy"
-                  className="before-font-material flex items-center text-small text-left text-inherit before:content-['\e14d'] before:mr-1 before:block before:text-desktop"
+                  className="before-font-material flex items-center text-small text-left text-inherit before:content-['\e14d'] before:mr-1 before:block before:text-desktop desktop:hover:text-yellow"
                 >
                   <span className="block min-w-12.5 text-inherit">
                     {isCopied ? 'Copied' : 'Copy'}
