@@ -3,7 +3,7 @@ import React from 'react';
 import LoaderHeading from '@/Function/loaderHeading';
 
 const loading = ({ type }: { type: string }) => (
-  <div className="w-full h-full flex items-center justify-center fixed top-0 left-0 z-1000 bg-black/[0.8]">
+  <div className="w-full h-full flex items-center justify-center fixed top-0 left-0 z-1000 bg-black/80">
     <div>
       <div className="flex justify-center">
         <div className="bouncing-loader-item" />

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/waveciou/Encoder#readme",
   "devDependencies": {
+    "@tailwindcss/vite": "^4.2.4",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.19.17",
     "@types/react": "^18.3.12",
@@ -28,7 +29,6 @@
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^6.0.1",
-    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jest": "^27.9.0",
@@ -39,7 +39,7 @@
     "postcss-sass": "^0.5.0",
     "prettier": "^3.3.3",
     "sass": "^1.99.0",
-    "tailwindcss": "^3.4.19",
+    "tailwindcss": "^4.2.4",
     "ts-jest": "^29.4.9",
     "typescript": "^6.0.3",
     "vite": "^8.0.10"

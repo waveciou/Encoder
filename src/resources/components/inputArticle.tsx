@@ -21,7 +21,7 @@ const inputArticle = ({
       </label>
       <textarea
         id="input-area"
-        className="w-full h-48 py-2.5 px-4 block overflow-x-hidden overflow-y-auto text-yellow bg-black break-words tracking-wide border border-white border-solid rounded-md resize-none"
+        className="w-full h-48 py-2.5 px-4 block overflow-x-hidden overflow-y-auto text-yellow bg-black wrap-break-word tracking-wide border border-white border-solid rounded-md resize-none placeholder-white/50"
         value={textInput}
         onChange={changeHandler}
         placeholder={placeholder}

@@ -1,21 +1,7 @@
 /* stylelint-disable function-no-unknown */
-@use 'sass:map';
-@use 'reset';
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=fallback');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-$color-white: #fff;
-$color-black: #2c2c2c;
-$color-green: #3bb763;
-$color-blue: #02a4e0;
-$color-yellow: #efce4a;
-
-$normal-font-size: (
-  desktop: 20px,
-  mobile: 16px,
-  small: 14px,
-);
 
 @font-face {
   font-family: 'Material Icons';
@@ -24,11 +10,6 @@ $normal-font-size: (
   src: url('https://example.com/MaterialIcons-Regular.eot');
   src: local('Material Icons'), local('MaterialIcons-Regular');
 }
-
-/* stylelint-disable scss/at-rule-no-unknown */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @mixin min-width($breakpoints) {
   @media screen and (min-width: $breakpoints) {
@@ -46,18 +27,22 @@ $normal-font-size: (
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  font-size: map.get($normal-font-size, mobile);
+  font-size: var(--text-mobile);
   font-family: 'Noto Sans TC', sans-serif, Arial;
-  color: $color-white;
-  background-color: $color-black;
+  color: var(--color-white);
+  background-color: var(--color-black);
   -webkit-overflow-scrolling: touch;
   -o-overflow-scrolling: touch;
   line-height: 1.6em;
   letter-spacing: 1px;
 
   @include min-width(1025px) {
-    font-size: map.get($normal-font-size, desktop);
+    font-size: var(--text-desktop);
   }
+}
+
+textarea {
+  outline: none;
 }
 
 [v-cloak] {
@@ -103,7 +88,7 @@ body {
   width: 1rem;
   height: 1rem;
   margin: 3rem 0.2rem;
-  background-color: $color-white;
+  background-color: var(--color-white);
   border-radius: 50%;
   animation: bouncing-loader 0.6s infinite alternate;
 

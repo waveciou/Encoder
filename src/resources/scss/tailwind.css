@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+@source '../**/*.{js,ts,jsx,tsx,scss}';
+
+@theme {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #2c2c2c;
+  --color-green: #3bb763;
+  --color-blue: #02a4e0;
+  --color-yellow: #efce4a;
+
+  --text-small: 14px;
+  --text-mobile: 16px;
+  --text-desktop: 20px;
+  --text-title: 26px;
+  --text-title-lg: 35px;
+
+  --breakpoint-*: initial;
+  --breakpoint-small: 370px;
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-tablet-lg: 798px;
+  --breakpoint-desktop: 1025px;
+}
+
+@utility bg-70% {
+  background-size: 70%;
+}
