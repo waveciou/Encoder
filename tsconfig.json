@@ -16,21 +16,20 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "ignoreDeprecations": "6.0",
-    "baseUrl": "src/",
+    "rootDir": "./src",
+    "types": ["jest", "node"],
     "paths": {
-      "@/Function/*": ["resources/ts/*"],
-      "@/Interface/*": ["resources/interface/*"],
-      "@/Component/*": ["resources/components/*"],
-      "@/Test/*": ["test/*"],
+      "@/Function/*": ["./src/resources/ts/*"],
+      "@/Interface/*": ["./src/resources/interface/*"],
+      "@/Component/*": ["./src/resources/components/*"],
+      "@/Test/*": ["./src/test/*"]
     }
   },
-  "include": [
-    "src",
-  ],
-  "exclude": [
-    "./node_modules"
-  ],
-  "references": [{
-    "path": "./tsconfig.node.json"
-  }]
+  "include": ["src"],
+  "exclude": ["./node_modules"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

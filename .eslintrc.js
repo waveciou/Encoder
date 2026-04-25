@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'env': {
     'browser': true,
     'es2021': true,
@@ -19,6 +19,11 @@ module.exports = {
     'sourceType': 'module',
   },
   'plugins': ['react', '@typescript-eslint', 'jest'],
+  'settings': {
+    'react': {
+      'version': 'detect',
+    },
+  },
   'rules': {
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',

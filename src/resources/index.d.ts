@@ -2,7 +2,7 @@ export {};
 
 declare global {
   interface Window {
-    ga: any;
-    gtag: any;
+    ga: (...args: unknown[]) => void;
+    gtag: (...args: unknown[]) => void;
   }
 }

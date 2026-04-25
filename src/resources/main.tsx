@@ -2,11 +2,17 @@ import './scss/main.scss';
 import './img/demo.gif';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import App from '@/Component/app';
 
-ReactDOM.render(
+const container = document.getElementById('app');
+
+if (!container) {
+  throw new Error('Root container #app not found');
+}
+
+createRoot(container).render(
   <React.StrictMode>
     <div className="pt-4 pb-8">
       <div className="w-full m-auto max-w-[calc(100%-30px)] tablet-lg:max-w-[768px]">
@@ -19,6 +25,5 @@ ReactDOM.render(
         <App />
       </div>
     </div>
-  </React.StrictMode>,
-  document.getElementById('app')
+  </React.StrictMode>
 );

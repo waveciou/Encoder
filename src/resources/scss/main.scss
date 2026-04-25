@@ -1,7 +1,9 @@
 /* stylelint-disable function-no-unknown */
+@use 'sass:map';
+@use 'reset';
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=fallback');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import '_reset.scss';
 
 $color-white: #fff;
 $color-black: #2c2c2c;
@@ -9,14 +11,18 @@ $color-green: #3bb763;
 $color-blue: #02a4e0;
 $color-yellow: #efce4a;
 
-$normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
+$normal-font-size: (
+  desktop: 20px,
+  mobile: 16px,
+  small: 14px,
+);
 
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
   src: url('https://example.com/MaterialIcons-Regular.eot');
-  src: local('Material Icons'), local('MaterialIcons-Regular'),;
+  src: local('Material Icons'), local('MaterialIcons-Regular');
 }
 
 /* stylelint-disable scss/at-rule-no-unknown */
@@ -40,7 +46,7 @@ $normal-font-size: (desktop: 20px, mobile: 16px, small: 14px);
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  font-size: map-get($normal-font-size, mobile);
+  font-size: map.get($normal-font-size, mobile);
   font-family: 'Noto Sans TC', sans-serif, Arial;
   color: $color-white;
   background-color: $color-black;
@@ -50,7 +56,7 @@ body {
   letter-spacing: 1px;
 
   @include min-width(1025px) {
-    font-size: map-get($normal-font-size, desktop);
+    font-size: map.get($normal-font-size, desktop);
   }
 }
 
