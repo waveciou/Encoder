@@ -1,13 +1,16 @@
+/** @type {import('jest').Config} */
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  globals: {
-    extensionsToTreatAsEsm: ['.ts', '.js'],
-    'ts-jest': {
-      useESM: true,
-    },
-  },
   preset: 'ts-jest/presets/js-with-ts-esm',
+  testEnvironment: 'node',
+  extensionsToTreatAsEsm: ['.ts'],
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        useESM: true,
+      },
+    ],
+  },
   // Note: https://stackoverflow.com/a/57916712/15076557
   transformIgnorePatterns: [
     'node_modules/(?!(module-that-needs-to-be-transformed)/)',

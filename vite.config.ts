@@ -1,14 +1,14 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
-import { createHtmlPlugin } from 'vite-plugin-html';
+import { fileURLToPath, URL } from 'node:url';
 
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
-const root: string = resolve(__dirname, 'src');
-const outDir: string = resolve(__dirname, 'dist');
+const projectRoot = fileURLToPath(new URL('.', import.meta.url));
+const root = fileURLToPath(new URL('./src', import.meta.url));
+const outDir = fileURLToPath(new URL('./dist', import.meta.url));
 const assetsDir = 'resources';
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
   root,
   base: '/',
@@ -16,25 +16,29 @@ export default defineConfig({
     alias: [
       {
         find: '@/Component',
-        replacement: resolve(__dirname, 'src/resources/components'),
+        replacement: fileURLToPath(
+          new URL('./src/resources/components', import.meta.url)
+        ),
       },
       {
         find: '@/Interface',
-        replacement: resolve(__dirname, 'src/resources/interface'),
+        replacement: fileURLToPath(
+          new URL('./src/resources/interface', import.meta.url)
+        ),
       },
       {
         find: '@/Function',
-        replacement: resolve(__dirname, 'src/resources/ts'),
+        replacement: fileURLToPath(
+          new URL('./src/resources/ts', import.meta.url)
+        ),
       },
-      { find: '@/Test', replacement: resolve(__dirname, 'src/test') },
+      {
+        find: '@/Test',
+        replacement: fileURLToPath(new URL('./src/test', import.meta.url)),
+      },
     ],
   },
-  plugins: [
-    react(),
-    createHtmlPlugin({
-      minify: true,
-    }),
-  ],
+  plugins: [react()],
   build: {
     outDir,
     assetsDir,
@@ -44,7 +48,8 @@ export default defineConfig({
       output: {
         entryFileNames: `${assetsDir}/js/main.js`,
         chunkFileNames: `${assetsDir}/js/[name].js`,
-        assetFileNames: ({ name = '' }) => {
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.names?.[0] ?? '';
           if (/\.(gif|jpe?g|png|svg)$/.test(name)) {
             return `${assetsDir}/img/[name].[ext]`;
           }
@@ -70,3 +75,5 @@ export default defineConfig({
     origin: 'http://0.0.0.0:8080',
   },
 });
+
+void projectRoot;
