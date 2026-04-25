@@ -16,9 +16,9 @@ module.exports = {
     'node_modules/(?!(module-that-needs-to-be-transformed)/)',
   ],
   moduleNameMapper: {
-    '@/Function/(.*)': '<rootDir>/src/resources/ts/$1',
-    '@/Interface/(.*)': '<rootDir>/src/resources/interface/$1',
-    '@/Component/(.*)': '<rootDir>/src/resources/components/$1',
+    '@/Function/(.*)': '<rootDir>/src/ts/$1',
+    '@/Interface/(.*)': '<rootDir>/src/interface/$1',
+    '@/Component/(.*)': '<rootDir>/src/components/$1',
     '@/Test/(.*)': '<rootDir>/src/test/$1',
   },
 };

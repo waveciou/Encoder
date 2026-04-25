@@ -1,29 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(npm test *)",
-      "Bash(npx tsc *)",
-      "Bash(echo \"exit: $?\")",
-      "Bash(npx eslint *)",
-      "Bash(npm install *)",
-      "Bash(echo \"tsc exit: $?\")",
-      "Bash(npm view *)",
-      "Bash(npm run *)",
-      "Bash(echo \"tsc: $?\")",
-      "Bash(echo \"eslint: $?\")",
-      "Bash(git checkout *)",
-      "Bash(git add *)",
-      "Bash(npm uninstall *)",
-      "Bash(grep -oE \"\\(bg-70|z-1|-z-1|text-yellow|text-title|breakpoint|tablet\\)[^,{]*\\\\{[^}]*\\\\}\" /Users/waveciou/Documents/Projects/Encoder/Encoder/dist/resources/css/index.css)",
-      "Bash(curl -s http://localhost:8080/)",
-      "Bash(curl -s \"http://localhost:8080/resources/scss/tailwind.css\")",
-      "Bash(curl -s \"http://localhost:8080/resources/scss/main.scss\")",
-      "Bash(curl -sI http://localhost:8080/)",
-      "Bash(curl -s http://localhost:8080/src/resources/main.tsx)",
-      "Bash(kill 35733)",
-      "Bash(curl -s http://localhost:8080/resources/scss/tailwind.css)",
-      "Bash(curl -s http://localhost:8080/resources/main.tsx)",
-      "Bash(grep -oE \"\\\\\\\\.z-1000\\\\\\\\\\\\\\\\?[^,{]*\\\\\\\\{[^}]*\\\\\\\\}\")"
-    ]
+    "allow": []
   }
 }

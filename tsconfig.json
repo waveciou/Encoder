@@ -19,9 +19,9 @@
     "rootDir": "./src",
     "types": ["jest", "node"],
     "paths": {
-      "@/Function/*": ["./src/resources/ts/*"],
-      "@/Interface/*": ["./src/resources/interface/*"],
-      "@/Component/*": ["./src/resources/components/*"],
+      "@/Function/*": ["./src/ts/*"],
+      "@/Interface/*": ["./src/interface/*"],
+      "@/Component/*": ["./src/components/*"],
       "@/Test/*": ["./src/test/*"]
     }
   },

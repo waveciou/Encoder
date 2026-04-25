@@ -12,7 +12,7 @@ import getRandomNumber from '@/Function/getRandomNumber';
 import setDefaultConfig from '@/Function/setDefaultConfig';
 import { IConfigParam, ILoading } from '@/Interface/index';
 
-import pkg from '../../../package.json';
+import pkg from '../../package.json';
 import parameterData from '../data/parameter.json';
 
 const App = () => {

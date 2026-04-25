@@ -1,6 +1,6 @@
 import setDefaultConfig from '@/Function/setDefaultConfig';
 
-import data from '../resources/data/parameter.json';
+import data from '../data/parameter.json';
 
 const parameter = {
   alphabet: [],
