@@ -10,7 +10,9 @@
       "Bash(npm view *)",
       "Bash(npm run *)",
       "Bash(echo \"tsc: $?\")",
-      "Bash(echo \"eslint: $?\")"
+      "Bash(echo \"eslint: $?\")",
+      "Bash(git checkout *)",
+      "Bash(git add *)"
     ]
   }
 }
